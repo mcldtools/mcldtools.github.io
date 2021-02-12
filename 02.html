@@ -18,14 +18,7 @@
 	<input type=radio id=a13 name=a1><label for a13>3: Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
 		Note: have voice and are heard but are not decision-makers.</label><br>	
 	<input type=radio id=a14 name=a1><label for a14>4: Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label>
-		
+		<input type=submit onsubmit="showval();" value="Show">
 	</form>
-	<a class=button href="javascript:showval();">Show Your Selection</a>
-	<script>
-		function showval() {
-			x=document.querySelector('input[name=="a1"]:checked').value;
-			alert("A1=".x);
-		}
-	</script>
 </body>
 </html>
