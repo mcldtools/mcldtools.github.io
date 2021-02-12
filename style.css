@@ -1,6 +1,11 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 body {padding:1em;font-family:sans-serif;}
 h1, p, a, nav {text-align:center;}
 nav {font-size:20px; font-weight:bold;}
 a {text-decoration:none;}
-.button:hover {display:block; border:2px solid navy; padding:1em; width:100%;}
-.button {display:block; background-color:navy; color:white; padding:1em; width:100%;}
+.button {display:block; border: 3px solid white; background-color:navy; color:white; padding:1em; width:100%;}
+.button:hover {border:3px solid navy; padding:1em; width:100%;}
