@@ -7,19 +7,34 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/style.css">
-	<script type='text/javascript' src=/all.js></script>
+<!--	<script type='text/javascript' src=/all.js></script> -->
 </head>
 <body>
-	<h1>A 1. The CLD program ensures the participation of excluded groups.</h1>
-	<form>
-	<input type=radio id=a10 name=a1 value=0><label for a10>0: No/insufficient information to make a judgement.</label><br>	
-	<input type=radio id=a11 name=a1 value=1><label for a11>1: Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
-	<input type=radio id=a12 name=a1 value=2>
-		<label for a11>2: Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
-	<input type=radio id=a13 name=a1 value=3><label for a13>3: Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
+	<script>
+		function setCookie(cname, cvalue, exdays) {
+			const d = new Date();
+			const expires = "expires="+ d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" _ expires + ";path=/";
+		function setit(x){
+			const cname='a1'+x;
+			document.getElementById(cname).style='background-color:blue;color:white';
+			setCookie(cname,x,exdays);
+			alert(x);
+		}	
+	</script>
+	<h2>A 1. The CLD program ensures the participation of excluded groups.</h2>
+	<form name="item">
+	<input type=button id=a10 name=a10 onclick="setit(0)" value=0>
+		<label for a10>No/insufficient information to make a judgement.</label><br>	
+	<input type=button id=a11 name=a11 onclick="setit(1)" value=1>
+		<label for a11>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
+	<input type=button id=a12 name=a12 onclick="setit(2)" value=2>
+		<label for a12>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
+	<input type=button id=a13 name=a13 onclick="setit(3)" value=3>
+		<label for a13>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
 		Note: have voice and are heard but are not decision-makers.</label><br>	
-	<input type=radio id=a14 name=a1 value=4><label for a14>4: Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
-	<input type=submit onsubmit="showval();" value="Show Take 4">
+	<input type=button id=a14 name=a14 onclick="setit(0)" value=0>
+		<label for a14>4: Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
 	</form>
 </body>
 </html>
