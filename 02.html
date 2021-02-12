@@ -15,6 +15,7 @@
 			const d = new Date();
 			const expires = "expires="+ d.toUTCString();
 			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
 		function setit(x){
 			const cname='a1'+x;
 			document.getElementById(cname).style='background-color:blue;color:white';
@@ -22,7 +23,7 @@
 			alert(x);
 		}	
 	</script>
-	<h2>A 1. The CLD program ensures the participation of excluded groups.</h2>
+	<h2>A 1. The CLD program ensures the participation of excluded groups</h2>
 	<form name="item">
 	<input type=button id=a10 name=a10 onclick="setit(0)" value=0>
 		<label for a10>No/insufficient information to make a judgement.</label><br>	
