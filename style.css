@@ -2,5 +2,5 @@ body {padding:1em;font-family:sans-serif;}
 h1, p, a, nav {text-align:center;}
 nav {font-size:20px; font-weight:bold;}
 a {text-decoration:none;}
-.button {border:2px solid navy; padding:1em;}
+.button {border:2px solid navy; padding:1em; width:100%;}
 .button:hover {background-color:navy; color:white; padding:1em;}
