@@ -20,10 +20,10 @@
 	<input type=radio id=a14 name=a1><label for a14>4: Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label>
 		
 	</form>
-	<a class=button href="javascript:showval();">Show Selection</a>
+	<a class=button href="javascript:showval();">Show Your Selection</a>
 	<script>
 		function showval() {
-			x=document.querySelector('input[name="a1"]:checked').value;
+			x=document.querySelector('input[name=="a1"]:checked').value;
 			alert("A1=".x);
 		}
 	</script>
