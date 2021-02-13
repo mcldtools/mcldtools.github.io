@@ -18,8 +18,9 @@
 		const labels=['A','B','C','D','E','F','G','H','I'];
 		n=data.length;
 		document.write('<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">');
+		document.write('<style> .n {font: 13px sans-serif; fill: navy;}</style>'); 
 			for(r=10;r<110;r=r+10) {
-				document.write('<text x="105",y="'+r+'">'+r+'</text>');
+				document.write('<text class="n" x="105",y="'+r+'">'+r+'</text>');
 				y1=110+r;
 				document.write('<polygon points="110,'+y1);
 				for(i=1;i<n;i++) {
@@ -43,7 +44,7 @@
 			a=(2*Math.PI*i)/n;
 			x=110+105*Math.sin(a);
 			y=110+105*Math.cos(a);
-			document.write('<text x="'+x+'" y="'+y+'">'+labels[i]+'</text>');
+			document.write('<text class="n" x="'+x+'" y="'+y+'">'+labels[i]+'</text>');
 		}
 		document.write("</svg>\n");
 	</script>
