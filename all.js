@@ -24,11 +24,13 @@ function setCookie(cname, cvalue, exdays) {
 	console.log("Cookie: " + document.cookie);
 }
 function setit(cname,x){
+	setColor(cname,x);
+	setCookie(cname,x,3000);
+}
+function setColor(cname,x){
 	for(i=0;i<5;i++){
 		let s='';
 		if(i==x) s='background-color:blue;color:white';
 		document.getElementById(cname+x).style=s;
 	}
-	setCookie(cname,x,3000);
-	alert(x);
 }
