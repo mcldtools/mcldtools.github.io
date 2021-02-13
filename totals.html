@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- MCLD Evaluation Tool -->
+<html lang=en>
+<head>
+	<link rel="icon" type="image/png" href="/logo150.png"/>
+	<link rel="apple-touch-icon" href="/logo512.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/style.css">
+<!--	<script type='text/javascript' src=/all.js></script> -->
+</head>
+<body>
+	<script>
+		function setCookie(cname, cvalue, exdays) {
+			const d = new Date();
+			const expires = "expires="+ d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+		function setit(x){
+			const cname='a1'+x;
+			document.getElementById(cname).style='background-color:blue;color:white';
+			setCookie(cname,x,3000);
+			alert(x);
+		}	
+	</script>
+	<nav><a href=/>Home</a></nav>
+	<h2>Totals</h2>
+  <script>document.write(document.cookie)</script>
+</body>
+</html>
