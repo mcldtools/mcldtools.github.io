@@ -26,8 +26,8 @@
 				document.write('<polygon points="120,'+y1);
 				for(i=1;i<n;i++) {
 					a=(2*Math.PI*i)/n;
-					x=Math.floor(120+r*Math.sin(a));
-					y=Math.floor(120+r*Math.cos(a));
+					x=Math.floor(120-r*Math.sin(a));
+					y=Math.floor(120-r*Math.cos(a));
 					document.write(' '+Math.floor(x)+','+Math.floor(y));
 				}
 				document.write('" fill="none" stroke="blue" /></polygon>');
@@ -43,8 +43,8 @@
 		document.write('" fill="green" fill-opacity="25%" stroke="darkgreen"></polygon>');
 		for(i=0;i<n;i++){
 			a=(2*Math.PI*i)/n;
-			x=Math.floor(115+105*Math.sin(a));
-			y=Math.floor(125+105*Math.cos(a));
+			x=Math.floor(115-105*Math.sin(a));
+			y=Math.floor(125-105*Math.cos(a));
 			document.write('<text class="n" x="'+x+'" y="'+y+'">'+labels[i]+'</text>');
 		}
 		document.write("</svg>\n");
