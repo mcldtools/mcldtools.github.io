@@ -2,14 +2,34 @@
 <!-- MCLD Evaluation Tool -->
 <html lang=en>
 <head>
+	<title>CLD Assessment A1</title>
 	<link rel="icon" type="image/png" href="/logo150.png"/>
 	<link rel="apple-touch-icon" href="/logo512.png">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/style.css">
+	<script type='text/javascript' src=/all.js></script>
 </head>
 <body>
-	<nav><a href=/contents.html>&#8678;</a> <a href=/contents.html>&#8962;</a> <a href=/02.html>&#8680;</a></nav>
-	<h1>01: Participation and Inclusion/h1>
+	<script>
+		const cname='a2';
+		let x=getCookie(cname);
+		if(x) setColor(cname,x);
+	</script>
+	<nav><a href=/ >Home</a> <a href=/a2.html>Next</a> <a href=/totals>Totals</a></nav>
+	<h2>A 2. Community members decide focus of the CLD program BEFORE the actual design of the program.</h2>
+	<form name="item">
+	<input type=button id=a10 name=a10 onclick="setit(cname,0)" value=0>
+		<label for a10>No/insufficient information to make a judgement.</label><br>	
+	<input type=button id=a11 name=a11 onclick="setit(cname,1)" value=1>
+		<label for a11>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
+	<input type=button id=a12 name=a12 onclick="setit(cname,2)" value=2>
+		<label for a12>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
+	<input type=button id=a13 name=a13 onclick="setit(cname,3)" value=3>
+		<label for a13>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
+		Note: have voice and are heard but are not decision-makers.</label><br>	
+	<input type=button id=a14 name=a14 onclick="setit(cname,4)" value=4>
+		<label for a14>Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
+	</form>
 </body>
 </html>
