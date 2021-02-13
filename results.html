@@ -21,9 +21,10 @@
 				y1=110+r;
 				document.write('<polygon points="110,'+y1);
 				for(i=1;i<n;i++) {
-					a=2*Math.Pi*i/n;
+					a=(2*Math.PI*i)/n;
 					x=110+r*Math.sin(a);
 					y=110+r*Math.cos(a);
+					console.log(a,x,y);
 					document.write(' '+Math.floor(x)+','+Math.floor(y));
 				}
 				document.write('" />');
