@@ -18,18 +18,17 @@ function setCookie(cname, cvalue, exdays) {
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	const expires = "expires="+ d.toUTCString();
 	const arg = cname + "=" + cvalue + ";" + expires + ";path=/";
-	console.log(arg);
 	document.cookie = arg ;
-	console.log("Cookie: " + document.cookie);
-}
-function setit(cname,x){
-	setColor(cname,x);
-	setCookie(cname,x,3000);
 }
 function setColor(cname,x){
 	for(i=0;i<5;i++){
 		let s='';
 		if(i==x) s='background-color:blue;color:white';
-		document.getElementById(cname+x).style=s;
+		e=document.getElementById(cname+x);
+		if(e) e.style=s;
 	}
+}
+function setit(cname,x){
+	setColor(cname,x);
+	setCookie(cname,x,3000);
 }
