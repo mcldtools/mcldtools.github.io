@@ -30,7 +30,7 @@
 					y=Math.floor(120+r*Math.cos(a));
 					document.write(' '+Math.floor(x)+','+Math.floor(y));
 				}
-				document.write('" fill="none" stroke="blue" />');
+				document.write('" fill="none" stroke="blue" /></polygon>');
 			}
 		/* Draw and label the data */
 		document.write('<polygon points="');
@@ -40,7 +40,7 @@
 			y=120+r*Math.cos(a);
 			document.write(' '+Math.floor(x)+','+Math.floor(y));
 		}
-		document.write('" fill="green" fill-opacity="25%" stroke="darkgreen">');
+		document.write('" fill="green" fill-opacity="25%" stroke="darkgreen"></polygon>');
 		for(i=0;i<n;i++){
 			a=(2*Math.PI*i)/n;
 			x=Math.floor(120+105*Math.sin(a));
