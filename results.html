@@ -15,6 +15,7 @@
 		/*	Draw a spider diagram based on the results
 			For now, we use fake data */
 		const data=[45,55,25,75,50,85,35,65,52];
+		const labels=['A','B','C','D','E','F','G' 'H','I'];
 		n=data.length;
 		document.write('<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">');
 			for(r=10;r<110;r=r+10) {
@@ -24,11 +25,19 @@
 					a=(2*Math.PI*i)/n;
 					x=110+r*Math.sin(a);
 					y=110+r*Math.cos(a);
-					console.log(a,x,y);
 					document.write(' '+Math.floor(x)+','+Math.floor(y));
 				}
 				document.write('" fill="none" stroke="blue" />');
 			}
+		/* Draw and label the data */
+		document.write('<polygon points="');
+		for(i=0;i<n;i++) {
+			a=a=(2*Math.PI*i)/n;
+			x=110+data[i]*Math.sin(a);
+			y=110+r*Math.cos(a);
+			document.write(' '+Math.floor(x)+','+Math.floor(y));
+		}
+		document.write(' fill="green" fill-opacity="25%" stroke="darkgreen">');
 		document.write("</svg>\n");
 	</script>
 </body>
