@@ -9,9 +9,26 @@
 	<script type='text/javascript' src=/all.js></script>
 </head>
 <body>
-	<script>
-	</script>
 	<nav><a href=/ >Home</a> a href=/totals>Totals</a></nav>
 	<h2>Results by Dimension</h2>
+	<script>
+		/*	Draw a spider diagram based on the results
+			For now, we use fake data */
+		const data=[45,55,25,75,50,85,35,65,52];
+		n=data.length;
+		document.write('<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">');
+			for(r=10;r<110;r=r+10) {
+				y1=110+r;
+				document.write('<polygon points="110,'+y1);
+				for(i=1;i<n;i++) {
+					a=2*Math.Pi*i/n;
+					x=110+r*Math.sin(a);
+					y=110+r*Math.cos(a);
+					document.write(' '+Math.floor(x)+','+Math.floor(y));
+				}
+				document.write('" />');
+			}
+		document.write("</svg>\n");
+	</script>
 </body>
 </html>
