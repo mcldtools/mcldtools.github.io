@@ -11,10 +11,14 @@
 </head>
 <body>
 	<script>
+		console.log("Cookie: " + document.cookie);
 		function setCookie(cname, cvalue, exdays) {
 			const d = new Date();
 			const expires = "expires="+ d.toUTCString();
-			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			const arg = cname + "=" + cvalue + ";" + expires + ";path=/";
+			console.log(arg);
+			document.cookie = arg ;
+			console.log("Cookie: " + document.cookie);
 		}
 		function setit(x){
 			const cname='a1'+x;
@@ -24,7 +28,7 @@
 		}	
 	</script>
 	<nav><a href=/>Home</a> <a href=/1.html>Back</a> <a href=/3.html>Next</a> <a href=/totals>Totals</a></nav>
-	<h2>A 1. The CLD program ensures the participation of excluded groups</h2>
+	<h2>A 1. The CLD program ensures the participation of excluded groups.</h2>
 	<form name="item">
 	<input type=button id=a10 name=a10 onclick="setit(0)" value=0>
 		<label for a10>No/insufficient information to make a judgement.</label><br>	
