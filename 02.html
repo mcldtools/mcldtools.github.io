@@ -23,8 +23,8 @@
 			console.log("Cookie: " + document.cookie);
 		}
 		function setit(x){
-			const cname='a1'+x;
-			document.getElementById(cname).style='background-color:blue;color:white';
+			const cname='a1';
+			document.getElementById(cname+x).style='background-color:blue;color:white';
 			setCookie(cname,x,3000);
 			alert(x);
 		}	
