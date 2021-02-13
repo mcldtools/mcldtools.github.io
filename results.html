@@ -20,7 +20,8 @@
 		document.write('<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">');
 		document.write('<style> .n {font: 13px sans-serif; fill: navy;}</style>'); 
 			for(r=10;r<110;r=r+10) {
-				document.write('<text class="n" x="105",y="'+r+'">'+r+'</text>');
+				y=120+r;
+				document.write('<text class="n" x="105" y="'+y+'">'+r+'</text>');
 				y1=120+r;
 				document.write('<polygon points="120,'+y1);
 				for(i=1;i<n;i++) {
@@ -36,14 +37,14 @@
 		for(i=0;i<n;i++) {
 			a=a=(2*Math.PI*i)/n;
 			x=120+data[i]*Math.sin(a);
-			y=110+r*Math.cos(a);
+			y=120+r*Math.cos(a);
 			document.write(' '+Math.floor(x)+','+Math.floor(y));
 		}
 		document.write('" fill="green" fill-opacity="25%" stroke="darkgreen">');
 		for(i=0;i<n;i++){
 			a=(2*Math.PI*i)/n;
-			x=110+105*Math.sin(a);
-			y=110+105*Math.cos(a);
+			x=120+105*Math.sin(a);
+			y=120+105*Math.cos(a);
 			document.write('<text class="n" x="'+x+'" y="'+y+'">'+labels[i]+'</text>');
 		}
 		document.write("</svg>\n");
