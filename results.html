@@ -17,16 +17,16 @@
 		const data=[45,55,25,75,50,85,35,65,52];
 		const labels=['A','B','C','D','E','F','G','H','I'];
 		n=data.length;
-		document.write('<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">');
+		document.write('<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">');
 		document.write('<style> .n {font: 13px sans-serif; fill: navy;}</style>'); 
 			for(r=10;r<110;r=r+10) {
 				document.write('<text class="n" x="105",y="'+r+'">'+r+'</text>');
-				y1=110+r;
-				document.write('<polygon points="110,'+y1);
+				y1=120+r;
+				document.write('<polygon points="120,'+y1);
 				for(i=1;i<n;i++) {
 					a=(2*Math.PI*i)/n;
-					x=110+r*Math.sin(a);
-					y=110+r*Math.cos(a);
+					x=120+r*Math.sin(a);
+					y=120+r*Math.cos(a);
 					document.write(' '+Math.floor(x)+','+Math.floor(y));
 				}
 				document.write('" fill="none" stroke="blue" />');
@@ -35,7 +35,7 @@
 		document.write('<polygon points="');
 		for(i=0;i<n;i++) {
 			a=a=(2*Math.PI*i)/n;
-			x=110+data[i]*Math.sin(a);
+			x=120+data[i]*Math.sin(a);
 			y=110+r*Math.cos(a);
 			document.write(' '+Math.floor(x)+','+Math.floor(y));
 		}
