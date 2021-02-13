@@ -8,40 +8,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/style.css">
-<!--	<script type='text/javascript' src=/all.js></script> -->
+	<script type='text/javascript' src=/all.js></script>
 </head>
 <body>
 	<script>
-		console.log("Cookie: " + document.cookie);
-		function setCookie(cname, cvalue, exdays) {
-			const d = new Date();
-			d.setTime(d.getTime() + (exdays*24*60*60*1000));
-			const expires = "expires="+ d.toUTCString();
-			const arg = cname + "=" + cvalue + ";" + expires + ";path=/";
-			console.log(arg);
-			document.cookie = arg ;
-			console.log("Cookie: " + document.cookie);
-		}
-		function setit(x){
-			const cname='a1';
-			document.getElementById(cname+x).style='background-color:blue;color:white';
-			setCookie(cname,x,3000);
-			alert(x);
-		}	
+		const cname='a1';
+		let x=getCookie(cname);
+		if(x) setColor(cname,x);
 	</script>
 	<nav><a href=/>Home</a> <a href=/1.html>Back</a> <a href=/3.html>Next</a> <a href=/totals>Totals</a></nav>
 	<h2>A 1. The CLD program ensures the participation of excluded groups.</h2>
 	<form name="item">
-	<input type=button id=a10 name=a10 onclick="setit(0)" value=0>
+	<input type=button id=a10 name=a10 onclick="setit(cname,0)" value=0>
 		<label for a10>No/insufficient information to make a judgement.</label><br>	
-	<input type=button id=a11 name=a11 onclick="setit(1)" value=1>
+	<input type=button id=a11 name=a11 onclick="setit(cname,1)" value=1>
 		<label for a11>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
-	<input type=button id=a12 name=a12 onclick="setit(2)" value=2>
+	<input type=button id=a12 name=a12 onclick="setit(cname,2)" value=2>
 		<label for a12>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
-	<input type=button id=a13 name=a13 onclick="setit(3)" value=3>
+	<input type=button id=a13 name=a13 onclick="setit(cname,3)" value=3>
 		<label for a13>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
 		Note: have voice and are heard but are not decision-makers.</label><br>	
-	<input type=button id=a14 name=a14 onclick="setit(4)" value=4>
+	<input type=button id=a14 name=a14 onclick="setit(cname,4)" value=4>
 		<label for a14>Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
 	</form>
 </body>
