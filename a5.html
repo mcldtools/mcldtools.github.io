@@ -12,24 +12,9 @@
 </head>
 <body>
 	<script>
-		const cname='a5';
-		let x=getCookie(cname);
-		if(x) setColor(cname,x);
+		contents=[
+		];
+		drawRubric('a5',contents,'a4','a6');
 	</script>
-	<nav><a href=/ >Home</a> <a href=/a3.html>Previous</a> <a href=/a5.html>Next</a> <a href=/data.html>Data</a></nav>
-	<h2>a5</h2>
-	<form name="item">
-	<input type=button id=a50 name=a50 onclick="setit(cname,0)" value=0>
-		<label for a50>No/insufficient information to make a judgement.</label><br>	
-	<input type=button id=a51 name=a51 onclick="setit(cname,1)" value=1>
-		<label for a51>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
-	<input type=button id=a52 name=a52 onclick="setit(cname,2)" value=2>
-		<label for a52>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
-	<input type=button id=a53 name=a53 onclick="setit(cname,3)" value=3>
-		<label for a53>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
-		Note: have voice and are heard but are not decision-makers.</label><br>	
-	<input type=button id=a54 name=a54 onclick="setit(cname,4)" value=4>
-		<label for a54>Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
-	</form>
 </body>
 </html>
