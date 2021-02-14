@@ -13,22 +13,22 @@ function getCookie(cname) {
   }
   return "";
 }
-function setCookie(cname, cvalue, exdays) {
-	const d = new Date();
-	d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	const expires = "expires="+ d.toUTCString();
-	const arg = cname + "=" + cvalue + ";" + expires + ";path=/";
+function setCookie(cname, cvalue) {
+  const expiry="Fri, 01 Jan 2038 00:00:01 GMT";
+	const arg = cname + "=" + cvalue + ";" + expiry;
 	document.cookie = arg ;
 }
 function setColor(cname,x){
+  console.log('set color',cname,x);
 	for(i=0;i<5;i++){
 		let s='';
 		if(i==x) s='background-color:blue;color:white';
 		e=document.getElementById(cname+x);
+    console.log(i,x,e);
 		if(e) e.style=s;
 	}
 }
 function setit(cname,x){
 	setColor(cname,x);
-	setCookie(cname,x,3000);
+	setCookie(cname,x);
 }
