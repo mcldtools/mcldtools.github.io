@@ -11,25 +11,15 @@
 	<script type='text/javascript' src=/all.js></script>
 </head>
 <body>
-	<script>
-		const cname='a2';
-		let x=getCookie(cname);
-		if(x) setColor(cname,x);
-	</script>
 	<nav><a href=/ >Home</a> <a href=/a1.html>Previous</a> <a href=/a3.html>Next</a> <a href=/data.html>Data</a></nav>
-	<h2>A 2. Community members decide focus of the CLD program BEFORE the actual design of the program.</h2>
-	<form name="item">
-	<input type=button id=a10 name=a10 onclick="setit(cname,0)" value=0>
-		<label for a10>No/insufficient information to make a judgement.</label><br>	
-	<input type=button id=a11 name=a11 onclick="setit(cname,1)" value=1>
-		<label for a11>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
-	<input type=button id=a12 name=a12 onclick="setit(cname,2)" value=2>
-		<label for a12>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
-	<input type=button id=a13 name=a13 onclick="setit(cname,3)" value=3>
-		<label for a13>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
-		Note: have voice and are heard but are not decision-makers.</label><br>	
-	<input type=button id=a14 name=a14 onclick="setit(cname,4)" value=4>
-		<label for a14>Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
-	</form>
+<script>
+	const contents=[
+	"A 2. Community members decide focus of the CLD program BEFORE the actual design of the program.",
+	"No/insufficient information to make a judgement.",
+	"Community members had no involvement in the assessment process.","Community members actively participated in the assessment process and had involvement in one of the following: (1) designing the process (2) collecting data; (3) analyzing the data; (4) formulating the conclusions.",
+	"Community members actively participated in the process and had involvement in two or three of the.",
+	"Community members had involvement in all of the above."];
+	putRubric('a2',contents,'a1','a3');
+</script>
 </body>
 </html>

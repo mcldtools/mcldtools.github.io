@@ -12,38 +12,34 @@
 	<nav><a href=/ >Home</a> <a href=/totals.html>Data</a></nav>
 	<h2>Results by Dimension</h2>
 	<script>
+		function putXY(r,i,n){ // convert radius and index in spider to x,y pair
+			a=(2*Math.PI*i)/n;
+			x=Math.floor(120+r*Math.sin(a));
+			y=Math.floor(120-r*Math.cos(a));
+			document.write(' '+Math.floor(x)+','+Math.floor(y));
+		}
 		/*	Draw a spider diagram based on the results
 			For now, we use fake data */
-		const data=[45,55,25,75,50,85,35,65,52];
+		const data=[15,25,35,45,55,65,75,85,95];
 		const labels=['A','B','C','D','E','F','G','H','I'];
 		n=data.length;
 		document.write('<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">');
 		document.write('<style> .n {font: 10px sans-serif; fill: black;}</style>'); 
-			for(r=10;r<110;r=r+10) {
+			for(r=10;r<110;r=r+10) { // first layout the grid
 				y=120-r;
-				document.write('<text class="n" x="112" y="'+y+'">'+r+'</text>');
-				y1=120-r;
-				document.write('<polygon points="120,'+y1);
-				for(i=1;i<n;i++) {
-					a=(2*Math.PI*i)/n;
-					x=Math.floor(120-r*Math.sin(a));
-					y=Math.floor(120-r*Math.cos(a));
-					document.write(' '+Math.floor(x)+','+Math.floor(y));
-				}
+				document.write('<text class="n" x="121" y="'+y+'">'+r+'</text>');
+				document.write('<polygon points="');
+				for(i=0;i<n;i++) { putXY(r,i,n);}
 				document.write('" fill="none" stroke="blue" /></polygon>');
 			}
-		/* Draw and label the data */
+		// Next draw the data points
 		document.write('<polygon points="');
-		for(i=0;i<n;i++) {
-			a=a=(2*Math.PI*i)/n;
-			x=120+data[i]*Math.sin(a);
-			y=120+r*Math.cos(a);
-			document.write(' '+Math.floor(x)+','+Math.floor(y));
-		}
+		for(i=0;i<n;i++) { putXY(data[i],i,n);}
 		document.write('" fill="green" fill-opacity="25%" stroke="darkgreen"></polygon>');
+		// Next put the labels in the appropriate points
 		for(i=0;i<n;i++){
 			a=(2*Math.PI*i)/n;
-			x=Math.floor(115-105*Math.sin(a));
+			x=Math.floor(115+105*Math.sin(a));
 			y=Math.floor(125-105*Math.cos(a));
 			document.write('<text class="n" x="'+x+'" y="'+y+'">'+labels[i]+'</text>');
 		}
