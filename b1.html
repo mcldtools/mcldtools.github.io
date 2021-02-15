@@ -12,24 +12,15 @@
 </head>
 <body>
 	<script>
-		const cname='b1';
-		let x=getCookie(cname);
-		if(x) setColor(cname,x);
+		contents=[
+		"B.1 The CLD program builds on Local Resources and Knowledge",
+		"No/insufficient information to make a judgement.",
+		"The program does not consider local resources and knowledge.",
+		"The program is aware of local resources, but knowledge is transmitted by the front-line staff.",
+		"The program builds on local resources and takes local knowledge into account.",
+		"The program uses and celebrates local knowledge and resources. *celebrates refers to recognizing the value of local knowledge and pursuing it."
+		]
+		putRubric('b1',contents,'a7','b2');
 	</script>
-	<nav><a href=/ >Home</a> <a href=/a7.html>Previous</a> <a href=/b2.html>Next</a> <a href=/data.html>Data</a></nav>
-	<h2>b1</h2>
-	<form name="item">
-	<input type=button id=b10 name=b10 onclick="setit(this)" value=0>
-		<label for b10>No/insufficient information to make a judgement.</label><br>	
-	<input type=button id=b11 name=b11 onclick="setit(this)" value=1>
-		<label for b11>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
-	<input type=button id=b12 name=b12 onclick="setit(this)" value=2>
-		<label for b12>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
-	<input type=button id=b13 name=b13 onclick="setit(this)" value=3>
-		<label for b13>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
-		Note: have voice and are heard but are not decision-makers.</label><br>	
-	<input type=button id=b14 name=b14 onclick="setit(this)" value=4>
-		<label for b14>Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
-	</form>
 </body>
 </html>

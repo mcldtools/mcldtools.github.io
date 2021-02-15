@@ -31,8 +31,8 @@ function setColor(cname,x){
 }
 function setit(clicked_id){
   console.log("setit",clicked_id);
-  const cname=clicked_id.substring(0,2);
-  const x=clicked_id.substring(2,1);
+  const cname=clicked_id.substr(0,2);
+  const x=clicked_id.substr(2,1);
   setColor(cname,x)
 	setCookie(cname,x);
 }

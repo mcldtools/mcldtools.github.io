@@ -12,24 +12,15 @@
 </head>
 <body>
 	<script>
-		const cname='b2';
-		let x=getCookie(cname);
-		if(x) setColor(cname,x);
-	</script>
-	<nav><a href=/ >Home</a> <a href=/b1.html>Previous</a> <a href=/b3.html>Next</a> <a href=/data.html>Data</a></nav>
-	<h2>b2</h2>
-	<form name="item">
-	<input type=button id=b20 name=b20 onclick="setit(this)" value=0>
-		<label for b20>No/insufficient information to make a judgement.</label><br>	
-	<input type=button id=b21 name=b21 onclick="setit(this)" value=1>
-		<label for b21>Potential factors of exclusion (gender, ethnicity, age, economic status) are not analyzed.</label><br>
-	<input type=button id=b22 name=b22 onclick="setit(this)" value=2>
-		<label for b22>Implementers have identified potential factors of exclusion and include the views of these community members.</label><br>
-	<input type=button id=b23 name=b23 onclick="setit(this)" value=3>
-		<label for b23>Implementers strengthen the collective voice in the community of those potentially excluded and build community solidarity.   
-		Note: have voice and are heard but are not decision-makers.</label><br>	
-	<input type=button id=b24 name=b24 onclick="setit(this)" value=4>
-		<label for b24>Those who risk exclusion are central actors in decision making in the program. Note: have voice, are heard and are decision-makers</label><br>
-	</form>
+		contents=[
+		"B.2 Community contributes their resources (e.g. time, cash, labor, land, materials, etc.)",
+		"No/insufficient information to make a judgement.",
+		"Community does not contribute towards program implementation in cash or kind or labor.",
+		"Community members contribute time/labor or resources (land, cash, materials), but only because it is mandatory.",
+		"Community members contribute time/labor or resources (land, cash, materials), when asked but do not volunteer it.",
+		"Community members decide what is needed, willingly identify additional resources that would contribute to outcomes (time/labor, land, cash, materials) and volunteer them."
+		]
+		putRubric('b2',contents,'b1','c1');
+	</script>	
 </body>
 </html>
