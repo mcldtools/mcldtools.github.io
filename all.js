@@ -48,6 +48,6 @@ function putComment(cname){
 function putRubric(cname,contents) { // Create layout based on an array of options
   document.write("<h2>"+contents[0]+"</h2>\n");
   for(i=0;i<5;i++){
-    document.write("<p><button id="+cname+i+" onclick='setit(this.id)'>"+i+"</button>\n"+contents[1+i]+"</p>\n");
+    document.write("<p><button id="+cname+i+" onclick='setit(this.id)' id='"+cname+i+"'>"+i+"</button>\n"+contents[1+i]+"</p>\n");
   }
 }
