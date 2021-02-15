@@ -30,6 +30,7 @@ function setColor(cname,x){
 	}
 }
 function setit(clicked_id){
+  console.log("setit",clicked_id);
   const cname=clicked_id.substring(0,2);
   const x=clicked_id.substring(2,1);
   setColor(cname,x)
@@ -40,14 +41,15 @@ function presetColor(cname){
   x=getCookie(cname);
   if(x>'') document.getElementById(cname+x).style='background-color:navy;color:white;'
 }
-function putComment(cname){
+
+function putRubric(cname,contents,cprior,cnext) { // Create layout based on an array of options
+  s="<nav><a href=/ >Home</a> <a href="+cprior+".html>Prior</a> <a href="+cnext+".html>Next</a></nav>\n"
+  +"<h2>"+contents[0]+"</h2>\n";
+  document.write(s);
+  for(i=0;i<5;i++){
+    document.write("<p><button id="+cname+i+" onclick='setit(this.id)'>"+i+"</button>\n"+contents[1+i]+"</p>\n");
+  }
   const str1="<h3>Comment</h3>\n<textarea class=wide id='n"+cname+"' rows=3 width=100% onchange='changed(this)'>\n</textarea>\n";
   const str2="<button onclick='saveComment('n"+cname+"' class=unsaved>Click to save comment</button>\n";
   document.write(str1+str2);
-}
-function putRubric(cname,contents) { // Create layout based on an array of options
-  document.write("<h2>"+contents[0]+"</h2>\n");
-  for(i=0;i<5;i++){
-    document.write("<p><button id="+cname+i+" onclick='setit(this.id)' id='"+cname+i+"'>"+i+"</button>\n"+contents[1+i]+"</p>\n");
-  }
 }
