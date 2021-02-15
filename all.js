@@ -37,18 +37,17 @@ function setit(clicked_id){
 	setCookie(cname,x);
 }
 
-function presetColor(cname){
-  x=getCookie(cname);
-  if(x>'') document.getElementById(cname+x).style='background-color:navy;color:white;'
-}
-
 function putRubric(cname,contents,cprior,cnext) { // Create layout based on an array of options
+	// First, put the navbar, title and 5 questions
   s="<nav><a href=/ >Home</a> <a href="+cprior+".html>Prior</a> <a href="+cnext+".html>Next</a></nav>\n"
   +"<h2>"+contents[0]+"</h2>\n";
   document.write(s);
   for(i=0;i<5;i++){
     document.write("<p><button id="+cname+i+" onclick='setit(this.id)'>"+i+"</button>\n"+contents[1+i]+"</p>\n");
   }
+	// Next, paint the color of the button if preset
+	x=getCookie(cname);
+  	if(x>'') document.getElementById(cname+x).style='background-color:navy;color:white;';
   const str1="<h3>Comment</h3>\n<textarea class=wide id='n"+cname+"' rows=3 width=100% onchange='changed(this)'>\n</textarea>\n";
   const str2="<button onclick='saveComment('n"+cname+"' class=unsaved>Click to save comment</button>\n";
   document.write(str1+str2);
