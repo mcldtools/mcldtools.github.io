@@ -39,7 +39,9 @@ function setit(clicked_id){
 
 function putRubric(cname,contents,cprior,cnext) { // Create layout based on an array of options
 	// First, put the navbar, title and 5 questions
-  s="<nav><a href=/ >Home</a> <a href="+cprior+".html>Prior</a> <a href="+cnext+".html>Next</a></nav>\n"
+  s="<nav><a href=/ >Home</a> <a href="+cprior+".html>Prior</a> <a href="+cnext+".html>Next</a>"
+  +"<a href=/results.html>Results</a> <a href=/data.html>Data</a></nav>\n"
+ 
   +"<h2>"+contents[0]+"</h2>\n";
   document.write(s);
   for(i=0;i<5;i++){

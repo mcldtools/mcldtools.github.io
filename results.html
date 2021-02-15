@@ -9,7 +9,7 @@
 	<script type='text/javascript' src=/all.js></script>
 </head>
 <body>
-	<nav><a href=/ >Home</a> <a href=/totals.html>Data</a></nav>
+	<nav><a href=/ >Home</a> <a href=/data.html>Data</a></nav>
 	<h2>Results by Dimension</h2>
 	<script>
 		function putXY(r,i,n){ // convert radius and index in spider to x,y pair
@@ -18,10 +18,26 @@
 			y=Math.floor(120-r*Math.cos(a));
 			document.write(' '+Math.floor(x)+','+Math.floor(y));
 		}
+		const labels=['A','B','C','D','E','F','G','H','I']; // uppercase version of labels
+		const lengths=[7,2,5,2,2,2,1,3,3]; // number of sub-elements in each
+		function computeScores(labels,lengths) {
+			let scores=[0,0,0,0,0,0,0,0,0];
+			console.log('cookies',document.cookie);
+			for(i=0;i<labels.length;i++) { // which major dimension
+				for(j=1;j<=lengths[i];j++) { // which sub dimension
+					const cname=labels[i].toLowerCase()+j;
+					let x = +getCookie(cname);
+					console.log('score',i,j,cname,x);
+					scores[i] += x;
+				}
+				scores[i]=Math.floor(scores[i]*100/(lengths[i]*3));
+				console.log('Scores',i,scores[i]);
+			}
+			return scores;
+		}
 		/*	Draw a spider diagram based on the results
 			For now, we use fake data */
-		const data=[15,25,35,45,55,65,75,85,95];
-		const labels=['A','B','C','D','E','F','G','H','I'];
+		const data=computeScores(labels,lengths);
 		n=data.length;
 		document.write('<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">');
 		document.write('<style> .n {font: 10px sans-serif; fill: black;}</style>'); 
@@ -45,14 +61,22 @@
 		}
 		document.write("</svg>\n");
 	</script>
-	<small>A: Participation, Inclusion and Voice<br>
-	B: Local Resources and Assets<br>
-	C: Exit Strategy Linked to Sustainability<br>
-	D: Accountability Mechanisms<br>
-	E: Responsiveness to Context Specific Dynamics<br>
-	F: Collaboration within and amongst communities<br>
-	G: CLD linked to Sub-National Governments<br>
-	H: Monitoring and Evaluation Practices support CLD<br>
-	I: Facilitation Investment and Intensity</small>
+	<center>
+	<table style="font-size:12px;">
+		<tr><th>Score</th><th>Dimension</th></tr>
+	<tr><td id=c0></td><td>A: Participation, Inclusion and Voice</td></tr>
+	<tr><td id=c1></td><td>B: Local Resources and Assets</td></tr>
+	<tr><td id=c2></td><td>C: Exit Strategy Linked to Sustainability</td></tr>
+	<tr><td id=c3></td><td>D: Accountability Mechanisms</td></tr>
+	<tr><td id=c4></td><td>E: Responsiveness to Context Specific Dynamics</td></tr>
+	<tr><td id=c5></td><td>F: Collaboration within and amongst communities</td></tr>
+	<tr><td id=c6></td><td>G: CLD linked to Sub-National Governments</td></tr>
+	<tr><td id=c7></td><td>H: Monitoring and Evaluation Practices support CLD</td></tr>
+	<tr><td id=c8></td><td>I: Facilitation Investment and Intensity</td></tr>
+</table>
+</center>
+<script>
+	for(i=0;i<9;i++) document.getElementById('c'+i).innerHTML=data[i];
+</script>
 </body>
 </html>
