@@ -22,16 +22,18 @@
 		const lengths=[7,2,5,2,2,2,1,3,3]; // number of sub-elements in each
 		function computeScores(labels,lengths) {
 			let scores=[0,0,0,0,0,0,0,0,0];
-			console.log('cookies',document.cookie);
+//			console.log('cookies',document.cookie);
 			for(i=0;i<labels.length;i++) { // which major dimension
 				for(j=1;j<=lengths[i];j++) { // which sub dimension
 					const cname=labels[i].toLowerCase()+j;
 					let x = +getCookie(cname);
+					x--;
+					if(x<1) x=0;
 					console.log('score',i,j,cname,x);
 					scores[i] += x;
 				}
 				scores[i]=Math.floor(scores[i]*100/(lengths[i]*3));
-				console.log('Scores',i,scores[i]);
+//				console.log('Scores',i,scores[i]);
 			}
 			return scores;
 		}

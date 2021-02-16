@@ -19,18 +19,18 @@ function setCookie(cname,cvalue) {
 	document.cookie = arg ;
 }
 function setColor(cname,x){
-  console.log('set color',cname,x);
+//  console.log('set color',cname,x);
 	for(i=0;i<5;i++){
 		let s='';
 		if(i==x) s='background-color:blue;color:white';
 		e=document.getElementById(cname+i);
-    console.log(i,x,e);
+//    console.log(i,x,e);
 		if(e) e.style=s;
-    console.log(i,x,e);
+//    console.log(i,x,e);
 	}
 }
 function setit(clicked_id){
-  console.log("setit",clicked_id);
+//  console.log("setit",clicked_id);
   const cname=clicked_id.substr(0,2);
   const x=clicked_id.substr(2,1);
   setColor(cname,x)
