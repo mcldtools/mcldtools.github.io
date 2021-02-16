@@ -13,10 +13,17 @@ function getCookie(cname) {
   }
   return "";
 }
+
 function setCookie(cname,cvalue) {
   const expiry="Fri, 01 Jan 2038 00:00:01 GMT";
 	const arg = cname + "=" + cvalue + ";" + expiry;
 	document.cookie = arg ;
+}
+
+function saveComment(cname) {
+  const com=document.getElementById(cname).value;
+  console.log('saveComment',cname,com);
+  setCookie(cname,com);
 }
 function setColor(cname,x){
 //  console.log('set color',cname,x);
@@ -50,7 +57,10 @@ function putRubric(cname,contents,cprior,cnext) { // Create layout based on an a
 	// Next, paint the color of the button if preset
 	x=getCookie(cname);
   	if(x>'') document.getElementById(cname+x).style='background-color:navy;color:white;';
-  const str1="<h3>Comment</h3>\n<textarea class=wide id='n"+cname+"' rows=3 width=100% onchange='changed(this)'>\n</textarea>\n";
-  const str2="<button onclick='saveComment('n"+cname+"' class=unsaved>Click to save comment</button>\n";
-  document.write(str1+str2);
+  // And fill in the comment if it exists
+  cid='n'+cname;
+  com=getCookie(cid);
+  const str1="<h3>Comment</h3>\n<textarea class=wide id='"+cid+"' rows=3 width=100% >\n";
+  const str2="</textarea>\n<button onclick='saveComment("+'"'+cid+'"'+")'>Click to save comment</button>\n";
+  document.write(str1+com+str2);
 }
