@@ -14,10 +14,11 @@ if(now>28) now=28;
 prior=now-1; if(prior<0) prior=0;
 next=now+1;
 lang=cookie.lang;
+LANG=lang.toUpperCase();
 console.log('setup lang',lang);
 
 const contents=`<nav>
-<a id='lang' onclick='setLang()'>${lang.toUpperCase()}</a>
+<a id='lang' onclick='setLang()'>${LANG}</a>
 <a href=/ ><svg height='24' width='24'>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
 <circle cx='12' cy='7' r='2' fill='white'></circle>
