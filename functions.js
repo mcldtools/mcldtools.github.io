@@ -8,12 +8,13 @@ function setup(){
   }, {});  
 // next, output the navbar with the appropriate arrow links in this template
 // note - now in this system, 0=info, 1=rubric, 2=a1 etc
-now=cookie.pointer; // what page are we one?
+now= +cookie.pointer; // what page are we one? (force to integer)
 if(now==undefined) now=1;
 if(now>28) now=28;
 prior=now-1; if(prior<0) prior=0;
 next=now+1;
 lang=cookie.lang;
+if(lang!='en' && lang!='fr') setLang();
 LANG=lang.toUpperCase();
 console.log('setup lang',lang);
 
@@ -92,22 +93,18 @@ function setit(clicked_id){
 	setCookie(cname,x);
 }
 
-function putRubric(cname,contents,cprior,cnext) { // Create layout based on an array of options
-	// First, put the navbar, title and 5 questions
-  s="<nav><a href=/ >Home</a> <a href="+cprior+".html>Prior</a> <a href="+cnext+".html>Next</a>"
-  +"<a href=/results.html>Results</a> <a href=/data.html>Data</a></nav>\n"
- 
-  +"<h2>"+contents[0]+"</h2>\n";
-  document.write(s);
+function putRubric(contents) { // Create layout based on an array of options
+  cname=contents[0].substr(0,2).toLowerCase();
+  document.write("<h2>"+contents[0]+"</h2>\n");
   for(i=0;i<5;i++){
     document.write("<p><button id="+cname+i+" onclick='setit(this.id)'>"+i+"</button>\n"+contents[1+i]+"</p>\n");
   }
 	// Next, paint the color of the button if preset
-	x=getCookie(cname);
+	x=cookie[cname];
   	if(x>'') document.getElementById(cname+x).style='background-color:navy;color:white;';
   // And fill in the comment if it exists
   cid='n'+cname;
-  com=getCookie(cid);
+  com=cookie[cid];
   const str1="<h3>Comment</h3>\n<textarea class=wide id='"+cid+"' rows=3 width=100% >\n";
   const str2="</textarea>\n<button onclick='saveComment("+'"'+cid+'"'+")'>Click to save comment</button>\n";
   document.write(str1+com+str2);
