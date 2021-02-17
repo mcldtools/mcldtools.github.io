@@ -1,6 +1,6 @@
 <html lang=en>
 <head>
-	<title>CLD Assessment</title>
+	<title>CLD Assessment A1</title>
 	<link rel="icon" type="image/png" href="/logo150.png"/>
 	<link rel="apple-touch-icon" href="/logo512.png">
 	<meta charset="UTF-8">
@@ -9,7 +9,10 @@
 	<script type='text/javascript' src=/functions.js></script>
 </head>
 <body>
-	<script>cookie=setup();</script>
+	<nav><a href=/ >Home</a> <a href=/sega.html >Seg. A</a> <a href=/segc.html >Seg. C</a>
+		<a href=/segd.html >Seg. D</a> <a href=/segb.html >Seg. BEFG</a> 
+		<a href=/segbefg.html >Seg. BEFG</a>
+		<a href=/seghi.html >Seg. HI</a>
 	<h2>Results by Dimension</h2>
 	<script>
 		function putXY(r,i,n){ // convert radius and index in spider to x,y pair
@@ -26,7 +29,7 @@
 			for(i=0;i<labels.length;i++) { // which major dimension
 				for(j=1;j<=lengths[i];j++) { // which sub dimension
 					const cname=labels[i].toLowerCase()+j;
-					let x = +cookie[cname];
+					let x = +getCookie(cname);
 					x--;
 					if(x<1) x=0;
 					console.log('score',i,j,cname,x);

@@ -1,6 +1,6 @@
 <html lang=en>
 <head>
-	<title>CLD Assessment</title>
+	<title>Dimension A</title>
 	<link rel="icon" type="image/png" href="/logo150.png"/>
 	<link rel="apple-touch-icon" href="/logo512.png">
 	<meta charset="UTF-8">
@@ -9,8 +9,11 @@
 	<script type='text/javascript' src=/functions.js></script>
 </head>
 <body>
-	<script>cookie=setup();</script>
-	<h2>Results by Dimension</h2>
+	<nav><a href=/ >Home</a> <a href=/results.html >Results</a> <a href=/segc.html >Dim. C</a>
+		<a href=/segd.html >Dim. D</a> <a href=/segb.html >Dim. BEFG</a> 
+		<a href=/segbefg.html >Dim. BEFG</a>
+		<a href=/seghi.html >Dim. HI</a></nav>
+	<h2>Dimension A: Participation, Inclusion and Voice</h2>
 	<script>
 		function putXY(r,i,n){ // convert radius and index in spider to x,y pair
 			a=(2*Math.PI*i)/n;
@@ -18,28 +21,22 @@
 			y=Math.floor(120-r*Math.cos(a));
 			document.write(' '+Math.floor(x)+','+Math.floor(y));
 		}
-		const labels=['A','B','C','D','E','F','G','H','I']; // uppercase version of labels
-		const lengths=[7,2,5,2,2,2,1,3,3]; // number of sub-elements in each
-		function computeScores(labels,lengths) {
-			let scores=[0,0,0,0,0,0,0,0,0];
-//			console.log('cookies',document.cookie);
+		const labels=['A1','A2','A3','A4','A5','A6','A7']; // uppercase version of labels
+		function computeScores(labels) {
+			let scores=[0,0,0,0,0,0,0];
 			for(i=0;i<labels.length;i++) { // which major dimension
-				for(j=1;j<=lengths[i];j++) { // which sub dimension
-					const cname=labels[i].toLowerCase()+j;
-					let x = +cookie[cname];
-					x--;
-					if(x<1) x=0;
-					console.log('score',i,j,cname,x);
-					scores[i] += x;
-				}
-				scores[i]=Math.floor(scores[i]*100/(lengths[i]*3));
-//				console.log('Scores',i,scores[i]);
+				const cname=labels[i].toLowerCase();
+				let x = + getCookie(cname);
+				x--;
+				if(x<1) x=0;
+				console.log('score',i,cname,x);
+				scores[i]=Math.floor(x*100/3);
 			}
 			return scores;
 		}
 		/*	Draw a spider diagram based on the results
 			For now, we use fake data */
-		const data=computeScores(labels,lengths);
+		const data=computeScores(labels);
 		n=data.length;
 		document.write('<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">');
 		document.write('<style> .n {font: 10px sans-serif; fill: black;}</style>'); 
@@ -66,19 +63,17 @@
 	<center>
 	<table style="font-size:12px;">
 		<tr><th>Score</th><th>Dimension</th></tr>
-	<tr><td id=c0></td><td>A: Participation, Inclusion and Voice</td></tr>
-	<tr><td id=c1></td><td>B: Local Resources and Assets</td></tr>
-	<tr><td id=c2></td><td>C: Exit Strategy Linked to Sustainability</td></tr>
-	<tr><td id=c3></td><td>D: Accountability Mechanisms</td></tr>
-	<tr><td id=c4></td><td>E: Responsiveness to Context Specific Dynamics</td></tr>
-	<tr><td id=c5></td><td>F: Collaboration within and amongst communities</td></tr>
-	<tr><td id=c6></td><td>G: CLD linked to Sub-National Governments</td></tr>
-	<tr><td id=c7></td><td>H: Monitoring and Evaluation Practices support CLD</td></tr>
-	<tr><td id=c8></td><td>I: Facilitation Investment and Intensity</td></tr>
+	<tr><td id=c0></td><td>A1. The CLD program ensures the participation of excluded groups.</td></tr>
+	<tr><td id=c1></td><td>A2. Community members decide focus of the CLD program BEFORE the actual design of the program.</td></tr>
+	<tr><td id=c2></td><td>A3. Community members play an active role in CLD program design</td></tr>
+	<tr><td id=c3></td><td>A4. Community members play an active role in the CLD program implementation (including adaptation)</td></tr>
+	<tr><td id=c4></td><td>A5. The pace of the CLD program is determined collaboratively with communities and, where appropriate, with funders</td></tr>
+	<tr><td id=c5></td><td>A6 The CLD program systematically builds the voice and confidence of community members, especially those at risk of exclusion, to express their thoughts, ideas, share experiences, etc.</td></tr>
+	<tr><td id=c6></td><td>A7 The CLD program raises awareness and builds advocacy skills amongst local structures, leaders, and community members to press for their social, economic and political rights</td></tr>    
 </table>
 </center>
 <script>
-	for(i=0;i<9;i++) document.getElementById('c'+i).innerHTML=data[i];
+	for(i=0;i<7;i++) document.getElementById('c'+i).innerHTML=data[i];
 </script>
 </body>
 </html>

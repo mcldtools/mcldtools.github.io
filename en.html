@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- MCLD Evaluation Tool -->
+<!-- Handle the Rubric in English -->
 <html lang=en>
 <head>
     <title>CLD Assessment</title>
@@ -12,10 +12,17 @@
 </head>
 <body>
 	<script>cookie=setup(); // read cookies and place navbar</script>
-	<center><a href=https://mcld.org target=_blank><img src=/logo50.png ></a></center>
-	<script>
-	if(cookie.lang=='fr') {document.write(loadFile('intro_fr.html'));}
-	else{document.write(loadFile('intro_en.html'));}
-	</script>
+	<script type='text/javascript' src=/en.js></script>
+    <center><img src=/logo50.png ></center>
+    <h1>CLD Assessment</h1>
+<script>
+    document.write('<p>'+window.location.path+"</p>\n");
+	for(i=0;i<9;i++) { // put the 9 full-width buttons
+        d=dimensions[i];
+        d0=d.substr(0,1).toLowerCase();
+        document.write('<a class=wide href='+d0+'1.html>'+d+'</a>');
+    }
+</script>
+
 </body>
 </html>
