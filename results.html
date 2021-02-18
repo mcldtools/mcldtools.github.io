@@ -27,11 +27,13 @@
 				for(j=1;j<=lengths[i];j++) { // which sub dimension
 					const cname=labels[i].toLowerCase()+j;
 					let x = +cookie[cname];
+					if(isNaN(x)) x=0;
 					x--;
 					if(x<1) x=0;
 					console.log('score',i,j,cname,x);
 					scores[i] += x;
 				}
+				if(isNaN(scores[i])) scores[i]=0;
 				scores[i]=Math.floor(scores[i]*100/(lengths[i]*3));
 //				console.log('Scores',i,scores[i]);
 			}

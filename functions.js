@@ -1,4 +1,6 @@
 // This includes all functions called by pages independent of language
+
+// All the initialization for every page
 function setup(){
   // first, pull in the cookie object and return it
   cookie=document.cookie.split('; ').reduce((prev, current) => {
@@ -7,14 +9,14 @@ function setup(){
     return prev
   }, {});  
 // next, output the navbar with the appropriate arrow links in this template
-// note - now in this system, 0=info, 1=rubric, 2=a1 etc
-now= +cookie.pointer; // what page are we one? (force to integer)
-if(now==undefined) now=1;
+// note - now in this system, 0=rubric, 1=basics, 2=a1 etc
+now= +window.location.search.substr(1);
+if(now==undefined) now=0;
 if(now>28) now=28;
 prior=now-1; if(prior<0) prior=0;
 next=now+1;
 lang=cookie.lang;
-if(lang!='en' && lang!='fr') setLang();
+if(lang!='en' && lang!='fr') {setLang();lang='en';}
 LANG=lang.toUpperCase();
 console.log('setup lang',lang);
 
@@ -38,16 +40,19 @@ const contents=`<nav>
 <line x1='15' y1='18' x2='15' y2='0' stroke='white' stroke-width='4'></line>
 <line x1='22' y1='18' x2='22' y2='10' stroke='white' stroke-width='4'></line>
 </svg></a>
-</nav>`;
+</nav>
+<p><small>p=${now} ${lang}</small></p>`;
 document.write(contents);
 return cookie;
 }
 
 function setLang(){ // for now, this will be a toggle
-  lang=document.getElementById('lang').innerHTML;
-  if(lang=='EN') {lang='FR';} else {lang='EN'}
-  setCookie('lang',lang.toLowerCase());
-  location.reload();
+  lang=cookie.lang;
+  if(lang!='en' && lang!='fr') lang='fr';
+  if(lang=='en') {lang='fr';} else {lang='en'}
+  setCookie('lang',lang);
+  now= +window.location.search.substr(1);
+  location.href=lang+'.html?'+now;
 }
 
 function loadFile(filePath) {
@@ -61,12 +66,11 @@ function loadFile(filePath) {
   return result;
 }
 
-
-
 function setCookie(cname,cvalue) {
+  cookie[cname]=cvalue; // assign local copy
   const expiry="Fri, 01 Jan 2038 00:00:01 GMT";
 	const arg = cname + "=" + cvalue + ";" + expiry;
-	document.cookie = arg ;
+	document.cookie = arg;
 }
 
 function saveComment(cname) {
