@@ -66,6 +66,15 @@ function loadFile(filePath) {
   return result;
 }
 
+function saveform(formid){
+  expiry="Fri, 01 Jan 2038 00:00:01 GMT";
+  const form = document.getElementById(formid);
+  Array.from(form.elements).forEach((input) => {
+    document.cookie=input.name+'='+encodeURI(input.value)+';expires='+expiry+';path=/';
+  });
+}
+
+
 function setCookie(cname,cvalue) {
   cookie[cname]=cvalue; // assign local copy
   const expiry="Fri, 01 Jan 2038 00:00:01 GMT";
@@ -95,6 +104,46 @@ function setit(clicked_id){
   const x=clicked_id.substr(2,1);
   setColor(cname,x)
 	setCookie(cname,x);
+}
+
+function putSelect(fname){
+  const arr=basics.options;
+  let str="<div><label>"+basics.select+"<select id='"+fname+"'"+fname+"'>\n";
+  for(i=0;i<arr.length;i++) str += "<option value='"+i+"'>"+arr[i]+"</option>\n";
+  document.write(str+"</select></div>\n");
+}
+
+function putDate(fname) {
+  let d=cookie[fname];
+  if(!d) {
+    let d = new Date().toISOString().slice(0, 10);
+    setCookie(fname,d);
+  }
+  document.write('<input type=date name='+fname+' value="'+d+'">');
+}
+
+function putInput(fname) {
+  const placeholder=basics[fname];
+  let val=cookie[fname];
+  if(val==undefined) val='';
+  document.write(`<input class=wide name="${fname}" placeholder="${placeholder}" value="${val}"> 
+  `);
+}
+
+function putBasics(){
+  document.write(`
+  <h1>${basics.h1}</h1>
+  <form id=basics>`);
+  putInput("program");
+  putInput("organization");
+  putInput("country");
+  putInput("region");
+  putSelect("stage");
+  putDate("date");
+  putInput("comment");
+  document.write(`<a class=wide href="javascript:saveform('basics');">${basics.save}</a>
+  </form>
+  `);
 }
 
 function putRubric(contents) { // Create layout based on an array of options

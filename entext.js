@@ -1,12 +1,26 @@
+const basics={
+    h1:"Basic Program Information",
+    program:"Program Name",
+    organization:"Organization Name",
+    country:"Programming Country(s)",
+    region:"Provinces/Region (if applicable)",
+    name:"Name(s) completing this assessment",
+    date:"Date Completed",
+    select:"Stage",
+    options:['pilot','new','midterm','mature','complete'],
+    comment:"Additional comments/feedback",
+    save:"Save data"
+}
+
 const dimensions=[
 "A: Participation, Inclusion, and Voice",
 "B: Local Resources and Knowledge",
 "C: Exit Strategy Linked to Sustainability",
-"D: Accountability Mechanisms. (Accountability mechanisms include parties sharing monitoring reports, accounting for their decisions and spending through public notice boards and through interactive sessions such as public forums e.g. social audits or quarterly or bi-annual decentralized workshops where all communities can be represented, etc.)",
+"D: Accountability Mechanisms.",
 "E: Responsiveness to Context Specific Dynamics",
 "F: Collaboration within and amongst communities",
 "G:  CLD linked to Sub-National Governments",
-"H. Monitoring and Evaluation Practices support CLD [Facilitators are the front-line staff who explain the program and work with communities on a day to day basis to facilitate planning and action. Facilitators may work for NGOs, be community volunteers, etc.]",
+"H. Monitoring and Evaluation Practices support CLD",
 "I. Facilitation Investment and Intensity"];
 
 const rubric={

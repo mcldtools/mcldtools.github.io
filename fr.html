@@ -26,28 +26,10 @@
         document.write(`<a class=wide href=?${whichp[i]}>${d}</a>`);
 	}
 } else if(p=='1'){
-		document.write(`<h2>Informations Générales</h2>
-		<form id=basics>
-        <input class=wide name=prog placeholder="Program Name" value="${cookie.prog}">
-        <input class=wide name=org placeholder="Organization name (if different from the Program Name)" value="${cookie.org}">
-        <input class=wide name=country placeholder="Programming Country/Countries (If applicable):" value="${cookie.country}">
-        <input class=wide name=region placeholder="Provinces/Region (If applicable):" value="${cookie.region}">
-        <select name=stage>
-            <option value=pilot>Pilot</option>
-            <option value=new>New</option>
-            <option value=mid-term>Mid-term</option>
-            <option value="mature">Mature</option>
-            <option value=complete>Completed</option>
-        </select>
-        <input class=wide name=name placeholder="Name(s) completing this Assesment?"  value="${cookie.name}">
-        <input class=wide type=date name=date title"Date Completed" value="${cookie.date}">
-        <input class=wide name=comment placeholder="Additional Comments and Feedback" value="${cookie.comment}">
-        <a class=wide href="javascript:saveform('basics');">Save Data</a>
-    </form>
-		`);
-	}else {
-		putRubric(rubric['p'+p]);
-	}
+	putBasics();
+}else {
+	putRubric(rubric['p'+p]);
+}
 
 </script>
 

@@ -11,12 +11,9 @@
 	<script type='text/javascript' src=/functions.js></script>
 </head>
 <body>
-	<script>cookie=setup(); // read cookies and place navbar</script>
-	<center><a href=https://mcld.org target=_blank><img src=/logo50.png ></a></center>
-	<script>
-	if(cookie.lang=='fr') {document.write(loadFile('intro_fr.html'));}
-	else{document.write(loadFile('intro_en.html'));}
+	<script>cookie=setup(); // read cookies and place navbar<
+	if(cookie.lang=='fr') {location.href='intro_fr.html';}
+	else{location.href='intro_en.html';}
 	</script>
-	<a href=data.html><small>Show Data</small></a>
 </body>
 </html>

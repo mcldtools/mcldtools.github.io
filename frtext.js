@@ -1,3 +1,17 @@
+const basics={
+    h1:"Informations sur le Programme",
+    program:"Nom du programme",
+    organization:"Nom de l'organisation (si différent du nom du programme)",
+    country:"Le(s) pays de programmation",
+    region:"Provinces / Région (le cas échéant)",
+    name:"Qui réalise cette évaluation ? Nom (s)",
+    date:"Date d'exécution",
+    select: "Stade de travail",
+    options:["pilote","nouveau", "à mi-parcous", "mature", "terminé"],
+    comment:"Commentaires et réactions supplémentaires",
+    save:"Sauvegarder les données"
+};
+
 const dimensions=[
 "A: Participation, Inclusion, et Voix",
 "B: Ressources et Connaissances Locales",
