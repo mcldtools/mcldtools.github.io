@@ -41,7 +41,7 @@ const contents=`<nav>
 <line x1='22' y1='18' x2='22' y2='10' stroke='white' stroke-width='4'></line>
 </svg></a>
 </nav>
-<p><small>p=${now} ${lang}</small></p>`;
+`;
 document.write(contents);
 return cookie;
 }
@@ -233,7 +233,7 @@ function putResults(p) {
 }
 
 function putDimensionScores(scores){ // table of scores with dimension labels
-  let t="<center>\n<table style='font-size:12px;'>\n"; 
+  let t="<center>\n<table>\n"; 
   for(i=0;i<scores.length;i++) {
     t+="<tr><td>"+scores[i]+"</td><td>";
     t+=dimensions[i]+"</td></tr>\n";
@@ -242,7 +242,7 @@ function putDimensionScores(scores){ // table of scores with dimension labels
 }
 
 function putRubricScores(scores,tags) { 
-  let t="<center>\n<table style='font-size:12px;'>\n";
+  let t="<center>\n<table>\n";
   for(i=0;i<scores.length;i++) {
     t+="<tr><td>"+scores[i]+"</td><td>";
     t+=rubric[tags[i]][0]+"</td></tr>\n";
