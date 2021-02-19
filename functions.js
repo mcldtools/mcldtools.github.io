@@ -19,7 +19,6 @@ next=Math.min(now+1,maxpage);
 lang=cookie.lang;
 if(lang!='en' && lang!='fr') {setLang();lang='en';}
 LANG=lang.toUpperCase();
-// console.log('setup lang',lang);
 
 const contents=`<nav>
 <a id='lang' onclick='setLang()'>${LANG}</a>
@@ -85,22 +84,17 @@ function setCookie(cname,cvalue) {
 
 function saveComment(cname) {
   const com=document.getElementById(cname).value;
-  console.log('saveComment',cname,com);
   setCookie(cname,com);
 }
 function setColor(cname,x){
-//  console.log('set color',cname,x);
 	for(i=0;i<5;i++){
 		let s='';
 		if(i==x) s='background-color:blue;color:white';
 		e=document.getElementById(cname+i);
-//    console.log(i,x,e);
 		if(e) e.style=s;
-//    console.log(i,x,e);
 	}
 }
 function setit(clicked_id){
-//  console.log("setit",clicked_id);
   const cname=clicked_id.substr(0,2);
   const x=clicked_id.substr(2,1);
   setColor(cname,x)
@@ -184,7 +178,6 @@ function computeByDimensions(labels,lengths){
         if(isNaN(x)) x=0;
         x--;
         if(x<1) x=0;
-        console.log('score',i,j,cname,x);
         scores[i] += x;
       }
      if(isNaN(scores[i])) scores[i]=0;
