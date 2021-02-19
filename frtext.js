@@ -16,12 +16,12 @@ const dimensions=[
 "A: Participation, Inclusion, et Voix",
 "B: Ressources et Connaissances Locales",
 "C: Stratégie de sortie liée à la Durabilité",
-"D: Mécanismes de Redevabilité (Les mécanismes de redevabilité comprennent les mesures suivantes: les parties partagent les rapports de suivi, rendent compte de leurs décisions et de leurs dépenses par le biais de tableaux d'affichage et de sessions interactives telles que des forums publics, par exemple des audits sociaux, ou des ateliers décentralisés trimestriels ou  semestriels où toutes les communautés peuvent être représentées, etc.)",
+"D: Mécanismes de Redevabilité",
 "E: Réactivité aux Dynamiques Spécifiques au Contexte",
 "F: Collaboration au sein et entre les communautés",
 "G: DPC lié aux gouvernements sous-nationaux",
 "H: Les Pratiques de Suivi et d'Évaluation qui Soutiennent le DPC",
-"I: Inventissement et Intensité de Facilitation [Les facilitateurs sont le personnel de première ligne qui explique le programme et travaille avec les communautés au jour le jour pour faciliter la planification et l'action. Les facilitateurs peuvent travailler pour des ONG, être des bénévoles communautaires, etc.]"
+"I: Inventissement et Intensité de Facilitation"
 ];
 const rubric={
 p2:["A1. Le programme DPC assure la participation des groupes exclus",

@@ -2,6 +2,7 @@
 
 // All the initialization for every page
 function setup(){
+  const maxpage=33; // the highest numbered page supported by en and fr so far
   // first, pull in the cookie object and return it
   cookie=document.cookie.split('; ').reduce((prev, current) => {
     const [name, value] = current.split('=');
@@ -12,13 +13,13 @@ function setup(){
 // note - now in this system, 0=rubric, 1=basics, 2=a1 etc
 now= +window.location.search.substr(1);
 if(now==undefined) now=0;
-if(now>28) now=28;
-prior=now-1; if(prior<0) prior=0;
-next=now+1;
+if(now>maxpage) now=maxpage;
+prior=Math.max(now-1,0);
+next=Math.min(now+1,maxpage);
 lang=cookie.lang;
 if(lang!='en' && lang!='fr') {setLang();lang='en';}
 LANG=lang.toUpperCase();
-console.log('setup lang',lang);
+// console.log('setup lang',lang);
 
 const contents=`<nav>
 <a id='lang' onclick='setLang()'>${LANG}</a>
@@ -33,7 +34,7 @@ const contents=`<nav>
 <polygon points='12,0 24,12 18,12 18,24 6,24 6,12 0,12' fill='white'></polygon></svg></a>
 <a href=${lang}.html?${next}><svg height='24' width='24'>
 <polygon points='24,12 12,24 12,18 0,18 0,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=results.html><svg height='24' width='24'>
+<a href=${lang}.html><svg height='24' width='24'>
 <line x1='2' y1='0' x2='2' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='2' y1='22' x2='24' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='08' y1='18' x2='8' y2='8' stroke='white' stroke-width='4'></line>
@@ -157,10 +158,103 @@ function putRubric(contents) { // Create layout based on an array of options
   	if(x>'') document.getElementById(cname+x).style='background-color:navy;color:white;';
   // And fill in the comment if it exists
   cid='n'+cname;
-  com=cookie[cid];
+  let com=cookie[cid];
+  if (com==undefined) com='';
   const str1="<h3>Comment</h3>\n<textarea class=wide id='"+cid+"' rows=3 width=100% >\n";
   const str2="</textarea>\n<button onclick='saveComment("+'"'+cid+'"'+")'>Click to save comment</button>\n";
   document.write(str1+com+str2);
+}
+
+function putXY(r,i,n){ // convert radius and index in spider to x,y pair
+  a=(2*Math.PI*i)/n;
+  x=Math.floor(120+r*Math.sin(a));
+  y=Math.floor(120-r*Math.cos(a));
+  document.write(' '+Math.floor(x)+','+Math.floor(y));
+}
+
+// for the 4 different diagrams, create them as pages p29, p30, p31
+
+function computeByDimensions(labels,lengths){
+  let scores=[];
+  for(i=0;i<labels.length;i++) { // which major dimension
+    scores[i]=0;
+    for(j=1;j<=lengths[i];j++) { // which sub dimension
+       const cname=labels[i].toLowerCase()+j;
+        let x = +cookie[cname];
+        if(isNaN(x)) x=0;
+        x--;
+        if(x<1) x=0;
+        console.log('score',i,j,cname,x);
+        scores[i] += x;
+      }
+     if(isNaN(scores[i])) scores[i]=0;
+     scores[i]=Math.floor(scores[i]*100/(lengths[i]*3));
+   }
+   return scores;
+  }
+
+function computeScores(labels){
+  let scores=[];
+  for(i=0;i<labels.length;i++) {
+    x=cookie[labels[i].toLowerCase()]; 
+    if(isNaN(x)) x=0; x--; if(x<1) x=0;
+    scores[i]=Math.floor(100*x/3);
+  }
+  return scores;
+}
+
+
+function putResults(p) {
+  let scores=[]; let labels=[]; let tags=[];
+  if(p==29) {
+    const lengths=[7,2,5,2,2,2,1,3,3]; // number of sub-elements in each
+    labels=['A','B','C','D','E','F','G','H','I']; // uppercase version of labels
+    scores=computeByDimensions(labels,lengths);
+    spider(scores,labels);
+    putDimensionScores(scores,labels);
+  } else if (p==30) {
+    labels=['A1','A2','A3','A4','A5','A6','A7'];
+    tags=['p2','p3','p4','p5','p6','p7','p8'];
+    scores=computeScores(labels);
+    spider(scores,labels);
+    putRubricScores(scores,tags);
+  } else if (p==31) {
+    labels=['C1','C2','C3','C4','C5'];
+    tags=['p11','p12','p13','p14','p15'];
+    scores=computeScores(labels);
+    spider(scores,labels);
+    putRubricScores(scores,tags);
+  } else if (p==32) {
+    labels=['B1','B2','D1','D2','E1','E2','F1','F2','G1'];
+    tags=['p9','p10','p16','p17','p18','p19','p20','p21','p22'];
+    scores=computeScores(labels);
+    spider(scores,labels);
+    putRubricScores(scores,tags);
+  } else {
+    labels=['H1','H2','H3','I1','I2','I3'];
+    tags=['p23','p24','p25','p26','p27','p28'];
+    scores=computeScores(labels);
+    spider(scores,labels);
+    putRubricScores(scores,tags);
+  }
+}
+
+function putDimensionScores(scores){ // table of scores with dimension labels
+  let t="<center>\n<table style='font-size:12px;'>\n"; 
+  for(i=0;i<scores.length;i++) {
+    t+="<tr><td>"+scores[i]+"</td><td>";
+    t+=dimensions[i]+"</td></tr>\n";
+  }
+  document.write(t+"</table>\n</center>\n");
+}
+
+function putRubricScores(scores,tags) { 
+  let t="<center>\n<table style='font-size:12px;'>\n";
+  for(i=0;i<scores.length;i++) {
+    t+="<tr><td>"+scores[i]+"</td><td>";
+    t+=rubric[tags[i]][0]+"</td></tr>\n";
+  }
+  document.write(t+"</table>\n</center>\n");
 }
 
 function spider(data,labels) {

@@ -27,9 +27,12 @@
 	}
 } else if(p=='1'){
 	putBasics();
-}else {
+} else if(p<29) {
 	putRubric(rubric['p'+p]);
+} else {
+	putResults(p); // spider diagrams
 }
+
 
 </script>
 
