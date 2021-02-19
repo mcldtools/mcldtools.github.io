@@ -34,7 +34,7 @@ const contents=`<nav>
 <polygon points='12,0 24,12 18,12 18,24 6,24 6,12 0,12' fill='white'></polygon></svg></a>
 <a href=${lang}.html?${next}><svg height='24' width='24'>
 <polygon points='24,12 12,24 12,18 0,18 0,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html><svg height='24' width='24'>
+<a href=${lang}.html?29><svg height='24' width='24'>
 <line x1='2' y1='0' x2='2' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='2' y1='22' x2='24' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='08' y1='18' x2='8' y2='8' stroke='white' stroke-width='4'></line>
