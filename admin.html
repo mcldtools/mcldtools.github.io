@@ -18,7 +18,7 @@
     <h3>Clear all the current data</h3>
     <a class='wide' href='javascript:clearCookies();'>Click here to clear all data</a>
     <h3>Upload a json file of previously downloaded settings</h3>
-    <input type="file" onchange="readFile(this)"><br>
+    <input type="file" accept="application/json" onchange="readFile(this)"><br>
     <script>
         function readFile(input) {
           let file = input.files[0];

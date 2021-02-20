@@ -267,7 +267,7 @@ function spider(data,labels) {
   // Next draw the data points
   document.write('<polygon points="');
   for(i=0;i<n;i++) putXY(data[i],i,n);
-  document.write('" fill="green" fill-opacity="25%" stroke="darkgreen"></polygon>');
+  document.write('" fill="rgba(0,255,0,0.3)" stroke="darkgreen"></polygon>');
   // Next put the labels in the appropriate points
   for(i=0;i<n;i++){
   	a=(2*Math.PI*i)/n;
