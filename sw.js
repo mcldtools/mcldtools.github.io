@@ -1,4 +1,4 @@
-const cacheName = 'mcldtools-v1.1';
+const cacheName = 'mcldtools-v1.2';
 const staticAssets = [
   './',
   './index.html',
@@ -12,6 +12,7 @@ const staticAssets = [
   './style.css',
   "./logo50.png",
   "./logo150.png",
+  "./logo512.png",
   "./entext.js",
   "./frtext.js"
 ];
