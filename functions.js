@@ -3,14 +3,15 @@
 // All the initialization for every page
 function setup(){
   const maxpage=33; // the highest numbered page supported by en and fr so far
-  // first, pull in the cookie object and return it
+
+  // first, pull in cookies and create a global cookie object an
   cookie=document.cookie.split('; ').reduce((prev, current) => {
     const [name, value] = current.split('=');
     prev[name] = decodeURI(value);
     return prev
   }, {});  
 // next, output the navbar with the appropriate arrow links in this template
-// note - now in this system, 0=rubric, 1=basics, 2=a1 etc
+// note - now in this system, 0=rubric, 1=basics, 2=a1 etc through maxpage
 now= +window.location.search.substr(1);
 if(now==undefined) now=0;
 if(now>maxpage) now=maxpage;
@@ -20,8 +21,9 @@ lang=cookie.lang;
 if(lang!='en' && lang!='fr') {setLang();lang='en';}
 LANG=lang.toUpperCase();
 
+// The navbar contains inline SVG for efficient icons
 const contents=`<nav>
-<a id='lang' onclick='setLang()'>${LANG}</a>
+<a id='lang' class=tall onclick='setLang()'>${LANG}</a>
 <a href=/ ><svg height='24' width='24'>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
 <circle cx='12' cy='7' r='2' fill='white'></circle>
@@ -40,6 +42,7 @@ const contents=`<nav>
 <line x1='15' y1='18' x2='15' y2='0' stroke='white' stroke-width='4'></line>
 <line x1='22' y1='18' x2='22' y2='10' stroke='white' stroke-width='4'></line>
 </svg></a>
+<a class=tall href=admin.html>&vellip;</a>
 </nav>
 `;
 document.write(contents);
@@ -273,4 +276,27 @@ function spider(data,labels) {
   	document.write('<text class="n" x="'+x+'" y="'+y+'">'+labels[i]+'</text>');
   }
   document.write("</svg>\n");
+}
+// ADMIN Functions
+function download() {
+  const filename=cookie.date+cookie.program+'.json';
+  const text=JSON.stringify(cookie); // save the global cookie object
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+function clearCookies() {
+  const keys=Object.keys(cookie);
+  for(i=0;i<keys.length;i++) {
+      document.cookie = keys[i]+"= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    alert("OK, data cleared");
 }
