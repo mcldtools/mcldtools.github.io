@@ -3,6 +3,13 @@
 // All the initialization for every page
 function setup(){
   const maxpage=33; // the highest numbered page supported by en and fr so far
+  
+// these functions run for a pwa
+window.onload = () => { 'use strict'; // register service worker
+if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('./sw.js');
+  }
+}
 
   // first, pull in cookies and create a global cookie object an
   cookie=document.cookie.split('; ').reduce((prev, current) => {
