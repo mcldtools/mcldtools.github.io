@@ -26,4 +26,5 @@ Web app for CLD Assessment
 # Key References
 https://www.w3schools.com/js/js_cookies.asp
 https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
+https://vaadin.com/learn/tutorials/learn-pwa/turn-website-into-a-pwa
 
