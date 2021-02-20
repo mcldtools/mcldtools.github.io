@@ -12,9 +12,8 @@
 	<script type='text/javascript' src=/functions.js></script>
 </head>
 <body>
-	<script>cookie=setup(); // read cookies and place navbar<
-	if(cookie.lang=='fr') {location.href='intro_fr.html?-1';}
-	else{location.href='intro_en.html?-1';}
+	<script>cookie=setup(); // read cookies and then redirect per language
+		location.href="intro_"+cookie.lang+".html";
 	</script>
 </body>
 </html>

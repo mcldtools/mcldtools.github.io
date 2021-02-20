@@ -57,12 +57,10 @@ return cookie;
 }
 
 function setLang(){ // for now, this will be a toggle
-  lang=cookie.lang;
-  if(lang!='en' && lang!='fr') lang='fr';
-  if(lang=='en') {lang='fr';} else {lang='en'}
+  olang=cookie.lang;
+  if(olang=='en') {lang='fr';} else {lang='en';}
   setCookie('lang',lang);
-  now= +window.location.search.substr(1);
-  location.href=lang+'.html?'+now;
+  location.href=window.location.href.replace(olang,lang);
 }
 
 function loadFile(filePath) {
