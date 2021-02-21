@@ -1,16 +1,18 @@
 {
     "name": "MCLD Tools",
     "short_name": "MCLDTools",
-    "start_url": ".",
+    "start_url": "./index.html",
+    "scope": "/",
     "display": "standalone",
-    "background_color": "#2A3443",
-    "description": "A demo app for a fictional conference",
-    "theme_color": "#2A3443",
+    "background_color": "white",
+    "description": "MCLD Assessment Tool",
+    "theme_color": "navy",
     "icons": [
       {
         "src": "./logo512.png",
         "sizes": "512x512",
-        "type": "image/png"
+        "type": "image/png",
+        "purpose": "any maskable"
       }
     ]
   }
