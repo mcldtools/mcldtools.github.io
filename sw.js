@@ -1,4 +1,4 @@
-const cacheName = 'mcldtools-v1.3';
+const cacheName = 'mcldtools-v1.4';
 const staticAssets = [
   './',
   './index.html',
