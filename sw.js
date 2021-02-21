@@ -1,21 +1,22 @@
 const APP_PREFIX = 'MCLDTools'; // Identifier for this app (this needs to be consistent across every cache update)
-const VERSION = 'v1.8.1'; // Version of the off-line cache (change this value everytime you want to update cache)
+const VERSION = 'v1.8.2'; // Version of the off-line cache (change this value everytime you want to update cache)
 const CACHE_NAME = APP_PREFIX + VERSION
 const URLS = [
   './',
+  "./admin.html",
+  './en.html',
+  "./entext.js",
+  "./fr.html",
+  "./frtext.js",
+  './functions.js',
   './index.html',
   './intro_en.html',
   './intro_fr.html',
-  './en.html',
-  "./fr.html",
-  "./admin.html",
-  './functions.js',
-  './style.css',
   "./logo50.png",
   "./logo150.png",
   "./logo512.png",
-  "./entext.js",
-  "./frtext.js"
+  "./manifest.json",
+  './style.css'
 ];
 
 // Respond with cached resources
