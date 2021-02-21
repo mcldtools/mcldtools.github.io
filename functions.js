@@ -31,18 +31,18 @@ LANG=lang.toUpperCase();
 // The navbar contains inline SVG for efficient icons
 const contents=`<nav>
 <a id='lang' class=tall onclick='setLang()'>${LANG}</a>
-<a href=/ ><svg height='24' width='24'>
+<a href=/ ><svg height='24' width='24'><title>Info</title>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
 <circle cx='12' cy='7' r='2' fill='white'></circle>
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
 </svg></a>
-<a href=${lang}.html?${prior}><svg height='24' width='24'>
+<a href=${lang}.html?${prior}><svg height='24' width='24'><title>Prior</title>
 <polygon points='0,12 12,24 12,18 24,18 24,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html?0><svg height='24' width='24'>
+<a href=${lang}.html?0><svg height='24' width='24'><title>Home</title>
 <polygon points='12,0 24,12 18,12 18,24 6,24 6,12 0,12' fill='white'></polygon></svg></a>
-<a href=${lang}.html?${next}><svg height='24' width='24'>
+<a href=${lang}.html?${next}><svg height='24' width='24'><title>Next</title>
 <polygon points='24,12 12,24 12,18 0,18 0,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html?29><svg height='24' width='24'>
+<a href=${lang}.html?29><svg height='24' width='24'><title>Diagrams</title>
 <line x1='2' y1='0' x2='2' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='2' y1='22' x2='24' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='08' y1='18' x2='8' y2='8' stroke='white' stroke-width='4'></line>
