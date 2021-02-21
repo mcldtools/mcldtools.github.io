@@ -1,5 +1,5 @@
 const APP_PREFIX = 'MCLDTools'; // Identifier for this app (this needs to be consistent across every cache update)
-const VERSION = 'v1.8.2'; // Version of the off-line cache (change this value everytime you want to update cache)
+const VERSION = 'v1.8.3'; // Version of the off-line cache (change this value everytime you want to update cache)
 const CACHE_NAME = APP_PREFIX + VERSION
 const URLS = [
   './',
@@ -19,11 +19,11 @@ const URLS = [
   './style.css'
 ];
 
-// Respond with cached resources
+// Respond with cached resources -- must ignoreSearch!!
 self.addEventListener('fetch', function (e) {
   console.log('fetch request : ' + e.request.url)
   e.respondWith(
-    caches.match(e.request).then(function (request) {
+    caches.match(e.request,{ignoreSearch:true}).then(function (request) {
       if (request) { // if cache is available, respond with cache
         console.log('responding with cache : ' + e.request.url)
         return request
