@@ -112,7 +112,11 @@ function setit(clicked_id){
 function putSelect(fname){
   const arr=basics.options;
   let str="<div><label>"+basics.select+"<select id='"+fname+"'"+fname+"'>\n";
-  for(i=0;i<arr.length;i++) str += "<option value='"+i+"'>"+arr[i]+"</option>\n";
+  for(i=0;i<arr.length;i++) {
+    str += "<option value='"+i+"'";
+    if(cookie[fname]==i) str += " SELECTED";
+    str += ">"+arr[i]+"</option>\n";
+  }
   document.write(str+"</select></div>\n");
 }
 
@@ -145,6 +149,7 @@ function putBasics(){
   putDate("date");
   putInput("comment");
   document.write(`<a class=wide href="javascript:saveform('basics');">${basics.save}</a>
+
   </form>
   `);
 }

@@ -6,6 +6,10 @@ Web app for CLD Assessment
 * Use of template strings where appropriate
 * Mobile first, but looks fine on laptops
 
+# Global Objects
+* cookies - an object converted from document.cookies by setup
+* basics - the language components of the basic information for, from entext or frtext
+
 # Basic Design
 * Navigation icons are handmade inline svg
 * Data entry goes into cookies

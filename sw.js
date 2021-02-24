@@ -12,7 +12,6 @@ const URLS = [
   './index.html',
   './intro_en.html',
   './intro_fr.html',
-  "./logo50.png",
   "./logo150.png",
   "./logo512.png",
   "./manifest.json",
