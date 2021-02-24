@@ -110,9 +110,9 @@ function setit(clicked_id){
 	setCookie(cname,x);
 }
 
-function putSelect(fname){
-  const arr=basics.options;
-  let str="<div><label>"+basics.select+"<select id='select' name='"+fname+"'>\n";
+function putSelect(fname){ // currently, only allowed per form
+  const arr=basics.options; // option labels are language specific
+  let str="<div><label>"+basics.select+"<select id='"+fname+"' name='"+fname+"'>\n";
   for(i=0;i<arr.length;i++) {
     str += "<option value='"+i+"'";
     if(cookie[fname]==i) str += " SELECTED";
@@ -146,7 +146,7 @@ function putBasics(){
   putInput("organization");
   putInput("country");
   putInput("region");
-  putSelect("stage");
+  putSelect('stage');
   putDate("date");
   putInput("comment");
   document.write(`<a class=wide href="javascript:saveform('basics');">${basics.save}</a>
