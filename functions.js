@@ -111,7 +111,7 @@ function setit(clicked_id){
 
 function putSelect(fname){
   const arr=basics.options;
-  let str="<div><label>"+basics.select+"<select id='"+fname+"'"+fname+"'>\n";
+  let str="<div><label>"+basics.select+"<select id='select'>\n";
   for(i=0;i<arr.length;i++) {
     str += "<option value='"+i+"'";
     if(cookie[fname]==i) str += " SELECTED";
