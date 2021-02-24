@@ -79,6 +79,7 @@ function saveform(formid){
   const form = document.getElementById(formid);
   Array.from(form.elements).forEach((input) => {
     document.cookie=input.name+'='+encodeURI(input.value)+';expires='+expiry+';path=/';
+    console.log(input.name,input.value);
   });
 }
 
@@ -111,7 +112,7 @@ function setit(clicked_id){
 
 function putSelect(fname){
   const arr=basics.options;
-  let str="<div><label>"+basics.select+"<select id='select'>\n";
+  let str="<div><label>"+basics.select+"<select id='select' name='"+fname+"'>\n";
   for(i=0;i<arr.length;i++) {
     str += "<option value='"+i+"'";
     if(cookie[fname]==i) str += " SELECTED";
