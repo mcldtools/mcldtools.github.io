@@ -17,14 +17,12 @@ Web app for CLD Assessment
 * All the text from the spreadsheet is in entext.js or frtext.js
 * All data entry pages are controled by en.html or fr.html
 
-# Known issues and items to complete
-* Saving and displaying basic info needs to be redone.
-* French display of results data is not yet done
-* All but the first spider need to be complete.
-* Export and import of data needs to be added.
+# Tricky bits
+* When you cache files with search parameters (as this app does) you have to add a parameter, eg: caches.match(e.request,{ignoreSearch:true}).then(function (request) {...
 
 # Key References
 https://www.w3schools.com/js/js_cookies.asp
 https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
 https://vaadin.com/learn/tutorials/learn-pwa/turn-website-into-a-pwa
+https://stackoverflow.com/questions/57555762/urls-like-https-example-com-page-htmlparam-val-in-offline-pwa
 
