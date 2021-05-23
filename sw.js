@@ -1,5 +1,5 @@
 const APP_PREFIX = 'MCLDTools'; // Identifier for this app (this needs to be consistent across every cache update)
-const VERSION = 'v1.8.5'; // Version of the off-line cache (change this value everytime you want to update cache)
+const VERSION = 'v1.9'; // Version of the off-line cache (change this value everytime you want to update cache)
 const CACHE_NAME = APP_PREFIX + VERSION
 const URLS = [
   './',
