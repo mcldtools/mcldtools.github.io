@@ -25,7 +25,7 @@ if(now>maxpage) now=maxpage;
 prior=Math.max(now-1,0);
 next=Math.min(now+1,maxpage);
 lang=cookie.lang;
-if(lang!='en' && lang!='fr') {setLang();lang='en';}
+if(lang!='en' && lang!='fr' && lang!='es') {setLang();lang='en';}
 LANG=lang.toUpperCase();
 
 // The navbar contains inline SVG for efficient icons
@@ -58,8 +58,12 @@ return cookie;
 
 function setLang(){ // for now, this will be a toggle
   olang=cookie.lang;
-  if(olang=='en') {lang='fr';} else {lang='en';}
+  console.log("old:",olang);
+  if(olang=='en') {lang='fr';} 
+  else if (olang=='fr') {lang='es';}
+  else (lang='en');
   setCookie('lang',lang);
+  console.log("new",lang)
   location.href=window.location.href.replace(olang,lang);
 }
 
