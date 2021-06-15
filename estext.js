@@ -5,11 +5,11 @@ const basics={
     country:"País o países en donde se llevó a cabo el programa (si aplica):",
     region:"Provincias o región/es (si corresponde):",
     name:"Name(s) completing this assessment",
-    date:"Date Completed",
+    date:"Fecha de llenado de rúbrica:",
     select:"Etapa de trabajo",
     options:['piloto','proyecto nuevo','mediano plazo','fase final','terminado'],
     comment:"Comentarios adicionales y retroalimentación",
-    save:"Save data"
+    save:"Guardar Datos"
 }
 const dimensions=[
     "A: Participación, Inclusión, Voz",
