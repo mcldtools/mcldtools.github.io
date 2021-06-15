@@ -1,5 +1,5 @@
 const basics={
-    h1:"Información del Programa",
+    h1:"Infomación General",
     program:"Nombre del programa",
     organization:"Nombre de la organización (si es diferente del Nombre del programa)",
     country:"País o países en donde se llevó a cabo el programa (si aplica):",
