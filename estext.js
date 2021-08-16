@@ -12,15 +12,15 @@ const basics={
     save:"Guardar Datos"
 }
 const dimensions=[
-    "A: Participación, Inclusión, Voz",
-    "B: Recursos Locales & Conocimiento",
-    "C: Estrategia de Éxito Relacionada a Sostenibildad",
-    "D: Mecanismos de Rendición de Cuentas",
-    "E: Sensibilidad a Las Dinámicas Específicas del Contexto",
-    "F: Colaboración al Interior y Entre Comunidades",
-    "G: DLCPG y su Relación con los Gobiernos Subnacionales",
-    "H. Prácticas de Monitoreo y Evaluación que Apoyan al DLCPG",
-    "I. Facilitación de Inversión e Intensidad"];
+"A: Participación, inclusión, voz",
+"B: Recursos locales y conocimiento",
+"C: Estrategia de salida ligada a la sostenibilidad de la iniciativa",
+"D: Mecanismos de rendición de cuentas",
+"E: Sensibilidad a las dinámicas específicas del contexto",
+"F: Colaboración al interior y entre comunidades",
+"G: El DLCPG y su relación con los gobiernos subnacionales",
+"H. Prácticas de monitoreo y evaluación que sustentan al DLCPG",
+"I. Facilitación, inversión e intensidad de la iniciativa"];
 
 const rubric={
 p2:["A1. El programa DLCPG asegura la participación de grupos excluídos.",
