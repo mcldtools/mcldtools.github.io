@@ -1,4 +1,4 @@
-cacheName='mcld-v2.4';
+cacheName='mcld-v2.5';
 const URLS = [
   './',
   "./admin.html",
@@ -31,12 +31,12 @@ self.addEventListener('install', (e) => {
 self.addEventListener('fetch', function (e) {
   e.respondWith(
       fetch(e.request).catch(function() {
-          return caches.match(e.request)
+          return caches.match(e.request,{'ignoreSearch':true})
       })
   )
 })
 
-elf.addEventListener('activate', (e) => {
+self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys().then((keyList) => {
     Promise.all(keyList.map((key) => {
       if (key === cacheName) { return; }
