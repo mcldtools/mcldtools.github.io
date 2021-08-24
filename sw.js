@@ -1,4 +1,4 @@
-cacheName='mcld-v2.5';
+cacheName='mcld-v2.6';
 const URLS = [
   './',
   "./admin.html",
@@ -16,7 +16,8 @@ const URLS = [
   "./logo150.png",
   "./logo512.png",
   "./manifest.json",
-  './style.css'
+  './style.css',
+  './sw.js'
 ];
 
 self.addEventListener('install', (e) => {
