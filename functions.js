@@ -295,7 +295,7 @@ function spider(data, labels) {
 // ADMIN Functions
 function putMailButton(){
   const text=JSON.stringify(cookie);
-  const button=`<a class=wide target=_blank href="mailto:admin@mcld.org?subject=Data&body=${text}">Email the data</a>`;
+  const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>Email the data</a>`;
   document.getElementById("mailbutton").innerHTML=button;
 }
 function download() {
