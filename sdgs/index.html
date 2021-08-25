@@ -13,11 +13,6 @@
 	<script type='text/javascript' src=/functions.js></script>
 	</head>
   <body>
-	<script>cookie=setup(); 
-	const p=window.location.search.substr(1);
-	setCookie('pointer',p);
-	if(p=='0') { // output cover 
-	document.write(`	  
 <table border=1 width=100%>
 	<tr><td width=33%><a href="?0"><p>Community<br>Scorecard:</p>
 		<p>Click here to start with basic information</p></a></td>
@@ -34,12 +29,5 @@
       <tr><td><a href="?6"><img src=sdg15.svg></a></td><td><a href="?4"><img src=sdg16.svg></a></td>
 		  <td><a href="?5"><img src=sdg17.svg></a></td></tr>
     </table>
-	  `);
-} else {
-	document.write('<img src=sdg0'+p+'.svg>');
-}
-</script>
-
-	  
   </body>
 </html>
