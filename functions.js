@@ -3,7 +3,6 @@
 // All the initialization for every page
 const version = 'v2.7';
 var s=""; // this string compiles the output for a given main content div
-const main=document.getElementById("main");
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
 
@@ -60,12 +59,10 @@ function setup() {
 
 function setLang() { // for now, this will be a toggle
   olang = cookie.lang;
-  console.log("old:", olang);
   if (olang == 'en') { lang = 'fr'; }
   else if (olang == 'fr') { lang = 'es'; }
   else (lang = 'en');
   setCookie('lang', lang);
-  console.log("new", lang)
   location.href = window.location.href.replace(olang, lang);
 }
 
@@ -85,7 +82,6 @@ function saveform(formid) {
   const form = document.getElementById(formid);
   Array.from(form.elements).forEach((input) => {
     document.cookie = input.name + '=' + encodeURI(input.value) + ';expires=' + expiry + ';path=/';
-    console.log(input.name, input.value);
   });
 }
 
@@ -154,7 +150,7 @@ function putBasics() {
   putDate("date");
   putInput("comment");
   s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
-  main.innerHTML=s;
+  document.getElementById("main").innerHTML=s;
 }
 
 function putRubric(contents) { // Create layout based on an array of options
@@ -163,9 +159,6 @@ function putRubric(contents) { // Create layout based on an array of options
   for (i = 0; i < 5; i++) {
     s+="<p><button id=" + cname + i + " onclick='setit(this.id)'>" + i + "</button>\n" + contents[1 + i] + "</p>";
   }
-  // Next, paint the color of the button if preset
-  x = cookie[cname];
-  if (x > '') document.getElementById(cname + x).style = 'background-color:navy;color:white;';
   // And fill in the comment if it exists
   cid = 'n' + cname;
   let com = cookie[cid];
@@ -173,7 +166,11 @@ function putRubric(contents) { // Create layout based on an array of options
   const str1 = "<h3>Comment</h3>\n<textarea class=wide id='" + cid + "' rows=3 width=100% >\n";
   const str2 = "</textarea>\n<button onclick='saveComment(" + '"' + cid + '"' + ")'>Click to save comment</button>\n";
   s+=str1 + com + str2;
-  main.innerHTML=s;
+  document.getElementById("main").innerHTML=s;
+  // Next, paint the color of the button if preset
+  x = cookie[cname];
+  if (x > '') document.getElementById(cname + x).style = 'background-color:navy;color:white;';
+
 }
 
 function putXY(r, i, n) { // convert radius and index in spider to x,y pair
@@ -220,7 +217,7 @@ function putToc(x){ // x is the title of the first entry
       d=dimensions[i];
       s+=`<a class=wide href=?${whichp[i]}>${d}</a>`;
 	}
-  main.innerHTML=s;
+  document.getElementById("main").innerHTML=s;
 }
 
 function putResults(p) {
@@ -256,7 +253,7 @@ function putResults(p) {
     spider(scores, labels);
     putRubricScores(scores, tags);
   }
-  main.innerHTML=s;
+  document.getElementById("main").innerHTML=s;
 }
 
 function putDimensionScores(scores) { // table of scores with dimension labels
@@ -289,9 +286,9 @@ function spider(data, labels) {
     s+='" fill="none" stroke="blue" /></polygon>';
   }
   // Next draw the data points
-  s+-'<polygon points="';
+  s+='<polygon points="';
   for (i = 0; i < n; i++) putXY(data[i], i, n);
-  s+'" fill="rgba(0,255,0,0.3)" stroke="darkgreen"></polygon>';
+  s+='" fill="rgba(0,255,0,0.3)" stroke="darkgreen"></polygon>';
   // Next put the labels in the appropriate points
   for (i = 0; i < n; i++) {
     a = (2 * Math.PI * i) / n;
