@@ -1,7 +1,9 @@
 // This includes all functions called by pages independent of language
 
 // All the initialization for every page
-const version = 'v2.5';
+const version = 'v2.7';
+var s=""; // this string compiles the output for a given main content div
+const main=document.getElementById("main");
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
 
@@ -116,13 +118,13 @@ function setit(clicked_id) {
 
 function putSelect(fname) { // currently, only allowed per form
   const arr = basics.options; // option labels are language specific
-  let str = "<div><label>" + basics.select + "<select id='" + fname + "' name='" + fname + "'>\n";
+  s+= "<div><label>" + basics.select + "<select id='" + fname + "' name='" + fname + "'>\n";
   for (i = 0; i < arr.length; i++) {
-    str += "<option value='" + i + "'";
-    if (cookie[fname] == i) str += " SELECTED";
-    str += ">" + arr[i] + "</option>\n";
+    s += "<option value='" + i + "'";
+    if (cookie[fname] == i) s += " SELECTED";
+    s += ">" + arr[i] + "</option>\n";
   }
-  document.write(str + "</select></div>\n");
+  s+= "</select></div>\n";
 }
 
 function putDate(fname) {
@@ -131,21 +133,19 @@ function putDate(fname) {
     let d = new Date().toISOString().slice(0, 10);
     setCookie(fname, d);
   }
-  document.write('<input type=date name=' + fname + ' value="' + d + '">');
+  s+='<input type=date name=' + fname + ' value="' + d + '">';
 }
 
 function putInput(fname) {
   const placeholder = basics[fname];
   let val = cookie[fname];
   if (val == undefined) val = '';
-  document.write(`<input class=wide name="${fname}" placeholder="${placeholder}" value="${val}"> 
-  `);
+  s+=`<input class=wide name="${fname}" placeholder="${placeholder}" value="${val}">`;
 }
 
 function putBasics() {
-  document.write(`
-  <h1>${basics.h1}</h1>
-  <form id=basics>`);
+  s=`<h1>${basics.h1}</h1>
+  <form id=basics>`;
   putInput("program");
   putInput("organization");
   putInput("country");
@@ -153,17 +153,15 @@ function putBasics() {
   putSelect('stage');
   putDate("date");
   putInput("comment");
-  document.write(`<a class=wide href="javascript:saveform('basics');">${basics.save}</a>
-
-  </form>
-  `);
+  s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
+  main.innerHTML=s;
 }
 
 function putRubric(contents) { // Create layout based on an array of options
   cname = contents[0].substr(0, 2).toLowerCase();
-  document.write("<h2>" + contents[0] + "</h2>\n");
+  s="<h2>" + contents[0] + "</h2>";
   for (i = 0; i < 5; i++) {
-    document.write("<p><button id=" + cname + i + " onclick='setit(this.id)'>" + i + "</button>\n" + contents[1 + i] + "</p>\n");
+    s+="<p><button id=" + cname + i + " onclick='setit(this.id)'>" + i + "</button>\n" + contents[1 + i] + "</p>";
   }
   // Next, paint the color of the button if preset
   x = cookie[cname];
@@ -174,14 +172,15 @@ function putRubric(contents) { // Create layout based on an array of options
   if (com == undefined) com = '';
   const str1 = "<h3>Comment</h3>\n<textarea class=wide id='" + cid + "' rows=3 width=100% >\n";
   const str2 = "</textarea>\n<button onclick='saveComment(" + '"' + cid + '"' + ")'>Click to save comment</button>\n";
-  document.write(str1 + com + str2);
+  s+=str1 + com + str2;
+  main.innerHTML=s;
 }
 
 function putXY(r, i, n) { // convert radius and index in spider to x,y pair
   a = (2 * Math.PI * i) / n;
   x = Math.floor(120 + r * Math.sin(a));
   y = Math.floor(120 - r * Math.cos(a));
-  document.write(' ' + Math.floor(x) + ',' + Math.floor(y));
+  s+=' ' + Math.floor(x) + ',' + Math.floor(y);
 }
 
 // for the 4 different diagrams, create them as pages p29, p30, p31
@@ -214,6 +213,15 @@ function computeScores(labels) {
   return scores;
 }
 
+function putToc(x){ // x is the title of the first entry
+  s=`<a class=wide href=?1>${x}</a>`;
+  const whichp=[2,9,11,16,18,20,22,23,26];
+	for(i=0;i<9;i++) { // put the 9 full-width buttons
+      d=dimensions[i];
+      s+=`<a class=wide href=?${whichp[i]}>${d}</a>`;
+	}
+  main.innerHTML=s;
+}
 
 function putResults(p) {
   let scores = []; let labels = []; let tags = [];
@@ -248,6 +256,7 @@ function putResults(p) {
     spider(scores, labels);
     putRubricScores(scores, tags);
   }
+  main.innerHTML=s;
 }
 
 function putDimensionScores(scores) { // table of scores with dimension labels
@@ -256,7 +265,7 @@ function putDimensionScores(scores) { // table of scores with dimension labels
     t += "<tr><td>" + scores[i] + "</td><td>";
     t += dimensions[i] + "</td></tr>\n";
   }
-  document.write(t + "</table>\n</center>\n");
+  s += t + "</table>\n</center>";
 }
 
 function putRubricScores(scores, tags) {
@@ -265,32 +274,32 @@ function putRubricScores(scores, tags) {
     t += "<tr><td>" + scores[i] + "</td><td>";
     t += rubric[tags[i]][0] + "</td></tr>\n";
   }
-  document.write(t + "</table>\n</center>\n");
+  s += t + "</table>\n</center>";
 }
 
 function spider(data, labels) {
   n = data.length;
-  document.write('<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">');
-  document.write('<style> .n {font: 10px sans-serif; fill: black;}</style>');
+  s+='<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">';
+  s+='<style> .n {font: 10px sans-serif; fill: black;}</style>';
   for (r = 10; r < 110; r = r + 10) { // first layout the grid
     y = 120 - r;
-    document.write('<text class="n" x="121" y="' + y + '">' + r + '</text>');
-    document.write('<polygon points="');
+    s+='<text class="n" x="121" y="' + y + '">' + r + '</text>';
+    s+='<polygon points="';
     for (i = 0; i < n; i++) { putXY(r, i, n); }
-    document.write('" fill="none" stroke="blue" /></polygon>');
+    s+='" fill="none" stroke="blue" /></polygon>';
   }
   // Next draw the data points
-  document.write('<polygon points="');
+  s+-'<polygon points="';
   for (i = 0; i < n; i++) putXY(data[i], i, n);
-  document.write('" fill="rgba(0,255,0,0.3)" stroke="darkgreen"></polygon>');
+  s+'" fill="rgba(0,255,0,0.3)" stroke="darkgreen"></polygon>';
   // Next put the labels in the appropriate points
   for (i = 0; i < n; i++) {
     a = (2 * Math.PI * i) / n;
     x = Math.floor(115 + 105 * Math.sin(a));
     y = Math.floor(125 - 105 * Math.cos(a));
-    document.write('<text class="n" x="' + x + '" y="' + y + '">' + labels[i] + '</text>');
+    s+='<text class="n" x="' + x + '" y="' + y + '">' + labels[i] + '</text>';
   }
-  document.write("</svg>\n");
+  s+="</svg>";
 }
 // ADMIN Functions
 function putMailButton(){

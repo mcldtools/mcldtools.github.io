@@ -26,17 +26,13 @@
 	<script>cookie=setup(); // read cookies and place navbar</script>
 	<script type='text/javascript' src=/estext.js></script>
     <h1>Evaluación del DLCPG</h1>
+	<section id="main"></section>
 <script>
 	const p=window.location.search.substr(1);
 	setCookie('pointer',p);
 // routing to different style english pages
 	if(p=='0') { // output the basic rubric
-	document.write('<a class=wide href=?1>Ingrese la información básica de su proyecto o iniciativa');
-	for(i=0;i<9;i++) { // put the 9 full-width buttons
-        d=dimensions[i];
-		whichp=[2,9,11,16,18,20,22,23,26]; // array of pointers to the first page in each dimension
-        document.write(`<a class=wide href=?${whichp[i]}>${d}</a>`);
-	}
+	putToc('Ingrese la información básica de su proyecto o iniciativa');
 } else if(p=='1'){ 
 	putBasics();
 } else if(p<29) {
