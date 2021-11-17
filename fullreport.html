@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- MCLDTools Admin Page -->
+<html lang=en>
+<head>
+    <title>Full Report</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/logo150.png"/>
+	<link rel="apple-touch-icon" href="/logo512.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="navy">
+	<link rel="stylesheet" href="/style.css">
+	<script type='text/javascript' src=/functions.js></script>
+</head>
+<body>
+  <nav id="navbar"></nav>
+    <script>cookie=setup();</script>
+    <h1>Full Report</h1>
+    <p id=basics></p>
+    <script type='text/javascript' src=/entext.js></script>
+    <table>
+        <thead><tr><th>Item</th><th>Value</th><th>Comment</th></tr></thead>
+        <tbody id=main></tbody>    
+    </table>
+    <script>
+        function putOne(i) {
+            page='p'+i;
+            qname=rubric[page][0];
+            cname=qname.substr(0, 2).toLowerCase();
+            qval=cookie[cname];
+            qcomment=cookie['n'+cname];
+            s+='<tr><td>'+qname+'</td><td>'+qval+'</td><td>'+qcomment+'</td></tr>\n';
+        }
+        s=`Program: ${cookie["program"]}<br>
+        Organization: ${cookie["organization"]}<br>
+        Country: ${cookie["country"]}<br>
+        Region: ${cookie["region"]}<br>
+        Stage: ${cookie["stage"]}<br>
+        Date: ${cookie["date"]}<br>
+        Comment: ${cookie["comment"]}<br>
+        `;
+        document.getElementById("basics").innerHTML=s;
+        s="";
+        for(i=2;i<29;i++) {
+            putOne(i);
+        }
+        document.getElementById("main").innerHTML=s;
+    </script>
+</body>
+</html>
