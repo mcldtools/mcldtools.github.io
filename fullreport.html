@@ -23,6 +23,22 @@
         <tbody id=main></tbody>    
     </table>
     <script>
+        function downloadReport(s) { // pass it the string that constitutes the report body
+          const filename = cookie.date + cookie.program + '.html';
+          const text = JSON.stringify(cookie); // save the global cookie object
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+        }
         function putOne(i) {
             page='p'+i;
             qname=rubric[page][0];
