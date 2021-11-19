@@ -1,7 +1,7 @@
 // This includes all functions called by pages independent of language
 
 // All the initialization for every page
-const version = 'v2.8';
+const version = 'v2.9';
 var s=""; // this string compiles the output for a given main content div
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
@@ -253,7 +253,6 @@ function putResults(p) {
     spider(scores, labels);
     putRubricScores(scores, tags);
   }
-  document.getElementById("main").innerHTML=s;
 }
 
 function putDimensionScores(scores) { // table of scores with dimension labels
@@ -304,19 +303,21 @@ function putMailButton(){
   const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>Email the data</a>`;
   document.getElementById("mailbutton").innerHTML=button;
 }
-function download() {
-  const filename = cookie.date + cookie.program + '.json';
-  const text = JSON.stringify(cookie); // save the global cookie object
+
+function download(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
-
   element.style.display = 'none';
   document.body.appendChild(element);
-
   element.click();
-
   document.body.removeChild(element);
+}
+
+function downloadCookies() {
+  const filename = cookie.date + cookie.program + '.json';
+  const text = JSON.stringify(cookie); // save the global cookie object
+  download(filename,text);
 }
 
 function clearCookies() {

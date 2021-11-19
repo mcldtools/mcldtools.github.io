@@ -1,4 +1,4 @@
-cacheName='mcld-v2.7';
+cacheName='mcld-v2.9';
 const URLS = [
   './',
   "./admin.html",
@@ -6,6 +6,7 @@ const URLS = [
   "./entext.js",
   "./fr.html",
   "./frtext.js",
+  "./fullreport.html",
   "./es.html",
   "./estext.js",
   './functions.js',
