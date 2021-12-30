@@ -1,7 +1,7 @@
 // This includes all functions called by pages independent of language
 
 // All the initialization for every page
-const version = 'v3.1';
+const version = 'v3.2';
 var s=""; // this string compiles the output for a given main content div
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
@@ -299,8 +299,12 @@ function spider(data, labels) {
 }
 // ADMIN Functions
 function putMailButton(){
+  lang=cookie.lang;
+  let msg="Email the data";
+  if(lang=='fr') msg='Envoyer les données par e-mail';
+  if(lang=='es') msg='Enviar datos por correo electrónico';
   const text=JSON.stringify(cookie);
-  const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>Email the data</a>`;
+  const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>${msg}</a>`;
   document.getElementById("mailbutton").innerHTML=button;
 }
 
