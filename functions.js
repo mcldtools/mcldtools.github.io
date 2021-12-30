@@ -1,7 +1,7 @@
 // This includes all functions called by pages independent of language
 
 // All the initialization for every page
-const version = 'v3.0';
+const version = 'v3.1';
 var s=""; // this string compiles the output for a given main content div
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
@@ -51,7 +51,7 @@ function setup() {
 <line x1='15' y1='18' x2='15' y2='0' stroke='white' stroke-width='4'></line>
 <line x1='22' y1='18' x2='22' y2='10' stroke='white' stroke-width='4'></line>
 </svg></a>
-<a href=admin.html><span class=tall >&vellip;</span> ${version}</a>
+<a href=admin_${lang}.html><span class=tall >&vellip;</span> ${version}</a>
 `;
   document.getElementById("navbar").innerHTML = contents;
   return cookie;
