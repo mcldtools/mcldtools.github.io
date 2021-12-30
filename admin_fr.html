@@ -24,7 +24,7 @@
     <h3>Effacer toutes les données actuelles</h3>
     <a class='wide' href='javascript:clearCookies();'>Cliquez ici pour effacer toutes les données</a>
     <h3>Télécharger un fichier json des paramètres précédemment téléchargés</h3>
-    <p>Choisir le fichier:<input type="file" title="Choisir le fichier" accept="application/json" onchange="readFile(this)"></p>
+    Choisir le fichier: <input type="file" accept="application/json" onchange="readFile(this)"><br>
     <script>
         function readFile(input) {
           let file = input.files[0];
