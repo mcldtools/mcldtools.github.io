@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- Handle the Rubric in English -->
+<!-- Handle the Rubric in French -->
 <html lang=fr>
 <head>
-    <title>DPC Rubrique</title>
+    <title>L'outil d'Évaluation de DPC</title>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J4Q4X2V7Y"></script>
 <script>
@@ -26,7 +26,7 @@
 	<nav id="navbar"></nav>
 	<script>cookie=setup(); // read cookies and place navbar</script>
 	<script type='text/javascript' src=/frtext.js></script>
-    <h1>DPC Rubrique</h1>
+    <h1>L'outil d'Évaluation de DPC</h1>
 	<section id="main"></section>
 <script>
 	const p=window.location.search.substr(1);
@@ -40,7 +40,11 @@
 	putRubric(rubric['p'+p]);
 } else {
 	const n=p-28;
-	s+='<h3>Figure '+n+' de 5. Cliquez sur la flèche pour en savoir plus.</h3>';
+	if(n==5) {
+		s+='<h3>Cliquez sur v2.9 pour télécharger vos données.</h3>';
+	}else{
+		s+='<h3>Figure '+n+' de 5. Cliquez sur la flèche pour le graphique suivant</h3>';
+	}
 	putResults(p); // spider diagrams
 	document.getElementById("main").innerHTML=s;
 }
