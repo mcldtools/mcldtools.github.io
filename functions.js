@@ -83,6 +83,7 @@ function saveform(formid) {
   Array.from(form.elements).forEach((input) => {
     document.cookie = input.name + '=' + encodeURI(input.value) + ';expires=' + expiry + ';path=/';
   });
+  location="en.html?2";
 }
 
 
@@ -132,6 +133,11 @@ function putDate(fname) {
   s+='<input type=date name=' + fname + ' value="' + d + '">';
 }
 
+function putText(fname) {
+  let d = cookie[fname];
+  s += "<p>" + basics[fname] + "</p><textarea class=wide rows=4 width=100%>" + d + "</textarea>\n";
+}
+
 function putInput(fname) {
   const placeholder = basics[fname];
   let val = cookie[fname];
@@ -142,8 +148,8 @@ function putInput(fname) {
 function putBasics() {
   s=`<h1>${basics.h1}</h1>
   <form id=basics>`;
-  putInput("program");
   putInput("organization");
+  putInput("program");
   putInput("country");
   putInput("region");
   putSelect('stage');
@@ -157,14 +163,14 @@ function putTamarack() {
   s=`<h1>${basics.h1}</h1>
   <form id=basics>`;
   putInput("organization");
-  putSelect("region");
-  putSelect("level");
-  putSelect('stage');
+  s+=dropdowns;
+  putText("program");
+  putInput("cldyear");
+  putInput("multiyear");
   putDate("date");
   putInput("comment");
   s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
-  document.getElementById("main").innerHTML=s;
-  
+  document.getElementById("main").innerHTML=s;  
 }
 
 function putRubric(contents) { // Create layout based on an array of options

@@ -1,16 +1,57 @@
+/* Version for Tamarack*/
+
 const basics={
     h1:"Basic Program Information",
-    program:"Program Name",
     organization:"Organization Name",
-    country:"Programming Country(s)",
-    region:"Provinces/Region (if applicable)",
+    program:"Please describe your organization and its work",
     name:"Name(s) completing this assessment",
-    date:"Date Completed",
-    select:"Stage",
-    options:['pilot','new','midterm','mature','complete'],
+    date:"Date completed:",
+    facilitate:"Who facilitated/co-facilitated the discussion to use the tool? (Designation/title/role)",
+    howmany:"How many people were included?",
+    stakeholders:"Which stakeholder groups did they represent?",
+    inperson:"Did you meet online or in person?",
+    howlong:"How long did it take to complete the assessment (minutes)",
+    cldyear:"When did your organization adopt a citizen-led or asset-based approach? (year)",
     comment:"Additional comments/feedback",
-    save:"Save data"
+    multiyear:"Does your initiative have access to multi-year funding? (y/n)",
+    save:"Save data",
+    sec2:"Who is completing this Assessment?",
 }
+
+const dropdowns=`
+<div class=wide>
+<label>Province where your organizations works<select name=region>
+<option value='AB'>Alberta</option>
+<option value='BC'>British Columbia</option>
+<option value='MB'>Manitoba</option>
+<option value='NB'>New Brunswick</option>
+<option value='NL'>Newfoundland and Labrador</option>
+<option value='NT'>Northwest Territories</option>
+<option value='NS'>Nova Scotia</option>
+<option value='NU'>Nunavut</option>
+<option value='ON'>Ontario</option>
+<option value='PE'>Prince Edward Island</option>
+<option value='QC'>Quebec</option>
+<option value='SK'>Saskatchewan</option>
+<option value='YK'>Yukon</option>
+</select></label></div>
+<div class=wide><label>Level where this program or project operates
+<select name=level>
+<option value=1>Neighbourhood</option>
+<option value=2>City</option>
+<option value=3>Region</option>
+<option value=4>Town</option>
+</select>
+</label></div>
+<div class=wide><label>Stage of work<select name=stage>
+<options value=1>Emerging></option>
+<option value=2>Launching our initiative</option>
+<option value=3>Forming our plan</option>
+<option value=4>Implementing our plan</option>
+<option value=5>Sustaining our initiative</option> 
+</select></label>
+</div>
+`;
 
 const dimensions=[
 "A: Participation, Inclusion, and Voice",
