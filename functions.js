@@ -153,6 +153,20 @@ function putBasics() {
   document.getElementById("main").innerHTML=s;
 }
 
+function putTamarack() {
+  s=`<h1>${basics.h1}</h1>
+  <form id=basics>`;
+  putInput("organization");
+  putSelect("region");
+  putSelect("level");
+  putSelect('stage');
+  putDate("date");
+  putInput("comment");
+  s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
+  document.getElementById("main").innerHTML=s;
+  
+}
+
 function putRubric(contents) { // Create layout based on an array of options
   cname = contents[0].substr(0, 2).toLowerCase();
   s="<h2>" + contents[0] + "</h2>";
