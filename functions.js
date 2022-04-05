@@ -1,11 +1,11 @@
 // This includes all functions called by pages independent of language
+// New version that uses localStorage with v11
+// Same as Tamarack except for items in stuff.js
 
-// All the initialization for every page
-const version = 'v3.5';
+const version = 'v12';
 var s=""; // this string compiles the output for a given main content div
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
-
   // these functions run for a pwa
   window.onload = () => {
     'use strict'; // register service worker
@@ -14,21 +14,16 @@ function setup() {
     }
   }
 
-  // first, pull in cookies and create a global cookie object an
-  cookie = document.cookie.split('; ').reduce((prev, current) => {
-    const [name, value] = current.split('=');
-    prev[name] = decodeURI(value);
-    return prev
-  }, {});
   // next, output the navbar with the appropriate arrow links in this template
   // note - now in this system, 0=rubric, 1=basics, 2=a1 etc through maxpage
-  now = +window.location.search.substr(1);
-  if (now == undefined) now = 0;
+  now = window.location.search.substring(1);
+  if((now=='') || isNaN(now))now=0
+  now=parseInt(now);
   if (now > maxpage) now = maxpage;
   prior = Math.max(now - 1, 0);
   next = Math.min(now + 1, maxpage);
-  lang = cookie.lang;
-  if (lang != 'en' && lang != 'fr' && lang != 'es') { setLang(); lang = 'en'; }
+  lang = localStorage.getItem("lang");
+  if (lang != 'en' && lang != 'fr') { setLang(); lang = 'en'; }
   LANG = lang.toUpperCase();
 
   // The navbar contains inline SVG for efficient icons
@@ -54,15 +49,14 @@ function setup() {
 <a href=admin_${lang}.html><span class=tall >&vellip;</span> ${version}</a>
 `;
   document.getElementById("navbar").innerHTML = contents;
-  return cookie;
 }
 
 function setLang() { // for now, this will be a toggle
-  olang = cookie.lang;
+  olang = localStorage.getItem("lang");
   if (olang == 'en') { lang = 'fr'; }
-  else if (olang == 'fr') { lang = 'es'; }
+//  else if (olang == 'fr') { lang = 'es'; } // for now no spanish
   else (lang = 'en');
-  setCookie('lang', lang);
+  localStorage.setItem('lang', lang);
   location.href = window.location.href.replace(olang, lang);
 }
 
@@ -78,25 +72,21 @@ function loadFile(filePath) {
 }
 
 function saveform(formid) {
-  expiry = "Fri, 01 Jan 2038 00:00:01 GMT";
+//  expiry = "Fri, 01 Jan 2038 00:00:01 GMT";
   const form = document.getElementById(formid);
   Array.from(form.elements).forEach((input) => {
-    document.cookie = input.name + '=' + encodeURI(input.value) + ';expires=' + expiry + ';path=/';
-  });
-  location="en.html?2";
-}
-
-
-function setCookie(cname, cvalue) {
-  cookie[cname] = cvalue; // assign local copy
-  const expiry = "Fri, 01 Jan 2038 00:00:01 GMT";
-  const arg = cname + "=" + cvalue + ";" + expiry;
-  document.cookie = arg;
+    val=input.value;
+    if(val=='undefined') val='';
+    val=val.replace(/[^a-zA-Z0-9 -.,]/g, '');
+    localStorage.setItem(input.name,val)} );
+  location=lang+".html?"+(now+1);
 }
 
 function saveComment(cname) {
   const com = document.getElementById(cname).value;
-  setCookie(cname, com);
+  localStorage.setItem(cname, com);
+  now = parseInt(window.location.search.substring(1));
+  location ="?"+(now+1); 
 }
 function setColor(cname, x) {
   for (i = 0; i < 5; i++) {
@@ -110,39 +100,57 @@ function setit(clicked_id) {
   const cname = clicked_id.substr(0, 2);
   const x = clicked_id.substr(2, 1);
   setColor(cname, x)
-  setCookie(cname, x);
+  localStorage.setItem(cname, x);
 }
 
-function putSelect(fname) { // currently, only allowed per form
-  const arr = basics.options; // option labels are language specific
-  s+= "<div><label>" + basics.select + "<select id='" + fname + "' name='" + fname + "'>\n";
+function putSelect(fname,arr) { // currently, only allowed per form
+  s+= "<label class=wide>" + basics[fname] + ": <select id='" + fname + "' name='" + fname + "'>\n";
   for (i = 0; i < arr.length; i++) {
     s += "<option value='" + i + "'";
-    if (cookie[fname] == i) s += " SELECTED";
+    if (localStorage.getItem(fname) == i) s += " SELECTED";
     s += ">" + arr[i] + "</option>\n";
   }
-  s+= "</select></div>\n";
+  s+= "</select></label>\n";
 }
 
 function putDate(fname) {
-  let d = cookie[fname];
+  let d = localStorage.getItem(fname);
   if (!d) {
     let d = new Date().toISOString().slice(0, 10);
-    setCookie(fname, d);
+    localStorage.setItem(fname, d);
   }
-  s+='<input type=date name=' + fname + ' value="' + d + '">';
+  s+='<div class=wide>'+basics[fname]+': <input type=date name=' + fname + ' value="' + d + '"></div>';
 }
 
 function putText(fname) {
-  let d = cookie[fname];
-  s += "<p>" + basics[fname] + "</p><textarea class=wide rows=4 width=100%>" + d + "</textarea>\n";
+  let d = localStorage.getItem(fname);
+  s += "<p>" + basics[fname] + "</p><textarea name="+fname+" class=wide rows=4 width=100%>" + d + "</textarea>\n";
 }
 
 function putInput(fname) {
-  const placeholder = basics[fname];
-  let val = cookie[fname];
-  if (val == undefined) val = '';
-  s+=`<input class=wide name="${fname}" placeholder="${placeholder}" value="${val}">`;
+  const val=localStorage.getItem(fname);
+  s+='<label class=wide>'+basics[fname]+': <input name="'+fname+'" value="'+val+'"></label>';
+}
+function putNumber(fname){
+  let val = localStorage.getItem(fname);
+  if(val == undefined) val = 0;
+  s+='<label class=wide>'+basics[fname]+': <input name='+fname+' type=number min=0 max=1000 value='+val+"></label>\n";
+}
+
+function putYears(fname,y1) {
+  const y2=new Date().getFullYear();  
+  s+= "<div class=wide><label>" + basics[fname] + ": <select id='" + fname + "' name='" + fname + "'>\n";
+  for (i = y1; i < y2; i++) {
+    s += "<option value='" + i + "'";
+    if (localStorage.getItem(fname) == i) s += " SELECTED";
+    s += ">" + i + "</option>\n";
+  }
+  s+= "</select></div>\n";  
+}
+
+
+function putYN(fname){
+  putSelect(fname,yn);
 }
 
 function putBasics() {
@@ -159,20 +167,6 @@ function putBasics() {
   document.getElementById("main").innerHTML=s;
 }
 
-function putTamarack() {
-  s=`<h1>${basics.h1}</h1>
-  <form id=basics>`;
-  putInput("organization");
-  s+=dropdowns;
-  putText("program");
-  putInput("cldyear");
-  putInput("multiyear");
-  putDate("date");
-  putInput("comment");
-  s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
-  document.getElementById("main").innerHTML=s;  
-}
-
 function putRubric(contents) { // Create layout based on an array of options
   cname = contents[0].substr(0, 2).toLowerCase();
   s="<h2>" + contents[0] + "</h2>";
@@ -181,14 +175,14 @@ function putRubric(contents) { // Create layout based on an array of options
   }
   // And fill in the comment if it exists
   cid = 'n' + cname;
-  let com = cookie[cid];
+  let com = localStorage.getItem(cid);
   if (com == undefined) com = '';
-  const str1 = "<h3>Comment</h3>\n<textarea class=wide id='" + cid + "' rows=3 width=100% >\n";
-  const str2 = "</textarea>\n<button onclick='saveComment(" + '"' + cid + '"' + ")'>Click to save comment</button>\n";
+  const str1 = "<h3>"+comment+"</h3>\n<textarea class=wide id='" + cid + "' rows=3 width=100% >\n";
+  const str2 = "</textarea>\n<button onclick='saveComment(" + '"' + cid + '"' + ")'>"+clickto+"</button>\n";
   s+=str1 + com + str2;
   document.getElementById("main").innerHTML=s;
   // Next, paint the color of the button if preset
-  x = cookie[cname];
+  x = localStorage.getItem(cname);
   if (x > '') document.getElementById(cname + x).style = 'background-color:navy;color:white;';
 
 }
@@ -200,6 +194,7 @@ function putXY(r, i, n) { // convert radius and index in spider to x,y pair
   s+=' ' + Math.floor(x) + ',' + Math.floor(y);
 }
 
+
 // for the 4 different diagrams, create them as pages p29, p30, p31
 
 function computeByDimensions(labels, lengths) {
@@ -208,7 +203,7 @@ function computeByDimensions(labels, lengths) {
     scores[i] = 0;
     for (j = 1; j <= lengths[i]; j++) { // which sub dimension
       const cname = labels[i].toLowerCase() + j;
-      let x = +cookie[cname];
+      let x = +localStorage.getItem(cname);
       if (isNaN(x)) x = 0;
       x--;
       if (x < 1) x = 0;
@@ -223,7 +218,7 @@ function computeByDimensions(labels, lengths) {
 function computeScores(labels) {
   let scores = [];
   for (i = 0; i < labels.length; i++) {
-    x = cookie[labels[i].toLowerCase()];
+    x = localStorage.getItem(labels[i].toLowerCase());
     if (isNaN(x)) x = 0; x--; if (x < 1) x = 0;
     scores[i] = Math.floor(100 * x / 3);
   }
@@ -319,11 +314,8 @@ function spider(data, labels) {
 }
 // ADMIN Functions
 function putMailButton(){
-  lang=cookie.lang;
-  let msg="Email the data";
-  if(lang=='fr') msg='Envoyer les données par e-mail';
-  if(lang=='es') msg='Enviar datos por correo electrónico';
   const text=JSON.stringify(cookie);
+  const msg=basics["sendmail"];
   const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>${msg}</a>`;
   document.getElementById("mailbutton").innerHTML=button;
 }
@@ -338,16 +330,20 @@ function download(filename, text) {
   document.body.removeChild(element);
 }
 
-function downloadCookies() {
-  const filename = cookie.date + cookie.program + '.json';
-  const text = JSON.stringify(cookie); // save the global cookie object
+function downloadStorage() {
+  const filename = localStorage.getItem("date") + localStorage.getItem("organization") + '.json';
+  const text = JSON.stringify(localStorage); 
   download(filename,text);
 }
 
-function clearCookies() {
-  const keys = Object.keys(cookie);
-  for (i = 0; i < keys.length; i++) {
-    document.cookie = keys[i] + "= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-  }
+function convert2Storage(){
+  document.cookie.split('; ').reduce((prev, current) => {
+    const [name, value] = current.split('=');
+    localStorage.setItem(name,decodeURI(value));
+  }, {});
+}
+
+function clearStorage() {
+  localStorage.clear();
   alert("OK, data cleared");
 }

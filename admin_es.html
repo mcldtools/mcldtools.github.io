@@ -14,16 +14,17 @@
 </head>
 <body>
   <nav id="navbar"></nav>
-    <script>cookie=setup();</script>
-    <h1>Funciones administrativas</h1>
-    <a class=wide href=fullreport.html>Reporte completo</a>
+    <script>setup();</script>
+    <h1>Admin Functions</h1>
+    <a class="wide" href="javascript:convert2Storage()">Convert old data</a>
+    <a class=wide href=fullreport.html>Complete Report</a>
     <div id=mailbutton></div>
     <script>putMailButton();</script>
-    <h3>Descarga los datos actuales en un archivo json</h3>
-    <a class='wide' href='javascript:downloadCookies();'>Haga clic aquí para descargar los datos</a>
-    <h3>Borrar todos los datos actuales</h3>
-    <a class='wide' href='javascript:clearCookies();'>Haga clic aquí para borrar todos los datos</a>
-    <h3>Descargue un archivo json de la configuración descargada previamente</h3>
+    <h3>Download current data into a json file</h3>
+    <a class='wide' href='javascript:downloadStorage();'>Click here to download data</a>
+    <h3>Clear all the current data</h3>
+    <a class='wide' href='javascript:clearStorage();'>Click here to clear all data</a>
+    <h3>Upload a json file of previously downloaded settings</h3>
     <input type="file" accept="application/json" onchange="readFile(this)"><br>
     <script>
         function readFile(input) {
@@ -34,12 +35,12 @@
           reader.readAsText(file);
         
           reader.onload = function() { // ok, the text arrives here and gets processed
-            cookie=JSON.parse(reader.result);
-            for(const property in cookie) { // iterate over the results
-                setCookie(property,cookie[property]);
+            ob=JSON.parse(reader.result);
+            for(const property in ob) { // iterate over the results
+                localStorage.setItem(property,ob[property]);
             }
-            lang=cookie.lang;
-            if(lang==undefined) lang='es';
+            lang=ob.lang;
+            if(lang==undefined) lang='en';
             location.href=lang+'.html?1'; // jump to basic info
           };
         

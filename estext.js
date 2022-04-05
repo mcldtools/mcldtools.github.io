@@ -9,7 +9,8 @@ const basics={
     select:"Etapa de trabajo",
     options:['piloto','proyecto nuevo','mediano plazo','fase final','terminado'],
     comment:"Comentarios adicionales y retroalimentación",
-    save:"Guardar Datos"
+    save:"Guardar Datos",
+    sendmail:"Enviar datos por correo electrónico"
 }
 const dimensions=[
 "A: Participación, inclusión, voz",

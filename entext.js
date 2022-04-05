@@ -9,7 +9,8 @@ const basics={
     select:"Stage",
     options:['pilot','new','midterm','mature','complete'],
     comment:"Additional comments/feedback",
-    save:"Save data"
+    save:"Save data",
+    sendmail:"Email the data"
 }
 
 const dimensions=[

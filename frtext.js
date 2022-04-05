@@ -9,7 +9,8 @@ const basics={
     select: "Stade de travail",
     options:["pilote","nouveau", "à mi-parcous", "mature", "terminé"],
     comment:"Commentaires et réactions supplémentaires",
-    save:"Sauvegarder les données"
+    save:"Sauvegarder les données",
+    sendmail:"Envoyer les données par e-mail"
 };
 
 const dimensions=[
