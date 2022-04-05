@@ -6,12 +6,14 @@ const basics={
     region:"Provinces / Région (le cas échéant)",
     name:"Qui réalise cette évaluation ? Nom (s)",
     date:"Date d'exécution",
-    select: "Stade de travail",
-    options:["pilote","nouveau", "à mi-parcous", "mature", "terminé"],
-    comment:"Commentaires et réactions supplémentaires",
+    stage: "Stade de travail",
     save:"Sauvegarder les données",
     sendmail:"Envoyer les données par e-mail"
 };
+
+const stages=["pilote","nouveau", "à mi-parcous", "mature", "terminé"];
+const clickto="Cliquez pour enregistrer le commentaire";
+const comment="Commentaire";
 
 const dimensions=[
 "A: Participation, Inclusion, et Voix",

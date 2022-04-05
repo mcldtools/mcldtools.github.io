@@ -6,12 +6,13 @@ const basics={
     region:"Provinces/Region (if applicable)",
     name:"Name(s) completing this assessment",
     date:"Date Completed",
-    select:"Stage",
-    options:['pilot','new','midterm','mature','complete'],
-    comment:"Additional comments/feedback",
+    stage:"Stage",
     save:"Save data",
     sendmail:"Email the data"
 }
+const stages=['pilot','new','midterm','mature','complete'];
+const clickto="Click to save comment";
+const comment="Comment";
 
 const dimensions=[
 "A: Participation, Inclusion, and Voice",

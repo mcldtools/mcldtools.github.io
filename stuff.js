@@ -21,7 +21,7 @@ function setLang() { // for now, this will be a toggle
     if (olang == 'en') { lang = 'fr'; }
     else if (olang == 'fr') { lang = 'es'; }
     else (lang = 'en');
-    setCookie('lang', lang);
+    localStorage.setItem('lang', lang);
     location.href = window.location.href.replace(olang, lang);
   }
 
@@ -30,7 +30,7 @@ function setLang() { // for now, this will be a toggle
   
   // ADMIN Functions
 function putMailButton(){
-    const text=JSON.stringify(cookie);
+    const text=JSON.stringify(localStorage);
     const msg=basics["sendmail"];
     const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>${msg}</a>`;
     document.getElementById("mailbutton").innerHTML=button;

@@ -6,12 +6,14 @@ const basics={
     region:"Provincias o región/es (si corresponde):",
     name:"Name(s) completing this assessment",
     date:"Fecha de llenado de rúbrica:",
-    select:"Etapa de trabajo",
-    options:['piloto','proyecto nuevo','mediano plazo','fase final','terminado'],
-    comment:"Comentarios adicionales y retroalimentación",
+    stage:"Etapa de trabajo",
     save:"Guardar Datos",
     sendmail:"Enviar datos por correo electrónico"
 }
+const stages=['piloto','proyecto nuevo','mediano plazo','fase final','terminado'];
+const comment="Comentarios adicionales y retroalimentación";
+const clickto="Click to save comment";
+
 const dimensions=[
 "A: Participación, inclusión, voz",
 "B: Recursos locales y conocimiento",

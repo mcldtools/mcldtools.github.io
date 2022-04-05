@@ -23,7 +23,7 @@ function setup() {
   prior = Math.max(now - 1, 0);
   next = Math.min(now + 1, maxpage);
   lang = localStorage.getItem("lang");
-  if (lang != 'en' && lang != 'fr') { setLang(); lang = 'en'; }
+  if (lang != 'en' && lang != 'fr' && lang != 'es') { setLang(); lang = 'en'; }
   LANG = lang.toUpperCase();
 
   // The navbar contains inline SVG for efficient icons
@@ -52,9 +52,9 @@ function setup() {
 }
 
 function setLang() { // for now, this will be a toggle
-  olang = localStorage.getItem("lang");
+  olang = lang;
   if (olang == 'en') { lang = 'fr'; }
-//  else if (olang == 'fr') { lang = 'es'; } // for now no spanish
+  else if (olang == 'fr') { lang = 'es'; }
   else (lang = 'en');
   localStorage.setItem('lang', lang);
   location.href = window.location.href.replace(olang, lang);
@@ -128,12 +128,13 @@ function putText(fname) {
 }
 
 function putInput(fname) {
-  const val=localStorage.getItem(fname);
+  let val=localStorage.getItem(fname);
+  if (val=="null" || val=="undefined") val='';
   s+='<label class=wide>'+basics[fname]+': <input name="'+fname+'" value="'+val+'"></label>';
 }
 function putNumber(fname){
   let val = localStorage.getItem(fname);
-  if(val == undefined) val = 0;
+  if(val == undefined || val==null) val = 0;
   s+='<label class=wide>'+basics[fname]+': <input name='+fname+' type=number min=0 max=1000 value='+val+"></label>\n";
 }
 
@@ -160,7 +161,7 @@ function putBasics() {
   putInput("program");
   putInput("country");
   putInput("region");
-  putSelect('stage');
+  putSelect('stage',stages);
   putDate("date");
   putInput("comment");
   s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
@@ -314,7 +315,7 @@ function spider(data, labels) {
 }
 // ADMIN Functions
 function putMailButton(){
-  const text=JSON.stringify(cookie);
+  const text=JSON.stringify(localStorage);
   const msg=basics["sendmail"];
   const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>${msg}</a>`;
   document.getElementById("mailbutton").innerHTML=button;
