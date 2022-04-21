@@ -2,8 +2,9 @@
 // New version that uses localStorage with v11
 // Same as Tamarack except for items in stuff.js
 
-const version = 'v12';
+const version = 'v13';
 var s=""; // this string compiles the output for a given main content div
+var lang=""; 
 function setup() {
   const maxpage = 33; // the highest numbered page supported by en and fr so far
   // these functions run for a pwa
