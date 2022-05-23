@@ -23,24 +23,7 @@
 	<section id="main"></section>
 <script>
 	const p=window.location.search.substr(1);
-	localStorage.setItem('pointer',p);
-// routing to different style english pages
-	if(p=='0') {
-		putToc('Enter Basic Information');
-} else if(p=='1'){ 
-	putBasics();
-} else if(p==22 && localStorage.getItem("orgtype")=='0') {
-	putRubric(rubric['g22']);
-} else if(p<29) {
-	putRubric(rubric['p'+p]);
-} else {
-	const n=p-28;
-	s='<h2>Figure '+n+' of 5. Click arrows for more.</h2>';
-	putResults(p); // spider diagrams
-	document.getElementById("main").innerHTML=s;
-}
-
+	putPages(p);
 </script>
-
 </body>
 </html>

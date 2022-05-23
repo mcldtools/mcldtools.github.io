@@ -2,7 +2,7 @@
 // New version that uses localStorage with v11
 // Same as Tamarack except for items in stuff.js
 
-const version = 'v15';
+const version = 'v16';
 var s=""; // this string compiles the output for a given main content div
 var lang=""; 
 function setup() {
@@ -315,6 +315,31 @@ function spider(data, labels) {
   }
   s+="</svg>";
 }
+// Main page contents script -- using global p variable
+
+function putPages(p) {
+	localStorage.setItem('pointer',p);
+  const govs=["11","12","13","14","15","22"];
+// routing to different style english pages
+	if(p=='0') {
+		putToc(basics["h1"]);
+} else if(p=='1'){ 
+	putBasics();
+} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
+	putRubric(rubric['g'+p]);
+} else if(p<29) {
+	putRubric(rubric['p'+p]);
+} else {
+	const n=p-28;
+	s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
+	putResults(p); // spider diagrams
+	document.getElementById("main").innerHTML=s;
+}
+
+
+}
+
+
 // ADMIN Functions
 function putMailButton(){
   let msg="Email the data";

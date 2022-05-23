@@ -30,28 +30,7 @@
 	<section id="main"></section>
 <script>
 	const p=window.location.search.substr(1);
-	localStorage.setItem('pointer',p);
-// routing to different style english pages
-	if(p=='0') { // output the basic rubric
-		putToc('Informations Générales');
-} else if(p=='1'){
-	putBasics();
-} else if(p==22 && localStorage.getItem("orgtype")=='0') {
-	putRubric(rubric['g22']);
-} else if(p<29) {
-	putRubric(rubric['p'+p]);
-} else {
-	const n=p-28;
-	if(n==5) {
-		s+='<h3>Figure 5 de 5. Cliquez sur les trois points en haut à droite pour télécharger vos données.</h3>';
-	}else{
-		s+='<h3>Figure '+n+' de 5. Cliquez sur la flèche pour le graphique suivant</h3>';
-	}
-	putResults(p); // spider diagrams
-	document.getElementById("main").innerHTML=s;
-}
-
-
+	putPages(p);
 </script>
 
 </body>

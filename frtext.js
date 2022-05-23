@@ -1,5 +1,7 @@
 const basics={
     h1:"Informations sur le Programme",
+    figure1:"Figure ",
+    figure2:" de 5. Cliquez sur la flèche pour le graphique suivant",
     program:"Nom du programme",
     organization:"Nom de l'organisation (si différent du nom du programme)",
     orgtype:"Type d'organisation:",
@@ -9,7 +11,8 @@ const basics={
     date:"Date d'exécution",
     stage: "Stade de travail",
     save:"Sauvegarder les données",
-    sendmail:"Envoyer les données par e-mail"
+    sendmail:"Envoyer les données par e-mail",
+    comment:"Commentaire"
 };
 
 const stages=["pilote","nouveau", "à mi-parcous", "mature", "terminé"];
@@ -107,7 +110,13 @@ p11:[
 "La stratégie de sortie est créée par l'organisme de mise en œuvre sans consultation des dirigeants ou des membres de la communauté.",
 "La stratégie de sortie a été créée en consultation avec les dirigeants locaux et les membres de la communauté.",
 " Les membres de la communauté et les dirigeants locaux s'approprient la stratégie de sortie."],
-
+g11:[
+"C1 Les communautés sont au cœur de l'élaboration des stratégies de continuité du programme DPC",
+"Aucune information/information insuffisante pour  émettre un jugement.",
+"Il n'y a pas de stratégie de continuité.",
+"La stratégie de continuité est créée par les responsables du gouvernement local sans consultation des leaders locaux, de la société civile locale ou des membres de la communauté.",
+"La stratégie de continuité a été créée en consultation avec les dirigeants locaux, la société civile locale ou les membres de la communauté.",
+"La stratégie de continuité est détenue par les membres de la communauté et les dirigeants locaux."],
 p12:[
 "C2 La planification d'une sortie responsable est intégrée dans le programme DPC [toutes les phases du cycle de vie]",
 "Aucune information/information insuffisante pour émettre un jugement",
@@ -115,7 +124,13 @@ p12:[
 "Les stratégies de sortie sont formulées en fonction de la fin du programme la fin du programme (très proche de la clôture où à la clôture).",
 "Les stratégies de sortie sont planifiées dès la conception, et réexaminées vers la fin du programme (très proche de la clôture où à la clôture).",
 "La planification des stratégies de sortie commence dès la conception, est révisée de manière itérative pendant la mise en œuvre, et est finalisée vers la fin du programme."],
-
+g12:[
+"C2 La planification de la continuité est intégrée dans le programme du DPC.",
+"Aucune information/information insuffisante pour  émettre un jugement.",
+"Il n'y a pas de stratégies de continuité.",
+"Les stratégies de continuité sont formulées vers la fin du programme ou vers la fin du mandat du gouvernement.",
+"Les stratégies de continuité sont planifiées à la conception et révisées vers la fin du programme ou vers la fin du mandat (très proche de la clôture où à la clôture).",
+"La planification de la continuité commence dès la conception, est révisée de manière itérative pendant la mise en œuvre et finalisée vers la fin du programme ou vers la fin du mandat."],
 p13:[
 "C3 Les stratégies de sortie du programme DPC décrivent les mécanismes laissés en place pour assurer la durabilité et / ou la résilience",
 "Aucune information/information insuffisante pour émettre un jugement",
@@ -123,7 +138,13 @@ p13:[
 "Il existe une stratègie de sortie, mais elle n'indique pas de  mècanismes de durabilité ou de résilience.",
 "Il existe un plan logique qui décrit les mécanismes par lesquels l'impact souhaité se poursuivra après la fin de l'intervention.",
 "Il existe un plan logique qui décrit les mécanismes par lesquels l'impact détérminé par les membres de la communauté se poursuivra après la fin de l'intervention. Cela inclut l'évaluation des capacités / ressources nécessaires aux acteurs locaux."],
-
+g13:[
+"C3 Les stratégies de continuité du programme décrivent les mécanismes mis en place pour assurer la durabilité et la résilience.",
+"Aucune information/information insuffisante pour porter un jugement.",
+"Il n'y a pas de stratégie de continuité.",
+"Il existe une stratégie de continuité mais elle n'indique pas les mécanismes de durabilité ou de résilience.",
+"Il existe un plan logique qui décrit les mécanismes par lesquels l'impact souhaité se poursuivra après la fin du programme ou le changement de gouvernement.",
+"Il existe un plan logique qui décrit les mécanismes par lesquels l'impact déterminé par les membres de la communauté se poursuivra après la fin de l'intervention. Cela inclut l'évaluation des capacités/ressources nécessaires aux acteurs locaux."],
 p14:[
 "C4 L'impact du programme DPC est mesuré après la clôture du programme avec la participation locale.",
 "Ne s'applique pas",
@@ -131,7 +152,13 @@ p14:[
 "L'impact du programme est mesuré  (ou prévu d'être mesuré) 2 ans et plus après la clôture du programme. Les acteurs communautaires sont informés de l'exercice et fournissent les informations demandées.",
 "L'impact du programme est mesuré 2 ans et plus après la clôture du programme. Les acteurs communautaires sont consultés au sujet de l'exercice et fournissent les informations demandées.",
 "L'impact du programme est mesuré 2 ans et plus après la clôture du programme. Les acteurs communautaires participent activement à toutes les étapes de l'évaluation post-programme (de la conception, au rapport, au plan d'action)."],
-
+g14:[
+"C4 La mesure de l'impact du programme DPC est institutionnalisée et se poursuit après les changements de gouvernement.",
+"Ne s'applique pas",
+"L'impact du programme n'est pas planifié ou mesuré après la fermeture/le changement de gouvernement.",
+"L'impact du programme est mesuré (ou prévu d'être mesuré) 2 ans et plus après la clôture du programme/le changement de gouvernement. Les acteurs communautaires sont informés de l'exercice et fournissent les informations demandées.",
+"L'impact du programme est mesuré 2 ans et plus après la clôture du programme/le changement de gouvernement. Les acteurs communautaires sont consultés au sujet de l'exercice et fournissent les informations demandées.",
+"L'impact du programme est mesuré 2 ans et plus après la clôture du programme ou le changement de gouvernement. Les acteurs communautaires participent activement à toutes les étapes de l'évaluation (de la conception, au rapport, au plan d'action)."],
 p15:[
 "C5 Les membres de la communauté (y compris les plus marginalisés) profitent toujours du programme DPC",
 "Ne s'applique pas",
@@ -139,7 +166,13 @@ p15:[
 "Il y a peu de preuves d'un impact durable. Il y a eu peu ou pas d'adaptation.",
 "L'impact est mitigé mais surtout positif. Les membres et / ou les structures de la communauté ont pratiqué certaines adaptations et compétences acquises grâce au programme DPC.",
 "La plupart des preuves sont positives. Les membres et / ou les structures de la communauté ont régulièrement utilisé des mécanismes adaptatifs et des compétences acquises grâce au programme DPC."],
-
+g15:[
+"C5 Les membres de la communauté (y compris les plus marginalisés) continuent à bénéficier du programme DPC après les changements de gouvernement.",
+"Ne s'applique pas",
+"Le programme n'a laissé aucune trace de son impact (positif, négatif, neutre).",
+"Il y a peu de preuves d'un impact durable. Il y a eu peu ou pas d'adaptation.",
+"L’impact est mitigé mais surtout positif. Les membres et/ou les structures de la communauté ont pratiqué certaines adaptations et compétences acquises grâce au programme DPC.",
+"Preuve majoritairement positive. Les membres et/ou les structures de la communauté ont régulièrement utilisé les mécanismes d'adaptation et les compétences acquises dans le cadre du programme DPC."],
 p16:[
 "D1 Le programme encourage les partenariats avec une véritable responsabilité mutuelle",
 "Aucune information/information insuffisante pour émettre un jugement",

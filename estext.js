@@ -1,5 +1,7 @@
 const basics={
     h1:"Información General",
+    figure1:"Figura ",
+    figure2:" de 5.  Da clic en las flechas para ver más resultados.",
     program:"Nombre del programa",
     organization:"Nombre de la organización (si es diferente del Nombre del programa)",
     orgtype:"Tipo de organización",
@@ -9,12 +11,13 @@ const basics={
     date:"Fecha de llenado de rúbrica:",
     stage:"Etapa de trabajo",
     save:"Guardar Datos",
-    sendmail:"Enviar datos por correo electrónico"
+    sendmail:"Enviar datos por correo electrónico",
+    comment:"Comentarios"
 }
 const stages=['piloto','proyecto nuevo','mediano plazo','fase final','terminado'];
 const orgtypes=["Gobierno local/afiliado del gobierno","organización de la sociedad civil/sin fines de lucro"];
 const comment="Comentarios adicionales y retroalimentación";
-const clickto="Click to save comment";
+const clickto="Guardar comentarios";
 
 const dimensions=[
 "A: Participación, inclusión, voz",
@@ -82,6 +85,42 @@ p12:["C2. Planeación para una salida responsable que está entretejida en todo 
 p13:["C3. La estrategia de salida del programa basado en DLCPG describe el mecanismo creado para asegurar la sostenibilidad y/o la resiliecia", "Sin información / Información insuficiente para asignar un valor.", "No existen estrategias de salida.", "Existe una estrategia de salida pero no apuntala mecanismos de sostenibilidad o resiliencia.", "Hay un plan lógico que describe los mecanismos por medio de los cuales el impacto deseado continuará luego de que el programa o acción hayan terminado.", "Hay un plan lógico que describe los mecanismos por medio de los que el impacto determinado por las y los miembros comunitarios continuarán luego que el programa o acción haya terminado. Esto incluye asesorías o capacitaciones/recursos requeridos por actores locales."],
 p14:["C4. El programa basado en DLCPG es medido después de su terminación y con participacion local.", "No aplica.", "El impacto del programa no está planeadio ni se mide más allá de 2 años posteriores al cierre", "El impacto del programa es medido (o planeado ser medido) a los 2 años del cierre del programa. Los actores comunitarios son informados sobre el ejercicio y se les provee la información que requieran.", "El impacto del programa es medido a los 2 años del cierre. Los actores comunitarios son consultados sobre el ejercicio y proveen la información que se les solicita.", "El impacto del programa se mida a los 2 años del cierre del programa. Los actores comunitarios son participantes activos en todas las fases de la evaluación posterior al programa (desde el diseño hasta el plan de acción)."],
 p15:["C5. Miembros de la comunidad (incluyendo a los que enfrentan mayores situaciones de marginalización) aún se están beneficiando del programa basado en DLCPG.", "No aplica.", "El programa no ha dejado impactos identificables (positivos, negativos, neutrales)", "Poca evidencia de impacto sostenible es evidente. Ninguna a poca adaptación ha sucedido.", "Impacto mixto pero mayormente positivo. Las personas integrantes y / o estructuras de la comunidad han practicado algunas adaptaciones y habilidades obtenidas del programa DLCPG", "Principalmente evidencia positiva. Las personas integrantes y / o estructuras de la comunidad han usado regularmente los mecanismos y habilidades obtenidas en el prorgama DLCPG"],
+g11:[
+"C1. Las comunidades son centrales en el desarrollo de estrategias de continuidad para el programa de DLCPG",
+"Sin información/información insuficiente para asignar un valor",
+"No hay estrategia para la continuación.",
+"La estrategia de continuación es creada por oficiales del gobierno local sin consultar a los líderes de la comunidad, sociedad civil local o miembros integrantes de la comunidad.",
+"La estrategia de continuación ha sido creada a partir de consultas con líderes locales, sociedad civil local o miembros integrantes de la comunidad.",
+"Miembros integrantes de la comunidad y líderes locales tienen apropiada la estrategia de continuidad."],
+g12:[
+"C2. El planeamiento para la continuidad está entretejido durante todas las fases del programa de DLCPG",
+"Sin información/información insuficiente para asignar un valor",
+"No hay estrategias para la continuación.",
+"Las estrategias para la continuación son formuladas hacia el final del programa o hacia el final del periodo del gobierno.",
+"Las estrategias de continuación son planeadas durante el diseño del programa y son revisadas hacia el final o casi el final del periodo (muy cerca del cierre o durante el cierre)",
+"El planeamiento para la continuidad empezó durante el diseño, es reiterativamente revisado durante la implementación y finalizado hacia el final del programa o cerca del final del periodo."],
+g13:[
+"C3. Las estrategias de continuación para el programa describen los mecanismos que han sido puestos para asegurar la sostenibilidad y resiliencia",
+"Sin información/información insuficiente para asignar un valor",
+"No hay estrategias para la continuación.",
+"Hay una estrategia de continuación pero no señala mecanismos de sostenibilidad y resiliencia.",
+"Hay un plan lógico que describe los mecanismos por medio de los cuales el impacto deseado continuará después que el programa o gobierno hayan terminado.",
+"Hay un plan lógico que describe los mecanismos por medio de los que el impacto determinado por las y los miembros comunitarios continuarán luego que el programa o acción haya terminado. Esto incluye asesorías o capacitaciones/recursos requeridos por actores locales."],
+g14:[
+"C4. La medición del impacto del programa de DLCPG es institucionalizado y continúa después de cambios en el gobierno.",
+"No aplica",
+"El impacto del programa no es planeado o medido después del cierre / cambio de gobierno.",
+"El impacto del programa es medido (o su medición está planeada) 2 o más años después del cierre del programa / cambio del gobierno. Los actores locales son informados del ejercicio y se les provee la información que requieran.",
+"El impacto del programa es medido 2 o más años después del cierre del programa / cambio de gobierno. Los actores de la comunidad han sido consultados sobre el ejercicio y proveen la información que se les solicita.",
+"El impacto del programa es medido 2 o más años después del cierre del programa / cambio de gobierno. Los actores de la comunidad son participantes activos durante todas las etapas de la evaluación (desde el diseño hasta el plan de acción)"],
+g15:[
+"C5. Los miembros de la comunidad (incluidos los más marginalizados) se continúan beneficiando del programa de DLCPG después de cambios en el gobierno",
+"No aplica",
+"El programa no ha dejado impactos identificables (positivos, negativos, neutrales).",
+"Poca evidencia de un impacto sostenible es evidente. Ninguna a poca adaptación ha sucedido.",
+"Impacto mixto pero mayormente positivo. Los miembros y/o estructuras de la comunidad han practicado algunas adaptaciones y habilidades obtenidas del programa DLCPG.",
+"Evidencia principalmente positiva. Miembros y/o estructuras de la comunidad regularmente utilizan mecanismos de adaptación y habilidades obtenidas del programa DLCPG."],
+
 p16:["D1. El programa fomenta cooperación con una rendición genuina y mutua de cuentas.", "Sin información / Información insuficiente para asignar un valor.", "No existen mecanismos de rendición de cuentas que involucren a la comunidad.", "Los mecanismos de rendición de cuentas existen ya sea desde las comunidades hacia las agencias implementadoras, o desde las agencias implementadoras hacia las comunidades", "Existen mecanismos de responsabilidad bidireccionales entre las comunidades y las agencias implementadoras", "Los mecanismos de rendición de cuentas se practican no solo entre las comunidades y las agencias implementadoras, sino también al interior de las comunidades y / o con los líderes locales (grupos o consejos elegidos)."],
 p17:["D2. El programa DLCPG crea previsiones para tener mecanismos de retroalimentación hacia las comunidades, durante el ciclo de vida del proyectos e incluyendo prácticas de M&E", "Sin información / Información insuficiente para asignar un valor.", "No existen mecanismos de retroalimentación", "La retroalimentación hacia las comunidades se deja a personas facilitadoras sin un enfoque sistematizado", "La retroalimentación a las comuindades se hace solo cuando surge algún problema relevante", "Con base en dato de M&E, los ejercicios de aprendizaje interactivo y descentralizado son usados para brindar retroalimentación a las comunidades de forma sistemática y ayudándoles a hacer planes y así abordar problemáticas relevantes"],
 p18:["E1. El programa DLCPG responde a múltiples diferencias y dinámicas de poder (sexo, nivel económica, étnico).", "Sin información / Información insuficiente para asignar un valor", "El programa no evalúa ni considera las diferencias y dinámicas de poder en la comunidad", "Las evaluaciones de diseño del programa apuntan a diferencias y dinámicas, pero no existe una estrategia para tomar en cuenta estas diferencias", "El análisis de la comunidad destaca la variación contextual en las relaciones de poder, pero ni el programa ni las personas facilitadoras tienen los elementos necesarios para abordarlos", "El programa responde a las diferencias y dinámicas de poder dentro y entre las comunidades y las personas facilitadoras cuentan con los elementos necesarios para abordarlas / manejarlas"],

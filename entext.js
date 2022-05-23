@@ -1,4 +1,6 @@
 const basics={
+    figure1:"Figure ",
+    figure2:" of 5. Click the arrows for more results.",
     h1:"Basic Program Information",
     program:"Program Name",
     organization:"Organization Name",
@@ -9,7 +11,8 @@ const basics={
     date:"Date Completed",
     stage:"Stage",
     save:"Save data",
-    sendmail:"Email the data"
+    sendmail:"Email the data",
+    comment:"Comment"
 }
 const stages=['pilot','new','midterm','mature','complete'];
 const orgtypes=["Local Government/government affiliate","non-profit/ civil society organization"];
@@ -96,6 +99,13 @@ p11:[
 "The exit strategy is created by the implementing organization without consultation with community leaders or community members.",
 "The exit strategy has been created in consultation with local leaders and community members.",
 "Exit strategy is owned by community members and local leaders."],
+g11:[
+"C1 Communities are central to developing continuity strategies for the CLD program",
+"No/insufficient information to make a judgment.",
+"There is no continuity strategy.",
+"The continuity strategy is created by the local government officials without consultation with community leaders, local civil society or community members.",
+"The continuity strategy has been created in consultation with local leaders, local civil society or community members.",
+"Continuity strategy is owned by community members and local leaders."],
 p12:[
 "C2. Planning for responsible exit is woven throughout the CLD program [all the life-cycle phases]",
 "No/insufficient information to make a judgement.",
@@ -103,12 +113,26 @@ p12:[
 "The exit strategies are formulated towards the end of the program (very close to closure or at closure).",
 "The exit strategies are planned at design and revisited towards the end of the program (very close to closure or at closure).",
 "The planning for exit strategies started at design, is iteratively revised during implementation and finalized towards the end of the program."],
+g12:[
+"C2 Planning for continuity is woven throughout the CLD program",
+"No/insufficient information to make a judgment.",
+"There are no continuity strategies.",
+"The continuity strategies are formulated towards the end of the program or towards the end of term for the government.",
+"The continuity strategies are planned at design and revisited towards the end of the program or close to end of term (very close to closure or at closure).",
+"Continuity planning started at design, is iteratively revised during implementation and finalized towards the end of the program or near the end of term."],
 p13:[
 "C3. Exit strategies of the CLD program describe the mechanisms left in place to ensure sustainability and/or resilience",
 "No/insufficient information to make a judgement.",
 "There are no exit strategies.",
 "There is an exit strategy but does not point to sustainability or resilience mechanisms.",
 "There is a logical plan that describes the mechanisms through which desired impact will continue after the intervention has ended.",
+"There is a logical plan that describes the mechanisms through which impact determined by community members will continue after the intervention has ended. This includes assessment of capacities/ resources needed by local actors."],
+g13:[
+"C3 Continuity strategies for the program describe the mechanisms put in place to ensure sustainability and resilience",
+"No/insufficient information to make a judgment.",
+"There are no continuity strategies.",
+"There is a continuity strategy but does not point to sustainability and resilience mechanisms.",
+"There is a logical plan that describes the mechanisms through which desired impact will continue after the program has ended or the government has changed.",
 "There is a logical plan that describes the mechanisms through which impact determined by community members will continue after the intervention has ended. This includes assessment of capacities/ resources needed by local actors."],
 p14:[
 "C4. The CLD program impact is measured post-closure with local participation",
@@ -117,6 +141,13 @@ p14:[
 "Program impact is measured (or planned to be measured) 2+ years post-program closure. Community actors are informed about the exercise and provide information as requested.",
 "Program impact is measured 2+ years post-program closure. Community actors are consulted about the exercise and provide information as requested.",
 "Program impact is measured 2+ years post-program closure. Community actors are active participants in all the stages of the post- program evaluation (design to report to action plan)."],
+g14:[
+"C4 Measurement of the impact of the CLD program is institutionalized and continues after changes in government.",
+"Not applicable",
+"Program impact is not planned or measured post closure/ change of government.",
+"Program impact is measured (or planned to be measured) 2+ years post-program closure/change of government. Community actors are informed about the exercise and provide information as requested.",
+"Program impact is measured 2+ years post-program closure/ change of government. Community actors are consulted about the exercise and provide information as requested.",
+"Program impact is measured 2+ years post-program closure/ change of government. Community actors are active participants in all the stages of the evaluation (design to report to action plan)"],
 p15:[
 "C5. Community members (including the most marginalized) are still benefiting from CLD program",
 "Not applicable",
@@ -124,6 +155,14 @@ p15:[
 "Little evidence of sustainable impact is evident. No to little adaptation has happened.",
 "Mixed impact but mostly positive. Community members and/or structures have practiced some adaptation and skills gained from the CLD program.",
 "Mostly positive evidence. Community members and/or structures have regularly used adaptive mechanisms and skills gained from the CLD program."],
+g15:[
+"C5 Community members (including the most marginalized) continue to benefit from CLD program after changes in government",
+"Not applicable",
+"The program has left no traceable impact (positive, negative, neutral).",
+"Little evidence of sustainable impact is evident. No or little adaptation has happened.",
+"Mixed impact but mostly positive. Community members and/or structures have practiced some adaptation and skills gained from the CLD program.",
+"Mostly positive evidence. Community members and/or structures have regularly used adaptive mechanisms and skills gained from the CLD program."],
+
 p16:[
 "D1 The program fosters partnerships with genuine mutual accountability",
 "No/insufficient information to make a judgement.",
