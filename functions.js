@@ -346,7 +346,7 @@ function putMailButton(){
   if(lang=='fr') msg='Envoyer les données par e-mail';
   if(lang=='es') msg='Enviar datos por correo electrónico';
   const text=JSON.stringify(localStorage);
-  const href1="mailto:admin@mcld.org?subject=Tamarack+Data&body=";
+  const href1="mailto:admin@mcld.org?subject=MCLD+Data&body=";
   const button="<a class=wide href="+href1+encodeURI(text)+">"+msg+"</a>";
   document.getElementById("mailbutton").innerHTML=button;
 }
