@@ -2,7 +2,7 @@
 // New version that uses localStorage with v11
 // Same as Tamarack except for items in stuff.js
 
-const version = 'v14';
+const version = 'v15';
 var s=""; // this string compiles the output for a given main content div
 var lang=""; 
 function setup() {
@@ -159,6 +159,7 @@ function putBasics() {
   s=`<h1>${basics.h1}</h1>
   <form id=basics>`;
   putInput("organization");
+  putSelect("orgtype",orgtypes);
   putInput("program");
   putInput("country");
   putInput("region");
@@ -316,12 +317,14 @@ function spider(data, labels) {
 }
 // ADMIN Functions
 function putMailButton(){
+  let msg="Email the data";
+  if(lang=='fr') msg='Envoyer les données par e-mail';
+  if(lang=='es') msg='Enviar datos por correo electrónico';
   const text=JSON.stringify(localStorage);
-  const msg=basics["sendmail"];
-  const button=`<a class=wide target=_blank href='mailto:admin@mcld.org?subject=Data&body=${text}'>${msg}</a>`;
+  const href1="mailto:admin@mcld.org?subject=Tamarack+Data&body=";
+  const button="<a class=wide href="+href1+encodeURI(text)+">"+msg+"</a>";
   document.getElementById("mailbutton").innerHTML=button;
 }
-
 function download(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));

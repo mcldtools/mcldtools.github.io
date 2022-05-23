@@ -2,6 +2,7 @@ const basics={
     h1:"Informations sur le Programme",
     program:"Nom du programme",
     organization:"Nom de l'organisation (si différent du nom du programme)",
+    orgtype:"Type d'organisation:",
     country:"Le(s) pays de programmation",
     region:"Provinces / Région (le cas échéant)",
     name:"Qui réalise cette évaluation ? Nom (s)",
@@ -12,6 +13,7 @@ const basics={
 };
 
 const stages=["pilote","nouveau", "à mi-parcous", "mature", "terminé"];
+const orgtypes=["Gouvernement local/affilié au gouvernement","organisation à but non lucratif/de la société civile."];
 const clickto="Cliquez pour enregistrer le commentaire";
 const comment="Commentaire";
 
@@ -194,6 +196,14 @@ p22:[
 "Le gouvernement du sous-district ou du district est au courant du programme, et il y a une interaction ad hoc entre les structures de participation communautaire ou les leaders, Le programme renforce la capacité de la communauté à revendiquer ses droits auprès du gouvernement du sous-district ou du district.",
 "Le gouvernement du sous-district ou du district est au courant du programme DPC. Le programme DPC établit un engagement systématique entre la communauté et le gouvernement du sous-district ou du district pour atteindre les objectifs de la communauté."],
 
+g22:[
+    "G1 Le programme DPC est lié à la société civile",
+    "Aucune information/insuffisance d'information pour porter un jugement.",
+    "Les organisations locales de la société civile (OSC) ne sont pas au courant du programme.",
+    "Les organisations de la société civile locale connaissent le programme, mais il n'y a pas de plateforme / d'espace pour l'interaction entre les structures ou les leaders communautaires participatifs, les OSC et les fonctionnaires du sous-district ou du district.",
+    "Les OSC locales sont au courant du programme, et il y a une interaction ad hoc entre les structures communautaires participatives, les OSC et les fonctionnaires du sous-district ou du district.",
+    "Les OSC locales connaissent le programme DPC. Le programme DPC établit un engagement systématique entre les OSC locales, les structures communautaires et le gouvernement du sous-district ou du district pour atteindre les objectifs communautaires."],
+    
 p23:[
 "H1 Un suivi participatif est effectué",
 "Aucune information/information insuffisante pour émettre un jugement",

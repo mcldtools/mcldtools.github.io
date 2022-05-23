@@ -35,6 +35,8 @@
 	putToc('Ingrese la información básica de su proyecto o iniciativa');
 } else if(p=='1'){ 
 	putBasics();
+} else if(p==22 && localStorage.getItem("orgtype")=='0') {
+	putRubric(rubric['g22']);
 } else if(p<29) {
 	putRubric(rubric['p'+p]);
 } else {

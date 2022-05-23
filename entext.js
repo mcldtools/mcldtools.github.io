@@ -2,6 +2,7 @@ const basics={
     h1:"Basic Program Information",
     program:"Program Name",
     organization:"Organization Name",
+    orgtype:"Type of organization:",
     country:"Programming Country(s)",
     region:"Provinces/Region (if applicable)",
     name:"Name(s) completing this assessment",
@@ -11,6 +12,8 @@ const basics={
     sendmail:"Email the data"
 }
 const stages=['pilot','new','midterm','mature','complete'];
+const orgtypes=["Local Government/government affiliate","non-profit/ civil society organization"];
+
 const clickto="Click to save comment";
 const comment="Comment";
 
@@ -170,6 +173,13 @@ p22:[
 "Sub-district or District Government is aware of the program, but there is no platform / space for interaction between the participatory community structures or leaders and sub-district or district officials.",
 "Sub-district or District Government is aware of the program, and there is ad hoc interaction between the participatory community structures or leaders and sub-district or district officials. The program strengthens the community’s ability to demand its rights/entitlements from sub-district or district government.",
 "Sub-district or District Government is aware of the CLD program. The CLD program establishes systematic engagement between the community and sub-district or district government to achieve community goals."],
+g22:[
+    "G1 The CLD program is linked to civil society.",
+    "No/insufficient information to make a judgment.",
+    "Local civil society organizations (CSOs) are not aware of the program.",
+    "Local civil society organizations are aware of the program, but there is no platform / space for interaction between the participatory community structures or leaders, CSOs  and sub-district or district officials.",
+    "Local CSOs are aware of the program, and there is ad hoc interaction between the participatory community structures, CSOs and sub-district or district officials.",
+    "Local CSOs are aware of the CLD program. The CLD program establishes systematic engagement between the local CSOs, community structures and sub-district or district government to achieve community goals."],
 p23:[
 "H1 Participatory monitoring is carried out",
 "No/insufficient information to make a judgement.",
