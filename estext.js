@@ -22,7 +22,7 @@ const clickto="Guardar comentarios";
 const dimensions=[
 "A: Participación, inclusión, voz",
 "B: Recursos locales y conocimiento",
-"C: Estrategia de salida ligada a la sostenibilidad de la iniciativa",
+"C: Sostenibilidad",
 "D: Mecanismos de rendición de cuentas",
 "E: Sensibilidad a las dinámicas específicas del contexto",
 "F: Colaboración al interior y entre comunidades",
