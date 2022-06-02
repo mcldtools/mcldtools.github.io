@@ -23,7 +23,7 @@ const comment="Commentaire";
 const dimensions=[
 "A: Participation, Inclusion, et Voix",
 "B: Ressources et Connaissances Locales",
-"C: Stratégie de sortie liée à la Durabilité",
+"C: La Durabilité",
 "D: Mécanismes de Redevabilité",
 "E: Réactivité aux Dynamiques Spécifiques au Contexte",
 "F: Collaboration au sein et entre les communautés",

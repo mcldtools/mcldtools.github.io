@@ -23,11 +23,11 @@ const comment="Comment";
 const dimensions=[
 "A: Participation, Inclusion, and Voice",
 "B: Local Resources and Knowledge",
-"C: Exit Strategy Linked to Sustainability",
+"C: Sustainability",
 "D: Accountability Mechanisms.",
 "E: Responsiveness to Context Specific Dynamics",
 "F: Collaboration within and amongst communities",
-"G:  CLD linked to Sub-National Governments",
+"G: Working with Civil Society/Local Government",
 "H. Monitoring and Evaluation Practices support CLD",
 "I. Facilitation Investment and Intensity"];
 
