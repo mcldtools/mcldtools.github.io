@@ -2,7 +2,7 @@
 // New version that uses localStorage with v11
 // Same as Tamarack except for items in stuff.js
 
-const version = 'v16';
+const version = 'v17';
 var s=""; // this string compiles the output for a given main content div
 var lang=""; 
 function setup() {
