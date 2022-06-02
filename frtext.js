@@ -27,7 +27,7 @@ const dimensions=[
 "D: Mécanismes de Redevabilité",
 "E: Réactivité aux Dynamiques Spécifiques au Contexte",
 "F: Collaboration au sein et entre les communautés",
-"G: DPC lié aux gouvernements sous-nationaux",
+"G: Travailler avec la société civile/le gouvernement local",
 "H: Les Pratiques de Suivi et d'Évaluation qui Soutiennent le DPC",
 "I: Inventissement et Intensité de Facilitation"
 ];
