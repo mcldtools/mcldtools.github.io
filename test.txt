@@ -1,0 +1,87 @@
+",
+"Muyeso
+ (0) “Palibepo umboni wokwanira",
+"(1) “Samayesa nkomwe kutero”",
+"(2) “Amayeselako kutero” ",
+"(3) “Apita patsogolo kutero” ",
+"(4) “Akukwaniritsa”",
+"Lembani yankho la kukhosi kwanuNdemanga
+",
+"Gawo 1: ZIZINDIKIROLembani ndemanga zothandizira kutambasula yankho lomwe mwalemba 
+",
+"Gawo A: Kutengapo mbali kwa anthu, Kusasalidwa komanso kuthekera kuikapo ndemanga/maganizo0
+" 0",
+"
+],
+
+
+
+
+"Gawo B: Zipangizo, upangiri komanso luso lamudera"
+
+
+
+
+
+"Gawo C: Ndondomeko za kutseka pulojekiti komanso kapitilizeidwe ikazatsekedwa0
+,
+"
+,
+"
+,
+"
+ 0",
+"
+,
+"
+"Gawo D: Ndondomeko zothandizira kuti pulojekiti ichitike mwa chilungamo komanso mosabisa kanthu 0
+"Ndondomeko zowonetsetsa kuti pulojekiti ikuchitika mwa chilungamo ndi mosabisa kanthu zimayang'ana zinthu monga: kuwonetsetsa kuti anthu akulandira malipoti a kawuniwuni ndi kalondolondo, kufotokozera chifukwa chomwe apangira ziganizo zawo ndinso momwe agwiritsira ntchito ndalama (kudzera mkukhoma powonekera lipoti la kayendedwe ka chuma, kugawana lipoti pa zokambilana) komanso kudzera muma workshop a onse okhudzidwa.
+,
+"
+,
+"
+"Gawo E: Kulinganiza zokhumba za pulojekiti kuti zigwirizane ndi chikhalidwe cha dera0
+,
+"
+,
+"
+"Gawo F: Mgwirizano womwe ulipo pakati pa anthu m'dera komanso pakati pa deralo ndi madera ena0
+,
+"
+,
+"
+"Gawo G: Pulojekiti ya chitukuko chotsogozedwa ndi anthu kulumikizana ndi maboma ang'onoang'ono kapena kuti ma khonsolo0
+,
+"
+"Gawo 2: NDONDOMEKO
+"GAWO H: Kayendetsedwe ka ntchito za kawuniwuni ndi kalondolondo 0
+,
+"
+,
+"
+,
+"
+"Gawo I: Kupezeka kwa Alangizi oyendetsa ntchito komanso danga lawo loikidwa pa ntchitoyi0
+"Alandizi otsogolera amakhala patsogolo kulongosola za pologalamu komanso kugwira ntchito ndi dera tsiku ndi tsiku powontsetsa kuti mapulani a pulojekiti akuchitika. Alandizi otsogolerawa atha kukhala ogwira ntchito ndi bungwe, atha kukhalanso ochokera kapena osankhidwa mudera momo mozipeleka.
+"I.1 Alangizi oyendetsa chitukuko chakudera (kaya ndi atsogoleri akudera, ogwira ntchito, aku boma kapenanso amabungwe) amapatsidwa upangiri wa momwe angagwirire ntchito zawo mwaukadaulo.",
+"Palibepo umboni kapena umboni oti izi zimachitika ndi ochepa",
+"Otsogolera pulojekiti amangodziwitsidwa moyepula kumalo ophunzirila ",
+"Otsogolera pulojekiti amapititsidwa kusukulu kukaphunzira maluso ena ndi ena a momwe angatsogolere pulojekiti komanso",
+"momwe angalimbikitse anthu kutenga nawo mbali pochita kawuniwuni ndi kulemba ma pulani ",
+"`",
+"Oyendetsa pulojekiti amaphunzitsidwa bwino kusukulu komanso kudera komweko momwe angatsogolere zochitika mu pulojekiti, momwe angalimbikitsire anthu kuchita nawo ndondomeko ndi mapulani a pulojekiti 0",
+"
+"I.2 Pulogalamu ya CLD inakonzedwa munjira yakuti itha kusinthidwa nthawi ina iliyonse molingana ndi kufunikira kowonjezera kapena kusintha anthu otsogolera chitukuko (Mwachitsanzo: kusintha kwa mulingo wantchito, kapena zomwe tikuchita muntchitoyo, kapena changu cha ntchitoyo)",
+"Palibepo umboni kapena umboni oti izi zimachitika ndi ochepa",
+"Pulojekiti simafufuza ngati pali kufunikira kowonjezera oyendetsa pulojekiti komanso ilibe zodziyenereza zokwanira kuti izitha kuchitapo kanthu ngati pangabwere kufunika koti oyendetsa pulojekiti awonjezereke kapenanso achite ntchito zina zatsopano ",
+"Luso ndi chiwerengero cha oyendetsa pulojekiti zimawunikidwa mosachita kukonzekera . Zosinthika zimachitika pokhapokha zinthu zitavuta",
+"Luso ndi chiwerengero cha oyendetsa pulojekiti zimawunikidwa potengera zochitika kuderako, kukula komanso liwiro la pulojekitiyo. Kusintha kumachitika pokhapo pomwe pulojekiti siikuyenda bwino",
+"Luso ndi chiwerengero cha oyendetsa pulojekiti zimawunikidwa pafupipafupi potengera zochitika kuderako, kukula komanso liwiro la pulojekitiyo. Pulojekiti ili ndi makobidi komanso ndondomeko zothandizira kuti izitha kuthana ndi zotsatira za kawuniwuniyu0",
+"
+"I. 3 Pulogalamu ya CLD ili ndikuthekera kopititsa patsogolo luso la kayendetsedwe ka ntchito kwa anthu akudera. (pali ndondomeko yomvetsetseka yosankhira anthu; kawuniwuni wa luso ndizomwe anthu amadziwa; kuphunzitsa ndi kuthandizira aphunzitsi odzipereka akudera komweko)",
+"Palibepo umboni kapena umboni oti izi zimachitika ndi ochepa",
+"Pulojekiti ilibe zodziyenereza kuti izitha kulimbikitsa luso la otsogolera pulojekitiyo. Palibepo njira zodziwika bwino za momwe pulojekiti imalembela otsogolera atsopano, pulojekiti siimawunika ngati anthu otsogolera ali ndi ukadaulo oyenera, palibeponso mwayi wa maphunziro kapena thandizo lililonse kwa otsogolera pulojekiti ",
+"Pulojekiti imalimbikitsa luso la otsogolera pulojekitiyo mwa apopo ndi apo. Pulojekiti ili ndi chimodzi mwa izi: 1) njira zokhazikika zolembela atsogoleri atsopano, 2) pulojekiti imafufuza luso/upangiri omwe oyitsogolera alinawo, 3) pamapelekedwa maphunziro ndi thandizo kwa oyendetsa pulojekiti ",
+"Pulojekiti imayesetsa kulimbikitsa luso la otsogolera pulojekitiyo. Pulojekiti ili ndi ziwiri mwa izi: 1) njira zokhazikika zolembela atsogoleri atsopano, 2) pulojekiti imafufuza luso/upangiri omwe oyitsogolera alinawo, 3) pamapelekedwa maphunziro ndi thandizo kwa oyendetsa pulojekiti ",
+"Pulojekiti imayesetsa kulimbikitsa luso la otsogolera pulojekitiyo. Pulojekiti ili ndi zonse mwa izi: 1) njira zokhazikika zolembela atsogoleri atsopano, 2) pulojekiti imafufuza luso/upangiri omwe oyitsogolera alinawo, 3) pamapelekedwa maphunziro ndi thandizo kwa oyendetsa pulojekiti 0",
+""

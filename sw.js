@@ -1,4 +1,4 @@
-cacheName='mcld-v19';
+cacheName='mcld-v20';
 const URLS = [
   './',
   "./admin_en.html",
@@ -16,6 +16,14 @@ const URLS = [
   './intro_en.html',
   './intro_fr.html',
   './intro_es.html',
+  "./ny.html",
+  "./nytext.js",
+  './intro_ny.html',
+  './admin_ny.html',
+  "./sw.html",
+  "./swtext.js",
+  './intro_sw.html',
+  './admin_sw.html',
   "./logo150.png",
   "./logo512.png",
   "./manifest.json",
