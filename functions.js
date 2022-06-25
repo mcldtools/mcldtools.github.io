@@ -2,7 +2,8 @@
 // New version that uses localStorage with v11
 // Same as Tamarack except for items in stuff.js
 
-const version = 'v19';
+const version = 'v20';
+const langlist = ['en','fr','es','ny','sw'];
 var s=""; // this string compiles the output for a given main content div
 var lang=""; 
 function setup() {
@@ -24,7 +25,7 @@ function setup() {
   prior = Math.max(now - 1, 0);
   next = Math.min(now + 1, maxpage);
   lang = localStorage.getItem("lang");
-  if (lang != 'en' && lang != 'fr' && lang != 'es') { setLang(); lang = 'en'; }
+  if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
   LANG = lang.toUpperCase();
 
   // The navbar contains inline SVG for efficient icons
@@ -52,11 +53,11 @@ function setup() {
   document.getElementById("navbar").innerHTML = contents;
 }
 
-function setLang() { // for now, this will be a toggle
-  olang = lang;
-  if (olang == 'en') { lang = 'fr'; }
-  else if (olang == 'fr') { lang = 'es'; }
-  else (lang = 'en');
+function setLang() { // increment language setting
+  const olang=lang;
+  let i=langlist.indexOf(lang)+1;
+  if(i==langlist.length) i=0;
+  lang=langlist[i];
   localStorage.setItem('lang', lang);
   location.href = window.location.href.replace(olang, lang);
 }
@@ -164,6 +165,7 @@ function putBasics() {
   putInput("country");
   putInput("region");
   putSelect('stage',stages);
+  putInput("name");
   putDate("date");
   putInput("comment");
   s+=`<a class=wide href="javascript:saveform('basics');">${basics.save}</a></form>`;
