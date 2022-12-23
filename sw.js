@@ -1,4 +1,4 @@
-cacheName='mcld-v23';
+cacheName='mcld-v24';
 const URLS = [
   './',
   "./admin_en.html",
