@@ -1,9 +1,9 @@
 const version = 'v1';
 const langlist = ['en','bd','fr'];
+const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
 var lang="";
 function setup() {
-  const maxpage = 33; // the highest numbered page supported by en and fr so far
   // these functions run for a pwa
   window.onload = () => {
     'use strict'; // register service worker
@@ -228,7 +228,8 @@ function computeScores(labels) {
 
 function putToc(x){ // x is the title of the first entry
   s=`<a class=wide href=?1>${x}</a>`;
-  const whichp=[2,9,11,16,18,20,22,23,26];
+// this correspond to the first page in each category
+  const whichp=[2,8,10,15,18,20,24,25,28];
 	for(i=0;i<9;i++) { // put the 9 full-width buttons
       d=dimensions[i];
       s+=`<a class=wide href=?${whichp[i]}>${d}</a>`;
@@ -317,18 +318,20 @@ function spider(data, labels) {
 
 function putPages(p) {
 	localStorage.setItem('pointer',p);
-  const govs=["11","12","13","14","15","22"];
+// This is only relevant if there are government page, not included in the community version 
+//  const govs=["11","12","13","14","15","22"];
 // routing to different style english pages
 	if(p=='0') {
 		putToc(basics["h1"]);
 } else if(p=='1'){
 	putBasics();
-} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
-	putRubric(rubric['g'+p]);
-} else if(p<29) {
+//} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
+//	putRubric(rubric['g'+p]);
+//  handle the non-graph pages
+} else if(p<(maxpage-4)) {
 	putRubric(rubric['p'+p]);
 } else {
-	const n=p-28;
+	const n=p-(maxpage-5);
 	s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
 	putResults(p); // spider diagrams
 	document.getElementById("main").innerHTML=s;
