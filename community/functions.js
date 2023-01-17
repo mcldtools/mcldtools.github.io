@@ -196,7 +196,7 @@ function putXY(r, i, n) { // convert radius and index in spider to x,y pair
 }
 
 
-// for the 4 different diagrams, create them as pages p29, p30, p31
+// for the 4 different diagrams
 
 function computeByDimensions(labels, lengths) {
   let scores = [];
@@ -236,36 +236,36 @@ function putToc(x){ // x is the title of the first entry
 	}
   document.getElementById("main").innerHTML=s;
 }
-
+// note -- p numbers lengths and formulas are entirely different in the community version
 function putResults(p) {
   let scores = []; let labels = []; let tags = [];
-  if (p == 29) {
-    const lengths = [7, 2, 5, 2, 2, 2, 1, 3, 3]; // number of sub-elements in each
+  if (p == 32) {
+    const lengths = [6, 2, 5, 3, 2, 4, 1, 3, 4]; // number of sub-elements in each
     labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']; // uppercase version of labels
     scores = computeByDimensions(labels, lengths);
     spider(scores, labels);
     putDimensionScores(scores, labels);
-  } else if (p == 30) {
-    labels = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7'];
-    tags = ['p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'];
+  } else if (p == 33) {
+    labels = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'];
+    tags = ['p2', 'p3', 'p4', 'p5', 'p6', 'p7'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
-  } else if (p == 31) {
-    labels = ['C1', 'C2', 'C3', 'C4', 'C5'];
-    tags = ['p11', 'p12', 'p13', 'p14', 'p15'];
+  } else if (p == 34) {
+    labels = ['B1', 'B2', 'C1', 'C2', 'C3', 'C4', 'C5'];
+    tags = ['p8', 'p9','p10', 'p11', 'p12', 'p13', 'p14'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
-  } else if (p == 32) {
-    labels = ['B1', 'B2', 'D1', 'D2', 'E1', 'E2', 'F1', 'F2', 'G1'];
-    tags = ['p9', 'p10', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22'];
+  } else if (p == 35) {
+    labels = ['D1', 'D2', 'D3', 'E1', 'E2', 'F1', 'F2', 'F3', 'F4', 'G1'];
+    tags = [ 'p15', 'p16','p17','p18','p19','p20','p21','p22','p23','p24'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
   } else {
-    labels = ['H1', 'H2', 'H3', 'I1', 'I2', 'I3'];
-    tags = ['p23', 'p24', 'p25', 'p26', 'p27', 'p28'];
+    labels = ['H1', 'H2', 'H3', 'I1', 'I2', 'I3', 'I4'];
+    tags = ['p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
