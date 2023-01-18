@@ -3,6 +3,7 @@ const langlist = ['en','bd','fr'];
 const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
 var lang="";
+
 function setup() {
   // these functions run for a pwa
   window.onload = () => {
