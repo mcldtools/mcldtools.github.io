@@ -1,35 +1,35 @@
 const basics={
-    h1: "তথ্য সাধারণ",
-    figure1:"ফিগুরা ",
-    figure2:" ডি 5.",
-    program:"Nombre del programa",
-    organization:"Nombre de la organización (si es diferente del Nombre del programa)",
-    orgtype:"সংগঠনের পরামর্শ",
-    country:"País o países en donde se llevó a cabo el programa (si aplica):",
-    region:"প্রদেশ ও অঞ্চল/এসি (এসি চিঠি):",
+    h1: "প্রোগ্রামের মৌলিক তথ্য",
+    figure1:"চি",
+    figure2:" এর 5। আরও ফলাফলের জন্য তীরগুলিতে ক্লিক করুন।",
+    program:"প্রোগ্রামের নাম",
+    organization:"সংস্থার নাম",
+    orgtype:"প্রোগ্রামিং দেশ(গুলি)",
+    country:"প্রোগ্রামিং দেশ(গুলি)",
+    region:"প্রদেশ/অঞ্চল (যদি প্রযোজ্য হয়)",
     name:"নাম(গুলি) এই মূল্যায়নটি সম্পূর্ণ করছে",
-    date:"ফেচা দে লেনাডো ডি রুব্রিকা:",
-    stage:"এটাপা দে ট্রাবাজো",
-    save:"গার্ডার ডাটোস",
-    sendmail:"এনভিয়ার ডাটোস পোর কোরিও ইলেক্ট্রনিকো",
+    date:"সমাপ্ত হওয়ার তারিখ",
+    stage:"মঞ্চ",
+    save:"ডেটা সংরক্ষণ করুন",
+    sendmail:"ডেটা ইমেল করুন",
     comment:"মন্তব্য"
 }
+const stages=['পাইলট','নতুন','মিডটার্ম','পরিপক্ক','সম্পূর্ণ'];
+const orgtypes=["স্থানীয় সরকার/সরকারি অধিভুক্ত","অলাভজনক/সুশীল সমাজ সংস্থা"];
 
-const stages=['piloto','proyecto nuevo','mediano plazo','fase final','terminado'];
-const orgtypes=["Gobierno local/afiliado del gobierno","organización de la sociedad civil/sin fines de lucro"];
-const comment="Comentarios adicionales y retroalimentación";
-const clickto="Guardar comentarios";
+const clickto="মন্তব্য সংরক্ষণ করতে ক্লিক করুন";
+const comment="মন্তব্য";
 
-const dimensions=[
-"A: Participación, inclusión, voz",
-"B: Recursos locales y conocimiento",
-"C: Sostenibilidad",
-"D: Mecanismos de rendición de cuentas",
-"E: Sensibilidad a las dinámicas específicas del contexto",
-"F: Colaboración al interior y entre comunidades",
-"G: El DLCPG y su relación con los gobiernos subnacionales",
-"H. Prácticas de monitoreo y evaluación que sustentan al DLCPG",
-"I. Facilitación, inversión e intensidad de la iniciativa"];
+const মাত্রা=[
+    "A: অংশগ্রহণ, অন্তর্ভুক্তি, এবং ভয়েস",
+    "বি: স্থানীয় সম্পদ এবং জ্ঞান",
+    "সি: স্থায়িত্ব এবং রূপান্তর কৌশল",
+    "ডি: জবাবদিহিতা প্রক্রিয়া।",
+    "ই: প্রসঙ্গের প্রতিক্রিয়াশীলতা",
+    "এফ: সহযোগিতা",
+    "জি: স্থানীয় সরকার/সুশীল সমাজ সংস্থার সাথে কাজ করা",
+    "এইচ. পর্যবেক্ষণ এবং মূল্যায়ন অনুশীলন",
+    "I. সুবিধা"];
 
 const rubric={
     p2:["A1. প্রোগ্রামটি সম্প্রদায়ের সমস্ত গোষ্ঠীর (যেমন বৃদ্ধ এবং যুবক, পুরুষ এবং মহিলা, উন্নত-স্বচ্ছল এবং দরিদ্র, বিভিন্ন গোষ্ঠী, বর্ণ, ধর্ম ইত্যাদির) অন্তর্ভুক্তি নিশ্চিত করে",
