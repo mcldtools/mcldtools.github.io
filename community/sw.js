@@ -1,9 +1,10 @@
-cacheName='v9';
+cacheName='v10';
 const URLS = [
   './',
   "./admin_en.html",
   "./admin_bd.html",
   "./admin_fr.html",
+  "./admin_am.html",
   './en.html',
   "./entext.js",
   "./fr.html",
@@ -11,11 +12,14 @@ const URLS = [
   "./fullreport.html",
   "./bd.html",
   "./bdtext.js",
+  "./am.html",
+  "./amtext.js",
   './functions.js',
   './index.html',
   './intro_en.html',
   './intro_fr.html',
   './intro_bd.html',
+  './intro_am.html',
   "./logo150.png",
   "./logo512.png",
   "./manifest.json",
