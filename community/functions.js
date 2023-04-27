@@ -222,7 +222,7 @@ function computeScores(labels) {
   for (i = 0; i < labels.length; i++) {
     x = localStorage.getItem(labels[i].toLowerCase());
     if (isNaN(x)) x = 0; x--; if (x < 1) x = 0;
-    scores[i] = Math.floor(100 * x / 3);
+    scores[i] = Math.floor((100 * x)/3);
   }
   return scores;
 }
