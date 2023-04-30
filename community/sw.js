@@ -1,10 +1,11 @@
-cacheName='v11';
+cacheName='v12';
 const URLS = [
   './',
   "./admin_en.html",
   "./admin_bd.html",
   "./admin_fr.html",
   "./admin_am.html",
+  "./admin_sw.html",
   './en.html',
   "./entext.js",
   "./fr.html",
@@ -24,7 +25,9 @@ const URLS = [
   "./logo512.png",
   "./manifest.json",
   './style.css',
-  './sw.js'
+  './sw.js',
+  './sw.html',
+  './swtext.js',
 ];
 
 self.addEventListener('install', (e) => {
