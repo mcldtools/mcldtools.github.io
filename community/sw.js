@@ -1,4 +1,4 @@
-cacheName='v12';
+cacheName='v13';
 const URLS = [
   './',
   "./admin_en.html",
