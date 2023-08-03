@@ -42,7 +42,7 @@ function putRow(i) {
   s+='<tr><td>'+qname+'</td><td>'+qval+'</td><td>'+qcomment+'</td></tr>\n';
 }
 
-function putRows() { for(i=2;i<29;i++) putRow(i); }
+function putRows() { for(i=2;i<(maxpage-3);i++) putRow(i); }
 
 s=`<p>Program: ${localStorage.getItem("program")}<br>
 Organization: ${localStorage.getItem("organization")}<br>
@@ -57,7 +57,7 @@ Comment: ${localStorage.getItem("comment")}</p>
 putRows();
 s+=`  </tbody>    
 </table>`;
-for(p=29;p<34;p++) putResults(p);
+for(p=(maxpage-3);p<(maxpage+1);p++) putResults(p);
 document.getElementById("main").innerHTML=s;
 </script>
 </body>
