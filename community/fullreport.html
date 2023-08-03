@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- MCLDTools Admin Page 
+<!-- MCLDTools Community Admin Page 
   Factored to put entre page article into a string which could then be downloaded
 -->
 <html lang=en>
@@ -20,6 +20,7 @@
 
 <script>
 setup();
+console.log(maxpage);
 const filename = localStorage.getItem("date") + localStorage.getItem("program") + '.html';
 const reporthead=`<!DOCTYPE html>
 <html><head><style>
@@ -42,7 +43,7 @@ function putRow(i) {
   s+='<tr><td>'+qname+'</td><td>'+qval+'</td><td>'+qcomment+'</td></tr>\n';
 }
 
-function putRows() { for(i=2;i<(maxpage-3);i++) putRow(i); }
+function putRows() { for(i=2;i<(maxpage-4);i++) putRow(i); }
 
 s=`<p>Program: ${localStorage.getItem("program")}<br>
 Organization: ${localStorage.getItem("organization")}<br>
