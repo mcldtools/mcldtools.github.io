@@ -1,4 +1,4 @@
-const version = 'v17';
+const version = 'v18';
 const langlist = ['sw','am','en','bd','fr'];
 const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
@@ -27,7 +27,7 @@ function setup() {
 
   // The navbar contains inline SVG for efficient icons
   const contents = `<a id='lang' class=tall onclick='setLang()'>${LANG}</a>
-<a href=/ ><svg height='24' width='24'><title>Info</title>
+<a href=intro_${lang}.html><svg height='24' width='24'><title>Info</title>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
 <circle cx='12' cy='7' r='2' fill='white'></circle>
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
