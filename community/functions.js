@@ -228,12 +228,12 @@ function computeScores(labels) {
 }
 
 function putToc(x){ // x is the title of the first entry
-  s=`<a class=wide href=?1>${x}</a>`;
+  s=`<a class=wide href=${lang}.html?1>${x}</a>`;
 // this correspond to the first page in each category
   const whichp=[2,8,10,15,18,20,24,25,28];
 	for(i=0;i<9;i++) { // put the 9 full-width buttons
       d=dimensions[i];
-      s+=`<a class=wide href=?${whichp[i]}>${d}</a>`;
+      s+=`<a class=wide href=${lang}.html?${whichp[i]}>${d}</a>`;
 	}
   document.getElementById("main").innerHTML=s;
 }
