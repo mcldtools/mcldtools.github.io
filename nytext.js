@@ -1,7 +1,6 @@
-
 const basics={
-    figure1:"Figure ",
-    figure2:" of 5. Click the arrows for more results.",
+    figure1:"Chithunzi ",
+    figure2:" mwa 5. Dinani mivi kuti mupeze zotsatira zambiri.",
     h1:"Chiyambi",
     program:"Dzina la pulojekiti",
     organization:"Dzina la bungwe (ngati ndi losiyana ndi dzina la pulojekiti)",
@@ -12,7 +11,7 @@ const basics={
     date:"Tsiku lomwe tamaliza kugwiritsa ntchito chipangizochi",
     stage:"Nthawi/gawo la pulojekiti",
     save:"Sungani deta",
-    sendmail:"Email the data",
+    sendmail:"Imelo za data",
     comment:"Ndemanga kapena zina ndi zina zotumphukira"
 }
 
