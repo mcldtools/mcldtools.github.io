@@ -1,4 +1,4 @@
-const version = 'v21';
+const version = 'v22';
 const langlist = ['ny','sw','am','en','bd','fr'];
 const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
@@ -335,8 +335,8 @@ function putPages() {
 //  const govs=["11","12","13","14","15","22"];
 // routing to different style english pages
 	if(page==0) {
-		putToc(basics["h1"]);
-} else if(p==1){
+		putToc();
+} else if(page==1){
 	putBasics();
 //} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
 //	putRubric(rubric['g'+p]);
