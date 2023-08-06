@@ -15,13 +15,10 @@ function setup() {
 
   // next, output the navbar with the appropriate arrow links in this template
   // note - now in this system, 0=rubric, 1=basics, 2=a1 etc through maxpage
-  now = window.location.search.substring(1);
-  if((now==='') || isNaN(now)) now=0;
-  now=parseInt(now);
-  if (now > maxpage) now = maxpage;
-  prior = Math.max(now - 1, 0);
-  next = Math.min(now + 1, maxpage);
   lang = localStorage.getItem("lang");
+  page = parseInt(localStorage.getItem("page"));
+  if(isNaN(page)) {page=0; localStorage.setItem('page','0');}
+  console.log(page);
   if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
   LANG = lang.toUpperCase();
 
@@ -32,13 +29,13 @@ function setup() {
 <circle cx='12' cy='7' r='2' fill='white'></circle>
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
 </svg></a>
-<a href=${lang}.html?${prior}><svg height='24' width='24'><title>Prior</title>
+<a onclick="prior();"><svg height='24' width='24'><title>Prior</title>
 <polygon points='0,12 12,24 12,18 24,18 24,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html?0><svg height='24' width='24'><title>Home</title>
+<a onclick="goto(0);"><svg height='24' width='24'><title>Home</title>
 <polygon points='12,0 24,12 18,12 18,24 6,24 6,12 0,12' fill='white'></polygon></svg></a>
-<a href=${lang}.html?${next}><svg height='24' width='24'><title>Next</title>
+<a onclick="next();"><svg height='24' width='24'><title>Next</title>
 <polygon points='24,12 12,24 12,18 0,18 0,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html?32><svg height='24' width='24'><title>Diagrams</title>
+<a onclick="goto(32);"><svg height='24' width='24'><title>Diagrams</title>
 <line x1='2' y1='0' x2='2' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='2' y1='22' x2='24' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='08' y1='18' x2='8' y2='8' stroke='white' stroke-width='4'></line>
@@ -48,6 +45,21 @@ function setup() {
 <a href=admin_${lang}.html><span class=tall >&vellip;</span> ${version}</a>
 `;
   document.getElementById("navbar").innerHTML = contents;
+}
+
+function next(){
+  page=page+1;
+  if(page>maxpage) page=maxpage;
+  goto(page);
+}
+
+function prior(){
+  goto(Math.max(page - 1, 0));
+}
+
+function goto(x) {
+  localStorage.setItem('page',x);
+  window.location.href=`${lang}.html`;
 }
 
 function setLang() { // increment language setting
@@ -84,8 +96,7 @@ function saveform(formid) {
 function saveComment(cname) {
   const com = document.getElementById(cname).value;
   localStorage.setItem(cname, com);
-  now = parseInt(window.location.search.substring(1));
-  location ="?"+(now+1);
+  next();
 }
 function setColor(cname, x) {
   for (i = 0; i < 5; i++) {
@@ -227,13 +238,14 @@ function computeScores(labels) {
   return scores;
 }
 
-function putToc(x){ // x is the title of the first entry
-  s=`<a class=wide href=${lang}.html?1>${x}</a>`;
+function putToc(){ // x is the title of the first entry
+  s=`<a class=wide onclick="goto(1);">${basics['h1']}</a>
+  `;
 // this correspond to the first page in each category
   const whichp=[2,8,10,15,18,20,24,25,28];
 	for(i=0;i<9;i++) { // put the 9 full-width buttons
-      d=dimensions[i];
-      s+=`<a class=wide href=${lang}.html?${whichp[i]}>${d}</a>`;
+      s+=`<a class="wide" onclick="goto(${whichp[i]});"}>${dimensions[i]}</a>
+      `;
 	}
   document.getElementById("main").innerHTML=s;
 }
@@ -317,24 +329,24 @@ function spider(data, labels) {
 }
 // Main page contents script -- using global p variable
 
-function putPages(p) {
+function putPages() {
 	localStorage.setItem('pointer',p);
 // This is only relevant if there are government page, not included in the community version 
 //  const govs=["11","12","13","14","15","22"];
 // routing to different style english pages
-	if(p=='0') {
+	if(page==0) {
 		putToc(basics["h1"]);
-} else if(p=='1'){
+} else if(p==1){
 	putBasics();
 //} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
 //	putRubric(rubric['g'+p]);
 //  handle the non-graph pages
-} else if(p<(maxpage-4)) {
-	putRubric(rubric['p'+p]);
+} else if(page<(maxpage-4)) {
+	putRubric(rubric['p'+page]);
 } else {
-	const n=p-(maxpage-5);
+	const n=page-(maxpage-5);
 	s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
-	putResults(p); // spider diagrams
+	putResults(page); // spider diagrams
 	document.getElementById("main").innerHTML=s;
 }
 
