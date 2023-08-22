@@ -1,10 +1,11 @@
-cacheName='v22';
+cacheName='v23';
 const URLS = [
   './',
   "./admin_am.html",
   "./admin_bd.html",
   "./admin_en.html",
   "./admin_fr.html",
+  "./admin_lg.html",
   "./admin_ny.html",
   "./admin_sw.html",
   "./am.html",
@@ -15,6 +16,8 @@ const URLS = [
   "./entext.js",
   "./fr.html",
   "./frtext.js",
+  "./lg.html",
+  "./lgtext.js",
   './sw.html',
   './swtext.js',
   "./fullreport.html",
@@ -24,6 +27,7 @@ const URLS = [
   './intro_bd.html',
   './intro_en.html',
   './intro_fr.html',
+  './intro_lg.html',
   './intro_ny.html',
   './intro_sw.html',
   "./logo150.png",
