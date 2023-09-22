@@ -28,8 +28,8 @@ const dimensions=[
 "E: Responsiveness to Context",
 "F: Collaboration",
 "G: Working with local government/ civil society organizations",
-"H. Monitoring and Evaluation Practices",
-"I. Facilitation"];
+"H: Monitoring and Evaluation Practices",
+"I: Facilitation"];
 
 const rubric={
 p2:["A1. The program ensures the inclusion of all groups of people in the community (like old and young, men and women, better-off and poor, from different clans, castes, religions, etc.)",
