@@ -1,9 +1,12 @@
-const version = 'v24';
-const langlist = ['lg','ny','sw','am','en','bd','fr'];
+const version = 't1';
+const langlist = ['en','lg','ny','sw','am','bd','fr'];
 const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
-var lang="";
-
+var lang="0";
+// https://www.slingacademy.com/article/javascript-set-html-lang-attribute-programmatically
+const changeLang = (languageCode) => {
+  document.documentElement.setAttribute("lang", languageCode);
+ };
 function setup() {
   // these functions run for a pwa
   window.onload = () => {
