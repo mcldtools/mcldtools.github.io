@@ -1,5 +1,5 @@
 const version = 'v24';
-const langlist = ['lg','ny','sw','am','en','bd','fr'];
+const langlist = ['ee','lg','ny','sw','am','en','bd','fr'];
 const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
 var lang="";
