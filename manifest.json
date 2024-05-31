@@ -1,12 +1,11 @@
 {
-    "name": "MCLD Tools",
-    "short_name": "MCLDTools",
+    "name": "Participatory CLD Assessment Tool",
+    "short_name": "CLD Tool",
     "start_url": "./index.html",
-    "scope": "/",
     "display": "standalone",
     "background_color": "white",
-    "description": "MCLD Assessment Tool",
-    "theme_color": "navy",
+    "description": "MCLD Community Assessment Tool",
+    "theme_color": "darkgreen",
     "icons": [
       {
         "src": "./logo512.png",

@@ -1,13 +1,13 @@
-// This includes all functions called by pages independent of language
-// New version that uses localStorage with v11
-// Same as Tamarack except for items in stuff.js
-
-const version = 'v27';
-const langlist = ['en','fr','es','ny','sw'];
+const version = 'v30';
+const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
+const maxpage = 36; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
-var lang=""; 
+var lang="3";
+// https://www.slingacademy.com/article/javascript-set-html-lang-attribute-programmatically
+const changeLang = (languageCode) => {
+  document.documentElement.setAttribute("lang", languageCode);
+ };
 function setup() {
-  const maxpage = 33; // the highest numbered page supported by en and fr so far
   // these functions run for a pwa
   window.onload = () => {
     'use strict'; // register service worker
@@ -18,30 +18,27 @@ function setup() {
 
   // next, output the navbar with the appropriate arrow links in this template
   // note - now in this system, 0=rubric, 1=basics, 2=a1 etc through maxpage
-  now = window.location.search.substring(1);
-  if((now=='') || isNaN(now))now=0
-  now=parseInt(now);
-  if (now > maxpage) now = maxpage;
-  prior = Math.max(now - 1, 0);
-  next = Math.min(now + 1, maxpage);
   lang = localStorage.getItem("lang");
+  page = parseInt(localStorage.getItem("page"));
+  if(isNaN(page)) {page=0; localStorage.setItem('page','0');}
+  console.log(page);
   if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
   LANG = lang.toUpperCase();
 
   // The navbar contains inline SVG for efficient icons
   const contents = `<a id='lang' class=tall onclick='setLang()'>${LANG}</a>
-<a href=/ ><svg height='24' width='24'><title>Info</title>
+<a href=intro_${lang}.html><svg height='24' width='24'><title>Info</title>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
 <circle cx='12' cy='7' r='2' fill='white'></circle>
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
 </svg></a>
-<a href=${lang}.html?${prior}><svg height='24' width='24'><title>Prior</title>
+<a onclick="prior();"><svg height='24' width='24'><title>Prior</title>
 <polygon points='0,12 12,24 12,18 24,18 24,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html?0><svg height='24' width='24'><title>Home</title>
+<a onclick="goto(0);"><svg height='24' width='24'><title>Home</title>
 <polygon points='12,0 24,12 18,12 18,24 6,24 6,12 0,12' fill='white'></polygon></svg></a>
-<a href=${lang}.html?${next}><svg height='24' width='24'><title>Next</title>
+<a onclick="next();"><svg height='24' width='24'><title>Next</title>
 <polygon points='24,12 12,24 12,18 0,18 0,6 12,6 12,0' fill='white'></polygon></svg></a>
-<a href=${lang}.html?29><svg height='24' width='24'><title>Diagrams</title>
+<a onclick="goto(32);"><svg height='24' width='24'><title>Diagrams</title>
 <line x1='2' y1='0' x2='2' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='2' y1='22' x2='24' y2='22' stroke='white' stroke-width='3'></line>
 <line x1='08' y1='18' x2='8' y2='8' stroke='white' stroke-width='4'></line>
@@ -51,6 +48,21 @@ function setup() {
 <a href=admin_${lang}.html><span class=tall >&vellip;</span> ${version}</a>
 `;
   document.getElementById("navbar").innerHTML = contents;
+}
+
+function next(){
+  page=page+1;
+  if(page>maxpage) page=maxpage;
+  goto(page);
+}
+
+function prior(){
+  goto(Math.max(page - 1, 0));
+}
+
+function goto(x) {
+  localStorage.setItem('page',x);
+  window.location.href=`${lang}.html`;
 }
 
 function setLang() { // increment language setting
@@ -87,8 +99,7 @@ function saveform(formid) {
 function saveComment(cname) {
   const com = document.getElementById(cname).value;
   localStorage.setItem(cname, com);
-  now = parseInt(window.location.search.substring(1));
-  location ="?"+(now+1); 
+  next();
 }
 function setColor(cname, x) {
   for (i = 0; i < 5; i++) {
@@ -136,19 +147,19 @@ function putInput(fname) {
 }
 function putNumber(fname){
   let val = localStorage.getItem(fname);
-  if(val == undefined || val==null) val = 0;
+  if(val === undefined || val===null) val = 0;
   s+='<label class=wide>'+basics[fname]+': <input name='+fname+' type=number min=0 max=1000 value='+val+"></label>\n";
 }
 
 function putYears(fname,y1) {
-  const y2=new Date().getFullYear();  
+  const y2=new Date().getFullYear();
   s+= "<div class=wide><label>" + basics[fname] + ": <select id='" + fname + "' name='" + fname + "'>\n";
   for (i = y1; i < y2; i++) {
     s += "<option value='" + i + "'";
     if (localStorage.getItem(fname) == i) s += " SELECTED";
     s += ">" + i + "</option>\n";
   }
-  s+= "</select></div>\n";  
+  s+= "</select></div>\n";
 }
 
 
@@ -200,7 +211,7 @@ function putXY(r, i, n) { // convert radius and index in spider to x,y pair
 }
 
 
-// for the 4 different diagrams, create them as pages p29, p30, p31
+// for the 4 different diagrams
 
 function computeByDimensions(labels, lengths) {
   let scores = [];
@@ -225,50 +236,52 @@ function computeScores(labels) {
   for (i = 0; i < labels.length; i++) {
     x = localStorage.getItem(labels[i].toLowerCase());
     if (isNaN(x)) x = 0; x--; if (x < 1) x = 0;
-    scores[i] = Math.floor(100 * x / 3);
+    scores[i] = Math.floor((100 * x)/3);
   }
   return scores;
 }
 
-function putToc(x){ // x is the title of the first entry
-  s=`<a class=wide href=?1>${x}</a>`;
-  const whichp=[2,9,11,16,18,20,22,23,26];
+function putToc(){ // x is the title of the first entry
+  s=`<a class=wide onclick="goto(1);">${basics['h1']}</a>
+  `;
+// this correspond to the first page in each category
+  const whichp=[2,8,10,15,18,20,24,25,28];
 	for(i=0;i<9;i++) { // put the 9 full-width buttons
-      d=dimensions[i];
-      s+=`<a class=wide href=?${whichp[i]}>${d}</a>`;
+      s+=`<a class="wide" onclick="goto(${whichp[i]});"}>${dimensions[i]}</a>
+      `;
 	}
   document.getElementById("main").innerHTML=s;
 }
-
+// note -- p numbers lengths and formulas are entirely different in the community version
 function putResults(p) {
   let scores = []; let labels = []; let tags = [];
-  if (p == 29) {
-    const lengths = [7, 2, 5, 2, 2, 2, 1, 3, 3]; // number of sub-elements in each
+  if (p == 32) {
+    const lengths = [6, 2, 5, 3, 2, 4, 1, 3, 4]; // number of sub-elements in each
     labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']; // uppercase version of labels
     scores = computeByDimensions(labels, lengths);
     spider(scores, labels);
     putDimensionScores(scores, labels);
-  } else if (p == 30) {
-    labels = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7'];
-    tags = ['p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'];
+  } else if (p == 33) {
+    labels = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'];
+    tags = ['p2', 'p3', 'p4', 'p5', 'p6', 'p7'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
-  } else if (p == 31) {
-    labels = ['C1', 'C2', 'C3', 'C4', 'C5'];
-    tags = ['p11', 'p12', 'p13', 'p14', 'p15'];
+  } else if (p == 34) {
+    labels = ['B1', 'B2', 'C1', 'C2', 'C3', 'C4', 'C5'];
+    tags = ['p8', 'p9','p10', 'p11', 'p12', 'p13', 'p14'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
-  } else if (p == 32) {
-    labels = ['B1', 'B2', 'D1', 'D2', 'E1', 'E2', 'F1', 'F2', 'G1'];
-    tags = ['p9', 'p10', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22'];
+  } else if (p == 35) {
+    labels = ['D1', 'D2', 'D3', 'E1', 'E2', 'F1', 'F2', 'F3', 'F4', 'G1'];
+    tags = [ 'p15', 'p16','p17','p18','p19','p20','p21','p22','p23','p24'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
   } else {
-    labels = ['H1', 'H2', 'H3', 'I1', 'I2', 'I3'];
-    tags = ['p23', 'p24', 'p25', 'p26', 'p27', 'p28'];
+    labels = ['H1', 'H2', 'H3', 'I1', 'I2', 'I3', 'I4'];
+    tags = ['p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31'];
     scores = computeScores(labels);
     spider(scores, labels);
     putRubricScores(scores, tags);
@@ -319,22 +332,24 @@ function spider(data, labels) {
 }
 // Main page contents script -- using global p variable
 
-function putPages(p) {
+function putPages() {
 	localStorage.setItem('pointer',p);
-  const govs=["11","12","13","14","15","22"];
+// This is only relevant if there are government page, not included in the community version 
+//  const govs=["11","12","13","14","15","22"];
 // routing to different style english pages
-	if(p=='0') {
-		putToc(basics["h1"]);
-} else if(p=='1'){ 
+	if(page==0) {
+		putToc();
+} else if(page==1){
 	putBasics();
-} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
-	putRubric(rubric['g'+p]);
-} else if(p<29) {
-	putRubric(rubric['p'+p]);
+//} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
+//	putRubric(rubric['g'+p]);
+//  handle the non-graph pages
+} else if(page<(maxpage-4)) {
+	putRubric(rubric['p'+page]);
 } else {
-	const n=p-28;
+	const n=page-(maxpage-5);
 	s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
-	putResults(p); // spider diagrams
+	putResults(page); // spider diagrams
 	document.getElementById("main").innerHTML=s;
 }
 
@@ -364,7 +379,7 @@ function download(filename, text) {
 
 function downloadStorage() {
   const filename = localStorage.getItem("date") + localStorage.getItem("organization") + '.json';
-  const text = JSON.stringify(localStorage); 
+  const text = JSON.stringify(localStorage);
   download(filename,text);
 }
 

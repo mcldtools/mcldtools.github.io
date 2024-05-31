@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<!-- MCLDTools Regular Admin Page 
+<!-- MCLDTools Community Admin Page 
   Factored to put entre page article into a string which could then be downloaded
 -->
 <html lang=en>
 <head>
     <title>Full Report</title>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="/logo150.png"/>
-	<link rel="apple-touch-icon" href="/logo512.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" href="./logo150.png"/>
+	<link rel="apple-touch-icon" href="./logo512.png">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="navy">
-	<link rel="stylesheet" href="/style.css">
-	<script type='text/javascript' src=/functions.js></script>
-  <script type='text/javascript' src=/entext.js></script>
+	<link rel="stylesheet" href="./style.css">
+	<script type='text/javascript' src="./functions.js"></script>
+  <script type='text/javascript' src="./entext.js"></script>
 </head>
 <body>
   <nav id="navbar"></nav>
 
 <script>
 setup();
+console.log(maxpage);
 const filename = localStorage.getItem("date") + localStorage.getItem("program") + '.html';
 const reporthead=`<!DOCTYPE html>
 <html><head><style>
@@ -42,7 +43,7 @@ function putRow(i) {
   s+='<tr><td>'+qname+'</td><td>'+qval+'</td><td>'+qcomment+'</td></tr>\n';
 }
 
-function putRows() { for(i=2;i<29;i++) putRow(i); }
+function putRows() { for(i=2;i<(maxpage-4);i++) putRow(i); }
 
 s=`<p>Program: ${localStorage.getItem("program")}<br>
 Organization: ${localStorage.getItem("organization")}<br>
@@ -57,7 +58,7 @@ Comment: ${localStorage.getItem("comment")}</p>
 putRows();
 s+=`  </tbody>    
 </table>`;
-for(p=29;p<34;p++) putResults(p);
+for(p=(maxpage-3);p<(maxpage+1);p++) putResults(p);
 document.getElementById("main").innerHTML=s;
 </script>
 </body>
