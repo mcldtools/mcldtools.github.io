@@ -12,7 +12,10 @@
     date:"Ennaku z'omwezi kwe mumalidde", 
     stage:"Omutendera", 
     save:"Tereka ebikunganyiziddwa",  
-    sendmail:"Sindika obubaka obukunganyiziddwa",
+    more:"Emirimu Emirala",
+    full:"Alipoota mu bujjuvu",
+    clear:"Okulongoosa Data",
+    load:"Teeka Data",
     comment:"Baako ky'oyogera" 
     }
     const stages=['pilot','new','midterm','mature','complete']; 

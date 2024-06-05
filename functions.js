@@ -44,7 +44,7 @@ function setup() {
 <line x1='15' y1='18' x2='15' y2='0' stroke='white' stroke-width='4'></line>
 <line x1='22' y1='18' x2='22' y2='10' stroke='white' stroke-width='4'></line>
 </svg></a>
-<a onclick="goto(37);><span class=tall >&vellip;&nbsp;</span> ${version}</a>
+<a onclick="goto(37);"><span class=tall >&vellip;&nbsp;</span> ${version}</a>
 `;
   document.getElementById("navbar").innerHTML = contents;
 }

@@ -11,7 +11,7 @@ const basics={
     date:"Tsiku lolowetsera kuwuniyu",
     stage:"Ndime yomwe pulogalamu ili",
     save:"Sungani zomwe mwayankha",
-    more:"More Functions",
+    more:"Ntchito Zambiri",
     full:"Lipoti Lathunthu",
     clear:"Chotsani Data",
     load:"Kwezani Data",

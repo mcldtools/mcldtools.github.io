@@ -9,12 +9,12 @@ const basics={
     region:"Provinces / Région (le cas échéant)",
     name:"Qui réalise cette évaluation ? Nom (s)",
     date:"Date d'exécution",
-    stage: "Stade de travail",
+    stage:"Stade de travail",
     save:"Sauvegarder les données",
     more:"Plus de fonctions",
     full:"Rapport complet",
     clear:"Effacer les données",
-    load: "Télécharger des données",
+    load:"Télécharger des données",
     comment:"Commentaire"
 };
 
