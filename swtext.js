@@ -11,7 +11,10 @@ const basics={
     date:"Tarehe iliyokamilika",
     stage:"Awamu",
     save:"Hifadhi Data",
-    sendmail:"Tuma Data kwa barua pepe",
+    more:"Kazi Zaidi",
+    full:"Ripoti Kamili",
+    clear:"Futa Data",
+    load:"Pakia data",
     comment:"Maoni"
 }
 const stages=['jaribio','kipya','kati-muhula','komavu','kamilifu'];

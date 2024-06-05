@@ -11,7 +11,10 @@ const basics={
     date:"Date d'exécution",
     stage: "Stade de travail",
     save:"Sauvegarder les données",
-    sendmail:"Envoyer les données par e-mail",
+    more:"Plus de fonctions",
+    full:"Rapport complet",
+    clear:"Effacer les données",
+    load: "Télécharger des données",
     comment:"Commentaire"
 };
 

@@ -11,7 +11,10 @@ const basics={
     date:"Date Completed",
     stage:"Stage",
     save:"Save data",
-    sendmail:"Email the data",
+    more:"More Functions",
+    full:"Full Report",
+    clear:"Clear Data",
+    load:"Upload Data",
     comment:"Comment"
 }
 const stages=['pilot','new','midterm','mature','complete'];

@@ -1,6 +1,6 @@
-const version = 'v31';
+const version = 'v33';
 const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
-const maxpage = 36; // the highest numbered page supported
+const maxpage = 37; // the highest numbered page supported
 var s=""; // this string compiles the output for a given main content div
 // https://www.slingacademy.com/article/javascript-set-html-lang-attribute-programmatically
 const changeLang = (languageCode) => {
@@ -44,7 +44,7 @@ function setup() {
 <line x1='15' y1='18' x2='15' y2='0' stroke='white' stroke-width='4'></line>
 <line x1='22' y1='18' x2='22' y2='10' stroke='white' stroke-width='4'></line>
 </svg></a>
-<a href=admin_${lang}.html><span class=tall >&vellip;</span> ${version}</a>
+<a onclick="goto(37);><span class=tall >&vellip;&nbsp;</span> ${version}</a>
 `;
   document.getElementById("navbar").innerHTML = contents;
 }
@@ -287,6 +287,13 @@ function putResults(p) {
   }
 }
 
+function putMore() {
+  s = "<h1>"+basics["more"]+"</h1>";
+  s += "<p>"+basics["full"]+"</p>";
+  s += "<p>"+basics["clear"]+"</p>";
+  s += "<p>"+basics["load"]+"</p>";
+}
+
 function putDimensionScores(scores) { // table of scores with dimension labels
   let t = "<center>\n<table>\n";
   for (i = 0; i < scores.length; i++) {
@@ -338,21 +345,21 @@ function putPages() {
 // routing to different style english pages
 	if(page==0) {
 		putToc();
-} else if(page==1){
-	putBasics();
+  } else if(page==1){
+  	  putBasics();
 //} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
 //	putRubric(rubric['g'+p]);
 //  handle the non-graph pages
-} else if(page<(maxpage-4)) {
-	putRubric(rubric['p'+page]);
-} else {
-	const n=page-(maxpage-5);
-	s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
-	putResults(page); // spider diagrams
+  } else if(page<(maxpage-5)) {
+  	  putRubric(rubric['p'+page]);
+  } else if(page<(maxpage)) {
+	    const n=page-(maxpage-5);
+	    s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
+	    putResults(page); // spider diagrams
+  } else{
+      putMore();
+  }
 	document.getElementById("main").innerHTML=s;
-}
-
-
 }
 
 

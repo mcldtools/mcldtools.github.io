@@ -11,7 +11,10 @@ const basics={
     date:"Tsiku lolowetsera kuwuniyu",
     stage:"Ndime yomwe pulogalamu ili",
     save:"Sungani zomwe mwayankha",
-    sendmail:"Tumizani pa kayela ya imelo zomwe mwatolera pa kuwunika",
+    more:"More Functions",
+    full:"Lipoti Lathunthu",
+    clear:"Chotsani Data",
+    load:"Kwezani Data",
     comment:"Ndemanga"
 }
 const stages=['zongoyesera','zatsopano','mkati mwa ndime','zokhwima','zomalizitsa'];

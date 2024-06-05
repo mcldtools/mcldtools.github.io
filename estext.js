@@ -11,7 +11,10 @@ const basics={
     date:"Fecha de llenado de rúbrica:",
     stage:"Etapa de trabajo",
     save:"Guardar Datos",
-    sendmail:"Enviar datos por correo electrónico",
+    more:"Más Funciones",
+    full:"Informe completo",
+    clear:"Borrar datos",
+    load: "Subir datos",
     comment:"Comentarios"
 }
 const stages=['piloto','proyecto nuevo','mediano plazo','fase final','terminado'];

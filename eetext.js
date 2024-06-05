@@ -11,8 +11,10 @@ const basics={
      date:"Ŋkeke si wowu enu",
      stage:"Afɔɖeɖe",
      save:"Dzra nyatakakawo ɖo",
-     sendmail:"Email nyatakakaawo",
-     comment:"Nyaŋuɖoɖo"
+     more:"Dɔwɔwɔ Bubuwo",
+     full:"Nyatakaka Blibo",
+     clear:"Klɔ Nyatakakawo Klɔ",
+     load:"Ðo Nyatakakawo Ðe Internet Dzi",     comment:"Nyaŋuɖoɖo"
 }
 const stages=['yameʋukula', 'yeye', 'midterm', 'tsitsi', 'wu enu'];
 const orgtypes=["Nutoa me Dziɖuɖu/dziɖuɖu si do ƒome kplii","habɔbɔ si mekpɔa viɖe aɖeke tso eme o/ dukɔmeviwo ƒe habɔbɔ"];

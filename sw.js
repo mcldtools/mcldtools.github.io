@@ -1,15 +1,7 @@
-cacheName='v30';
+cacheName='v33';
 const URLS = [
   './',
   "./admin_am.html",
-  "./admin_bd.html",
-  "./admin_ee.html",
-  "./admin_en.html",
-  "./admin_es.html",
-  "./admin_fr.html",
-  "./admin_lg.html",
-  "./admin_ny.html",
-  "./admin_sw.html",
   "./am.html",
   "./amtext.js",
   "./bd.html",
