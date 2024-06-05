@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<!-- test version -->
-<html lang=en>
+<!-- only does a shift due to language version -->
+<html>
 <head>
     <title>CLD Assessment</title>
-	<link rel="manifest" href="/manifest.json">
-	<link rel="icon" type="image/png" href="/logo150.png"/>
-	<link rel="apple-touch-icon" href="/logo512.png">
-	<meta charset="UTF-8">
-	<meta name = "Description" content = "Open Source PWA for data collection by John Coonrod.">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="navy">
-	<link rel="stylesheet" href="/style.css">
-	<script type='text/javascript' src=/functions.js></script>
 </head>
 <body>
-	<nav id="navbar"></nav>
 	<script>
-	setup(); // read cookies and then redirect per language
+	const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
+    lang = localStorage.getItem("lang");
+	if (langlist.indexOf(lang)==-1) { lang = 'en'; localStorage.setItem("lang",'en');}
 	location.href="intro_"+lang+".html";
 	</script>
 </body>
