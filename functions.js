@@ -1,34 +1,16 @@
-const version = 'v33';
+const version = 'v37';
 const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
-const maxpage = 37; // the highest numbered page supported
-var s=""; // this string compiles the output for a given main content div
-// https://www.slingacademy.com/article/javascript-set-html-lang-attribute-programmatically
-const changeLang = (languageCode) => {
-  document.documentElement.setAttribute("lang", languageCode);
- };
-function setup() {
-  // these functions run for a pwa
-  window.onload = () => {
-    'use strict'; // register service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js');
-    }
-  }
+const maxpage = 38; // 37 is More 38 is Full Report
+lang = localStorage.getItem("lang");
+page = parseInt(localStorage.getItem("page"));
+if(isNaN(page)) {page=0; localStorage.setItem('page','0');}
+if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
+LANG = lang.toUpperCase();
 
-  // next, output the navbar with the appropriate arrow links in this template
-  // note - now in this system, 0=rubric, 1=basics, 2=a1 etc through maxpage
-  lang = localStorage.getItem("lang");
-  page = parseInt(localStorage.getItem("page"));
-  if(isNaN(page)) {page=0; localStorage.setItem('page','0');}
-  console.log(page);
-  if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
-  LANG = lang.toUpperCase();
-
-  // The navbar contains inline SVG for efficient icons
-  const contents = `<a id='lang' class=tall onclick='setLang()'>${LANG}</a>
+const navbar = `<a id='lang' class=tall onclick='setLang()'>${LANG}</a>
 <a href=intro_${lang}.html><svg height='24' width='24'><title>Info</title>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
-<circle cx='12' cy='7' r='2' fill='white'></circle>
+<circle cx='12' cy='7' r='2' fill='white'></circle>putMo
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
 </svg></a>
 <a onclick="prior();"><svg height='24' width='24'><title>Prior</title>
@@ -46,7 +28,54 @@ function setup() {
 </svg></a>
 <a onclick="goto(37);"><span class=tall >&vellip;&nbsp;</span> ${version}</a>
 `;
-  document.getElementById("navbar").innerHTML = contents;
+
+
+var now=0;
+var s=""; // this string compiles the output for a given main content div
+// https://www.slingacademy.com/article/javascript-set-html-lang-attribute-programmatically
+const changeLang = (languageCode) => {
+  document.documentElement.setAttribute("lang", languageCode);
+ };
+
+// Functions that generate pages
+// First - the main router
+// Main page contents script -- using global p variable
+
+function putPages() {
+  console.log(page);
+	if(page==0) {
+		putToc();
+  } else if(page==1){
+  	  putBasics();
+  } else if(page<32) {
+  	  putRubric(rubric['p'+page]);
+  } else if(page<37) {
+	    const n=page-31;
+	    s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
+	    putResults(page); // spider diagrams
+  } else if(page==37) {
+      putMore();
+  } else if(page==38) {
+      putFull(); // Full report
+  }
+	document.getElementById("main").innerHTML=s;
+}
+
+
+ function setup() {
+  // these functions run for a pwa
+  window.onload = () => {
+    'use strict'; // register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  }
+
+  // next, output the navbar with the appropriate arrow links in this template
+  // note - now in this system, 0=rubric, 1=basics, 2=a1 etc through maxpage
+
+  // The navbar contains inline SVG for efficient icons
+  document.getElementById("navbar").innerHTML = navbar;
 }
 
 function next(){
@@ -182,6 +211,36 @@ function putBasics() {
   document.getElementById("main").innerHTML=s;
 }
 
+// Put the Full report
+function putFull(){
+
+  const subhead=`<p><a class=wide onclick="downloadfull();">${downbutton}</a></p>\n<p>${sendmail}</p>`;
+  s=subhead+`<p>${basics["program"]}: ${localStorage.getItem("program")}<br>
+  ${basics["organization"]}: ${localStorage.getItem("organization")}<br>
+  ${basics["country"]}: ${localStorage.getItem("country")}<br>
+  ${basics["region"]}: ${localStorage.getItem("region")}<br>
+  ${basics["stage"]}: ${localStorage.getItem("stage")}<br>
+  ${basics["date"]}: ${localStorage.getItem("date")}<br>
+  ${basics["comment"]}: ${localStorage.getItem("comment")}</p>
+  <table>
+    <thead><tr><th>Item</th><th>Value</th><th>Comment</th></tr></thead>
+      <tbody>`;
+  putRows();
+  s+=`  </tbody>    
+  </table>`;
+}
+
+function putRow(i) {
+  pp='p'+i;
+  qname=rubric[pp][0];
+  cname=qname.substr(0, 2).toLowerCase();
+  qval=localStorage.getItem(cname);
+  qcomment=localStorage.getItem('n'+cname);
+  s+='<tr><td>'+qname+'</td><td>'+qval+'</td><td>'+qcomment+'</td></tr>\n';
+}
+
+function putRows() { for(i=2;i<32;i++) putRow(i); }
+
 function putRubric(contents) { // Create layout based on an array of options
   cname = contents[0].substr(0, 2).toLowerCase();
   s="<h2>" + contents[0] + "</h2>";
@@ -289,9 +348,9 @@ function putResults(p) {
 
 function putMore() {
   s = "<h1>"+basics["more"]+"</h1>";
-  s += "<p>"+basics["full"]+"</p>";
-  s += "<p>"+basics["clear"]+"</p>";
-  s += "<p>"+basics["load"]+"</p>";
+  s += "<p><a class=wide onclick='putFull();'>"+basics["full"]+"</a></p>";
+  s += "<p><a class=wide onclick='clearStorage();'>"+basics["clear"]+"</a></p>";
+//  s += "<p><a class=wide href=uploadFile.html>"+basics["load"]+"</a></p>";
 }
 
 function putDimensionScores(scores) { // table of scores with dimension labels
@@ -336,32 +395,6 @@ function spider(data, labels) {
   }
   s+="</svg>";
 }
-// Main page contents script -- using global p variable
-
-function putPages() {
-	localStorage.setItem('pointer',p);
-// This is only relevant if there are government page, not included in the community version 
-//  const govs=["11","12","13","14","15","22"];
-// routing to different style english pages
-	if(page==0) {
-		putToc();
-  } else if(page==1){
-  	  putBasics();
-//} else if(localStorage.getItem("orgtype")=='0' && govs.indexOf(p)>-1) {
-//	putRubric(rubric['g'+p]);
-//  handle the non-graph pages
-  } else if(page<(maxpage-5)) {
-  	  putRubric(rubric['p'+page]);
-  } else if(page<(maxpage)) {
-	    const n=page-(maxpage-5);
-	    s='<h2>'+basics["figure1"]+n+basics["figure2"]+'</h2>';
-	    putResults(page); // spider diagrams
-  } else{
-      putMore();
-  }
-	document.getElementById("main").innerHTML=s;
-}
-
 
 // ADMIN Functions
 function putMailButton(){
@@ -373,7 +406,19 @@ function putMailButton(){
   const button="<a class=wide href="+href1+encodeURI(text)+">"+msg+"</a>";
   document.getElementById("mailbutton").innerHTML=button;
 }
-function download(filename, text) {
+
+function downloadfull(){
+  const downfilename = localStorage.getItem("date") + localStorage.getItem("program") + '.html';
+  const reporthead=`<!DOCTYPE html>
+  <html><head><style>
+    html {font-family:sans-serif; margin: 0 auto; max-width: 900px;}
+    table, th, td {border: 1px solid navy; border-collapse: collapse; padding:5px;}
+  </style></head>
+  <body>`;
+  download(downfilename,reporthead+s+"</body></html>");
+}
+
+function download(filename,text) { // download the s string as an html
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);

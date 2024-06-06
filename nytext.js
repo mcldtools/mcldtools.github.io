@@ -17,6 +17,8 @@ const basics={
     load:"Kwezani Data",
     comment:"Ndemanga"
 }
+const downbutton="Dinani apa kuti mutsitse fayilo.";
+const sendmail="Kuti mutumize ndi imelo, phatikizani fayilo yomwe mwatsitsa.";
 const stages=['zongoyesera','zatsopano','mkati mwa ndime','zokhwima','zomalizitsa'];
 const orgtypes=["Zamaboma ang'ono/Zokhudzana ndi Boma","Mabungwe ongothandiza/ Mabungwe otumikira anthu"];
 

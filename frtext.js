@@ -17,7 +17,8 @@ const basics={
     load:"Télécharger des données",
     comment:"Commentaire"
 };
-
+const downbutton="Cliquez ici pour télécharger le fichier." ;
+const sendmail="Pour l'envoi par courrier électronique, joignez le fichier téléchargé." ;
 const stages=["pilote","nouveau", "à mi-parcous", "mature", "terminé"];
 const orgtypes=["Gouvernement local/affilié au gouvernement","organisation à but non lucratif/de la société civile."];
 const clickto="Cliquez pour enregistrer le commentaire";

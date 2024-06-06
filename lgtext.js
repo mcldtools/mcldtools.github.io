@@ -18,6 +18,8 @@
     load:"Teeka Data",
     comment:"Baako ky'oyogera" 
     }
+    const downbutton="Nyiga wano okuwanula fayiro.";
+    const sendmail="Okusindika ku email, ssaako fayiro ewanuliddwa.";
     const stages=['pilot','new','midterm','mature','complete']; 
     const orgtypes=["Gavumenti ey'ekitundu/gavumenti gye mukwatagana nayo","Ekibiina/ekitongole ky'obwa nakyewa"]; 
     const clickto="Nyiga okusobola okutereka ky'oyogedde ku Pulogulaamu";

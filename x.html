@@ -1,0 +1,31 @@
+
+
+function putRow(i) {
+  page='p'+i;
+  qname=rubric[page][0];
+  cname=qname.substr(0, 2).toLowerCase();
+  qval=localStorage.getItem(cname);
+  qcomment=localStorage.getItem('n'+cname);
+  s+='<tr><td>'+qname+'</td><td>'+qval+'</td><td>'+qcomment+'</td></tr>\n';
+}
+
+function putRows() { for(i=2;i<(maxpage-5);i++) putRow(i); }
+
+s=`<p>Program: ${localStorage.getItem("program")}<br>
+Organization: ${localStorage.getItem("organization")}<br>
+Country: ${localStorage.getItem("country")}<br>
+Region: ${localStorage.getItem("region")}<br>
+Stage: ${localStorage.getItem("stage")}<br>
+Date: ${localStorage.getItem("date")}<br>
+Comment: ${localStorage.getItem("comment")}</p>
+<table>
+  <thead><tr><th>Item</th><th>Value</th><th>Comment</th></tr></thead>
+    <tbody>`;
+putRows();
+s+=`  </tbody>    
+</table>`;
+for(p=(maxpage-3);p<(maxpage+1);p++) putResults(p);
+document.getElementById("main").innerHTML=s;
+</script>
+</body>
+</html>

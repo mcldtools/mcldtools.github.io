@@ -17,9 +17,10 @@ const basics={
     load:"Pakia data",
     comment:"Maoni"
 }
+const downbutton="Bofya hapa kupakua faili.";
+const sendmail="Ili kutuma kwa barua pepe, ambatisha faili iliyopakuliwa.";
 const stages=['jaribio','kipya','kati-muhula','komavu','kamilifu'];
 const orgtypes= ["Mshirika wa Serikali","Shirika lisilo la faida/ asasi ya kiraia"];
-
 const clickto="Bofya kuhifadhi maoni";
 const comment="Maoni";
 

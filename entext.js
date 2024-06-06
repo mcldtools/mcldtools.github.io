@@ -16,10 +16,12 @@ const basics={
     clear:"Clear Data",
     load:"Upload Data",
     comment:"Comment"
-}
+};
+
+const downbutton="Click here to download file.";
+const sendmail="To send by email, attach the downloaded file.";
 const stages=['pilot','new','midterm','mature','complete'];
 const orgtypes=["Local Government/government affiliate","non-profit/ civil society organization"];
-
 const clickto="Click to save comment";
 const comment="Comment";
 

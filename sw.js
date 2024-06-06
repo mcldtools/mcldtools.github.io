@@ -1,7 +1,6 @@
-cacheName='v33';
+cacheName='v37';
 const URLS = [
   './',
-  "./admin_am.html",
   "./am.html",
   "./amtext.js",
   "./bd.html",
@@ -20,7 +19,6 @@ const URLS = [
   "./nytext.js",
   './sw.html',
   './swtext.js',
-  "./fullreport.html",
   './functions.js',
   './index.html',
   './intro_am.html',
