@@ -1,4 +1,4 @@
-const version = 'v37';
+const version = 'v38';
 const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
 const maxpage = 38; // 37 is More 38 is Full Report
 lang = localStorage.getItem("lang");
@@ -348,7 +348,7 @@ function putResults(p) {
 
 function putMore() {
   s = "<h1>"+basics["more"]+"</h1>";
-  s += "<p><a class=wide onclick='putFull();'>"+basics["full"]+"</a></p>";
+  s += "<p><a class=wide onclick='goto(38);'>"+basics["full"]+"</a></p>";
   s += "<p><a class=wide onclick='clearStorage();'>"+basics["clear"]+"</a></p>";
 //  s += "<p><a class=wide href=uploadFile.html>"+basics["load"]+"</a></p>";
 }
