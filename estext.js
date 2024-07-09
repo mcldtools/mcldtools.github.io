@@ -11,9 +11,14 @@
     date:"Fecha de llenado del formulario:",
     stage:"Etapa del proyecto",
     save:"Guardar Datos",
-    sendmail:"Enviarme los datos por correo electrónico",
+    more:"Más Funciones",
+    full:"Informe completo",
+    clear:"Borrar datos",
+    load: "Subir datos",
     comment:"Comentarios"
 }
+const downbutton="Haga clic aquí para descargar el archivo";
+const sendmail="Para enviar por correo electrónico, adjunte el archivo descargado";
 const stages=['piloto','recién iniciado','mediano plazo','fase final','terminado'];
 const orgtypes=["Gobierno local/representante de gobierno","organización de la sociedad civil/sin fines de lucro"];
 const comment="Comentarios adicionales y retroalimentación";
