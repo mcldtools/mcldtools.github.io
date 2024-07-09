@@ -37,7 +37,14 @@ const changeLang = (languageCode) => {
   document.documentElement.setAttribute("lang", languageCode);
  };
 
-// Functions that generate pages
+// functions being debuggged
+// Read in a saved html file and enter the data to local storage
+function read_html(){
+
+}
+
+
+ // Functions that generate page contents into the s string
 // First - the main router
 // Main page contents script -- using global p variable
 
@@ -60,7 +67,6 @@ function putPages() {
   }
 	document.getElementById("main").innerHTML=s;
 }
-
 
  function setup() {
   // these functions run for a pwa
