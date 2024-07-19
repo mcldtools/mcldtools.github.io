@@ -1,4 +1,4 @@
-const version = 'v42';
+const version = 'v43';
 const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
 const maxpage = 38; // 37 is More 38 is Full Report
 lang = localStorage.getItem("lang");
@@ -416,7 +416,8 @@ function putMailButton(){
 function downloadfull(){
   const downfilename = localStorage.getItem("date") + localStorage.getItem("program") + '.html';
   const reporthead=`<!DOCTYPE html>
-  <html><head><style>
+  <html><head>
+<meta name="google" content="notranslate"><style>
     html {font-family:sans-serif; margin: 0 auto; max-width: 900px;}
     table, th, td {border: 1px solid navy; border-collapse: collapse; padding:5px;}
   </style></head>
