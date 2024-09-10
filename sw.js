@@ -1,4 +1,4 @@
-cacheName='v46';
+cacheName='v47';
 const URLS = [
   './',
   "./am.html",
