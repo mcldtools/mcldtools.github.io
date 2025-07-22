@@ -1,5 +1,5 @@
 const version = 'v48';
-const langlist = ['am','bd','ee','en','es','fr','lg','ny','sw'];
+const langlist = ['am','ar','bd','ee','en','es','fr','lg','ny','sw'];
 const maxpage = 38; // 37 is More 38 is Full Report
 lang = localStorage.getItem("lang");
 page = parseInt(localStorage.getItem("page"));
