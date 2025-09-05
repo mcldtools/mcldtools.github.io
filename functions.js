@@ -1,4 +1,4 @@
-const version = 'v54';
+const version = 'v55';
 const langlist = ['am','ar','bd','ee','en','es','fr','lg','ny','sw'];
 const maxpage = 38; // 37 is More 38 is Full Report
 lang = localStorage.getItem("lang");
@@ -82,6 +82,7 @@ function geoSuccess(position) {
   } else {
     localStorage.setItem('oldmsg',msg);
   }
+  putPage();
 }
 function geoError(){
   Coordinates="None";
@@ -94,6 +95,7 @@ function geoError(){
   } else {
     localStorage.setItem('oldmsg',msg);
   }
+  putPage();
 }
 // Functions that generate page contents into the s string
 // First - the main router
@@ -102,6 +104,9 @@ function geoError(){
 function putPages() {
   console.log(page);
   getLocation();
+}
+//Because getLocation is async, putpage actually must be put into it. 
+function putPage(){ 
 	if(page==0) {
 		putToc();
   } else if(page==1){
