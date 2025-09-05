@@ -56,7 +56,7 @@ var Coordinates="";
 async function fetchData(url) {
   try {
     const response = await fetch(url); // Waits for the initial response (headers)
-    const data = await response.json(); // Waits for the response body to be parsed as JSON
+    const data = await response.url; // Waits for the response body to be parsed as url
     console.log(data);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -67,19 +67,18 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
   } else {
-    Coordinates="Not supported by this browser.";
+    Coordinates="0";
   }
 }
-function geoSuccess(position) {Coordinates=position.coords.latitude + "|" + position.coords.longitude;}
-function geoError(){Coordinates="No Coordinates"}
+function geoSuccess(position) {Coordinates="Lat"+position.coords.latitude + "Long" + position.coords.longitude;}
+function geoError(){Coordinates="NoCoordinates"}
 
 const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
 function recordUse(){
-  let msg="mcld"+localStorage.getItem("page")+'|'+Date.now().toString()+'|'+Coordinates;
+  let msg="mcldP"+page+Coordinates;
   let oldmsg=localStorage.getItem("msg");
   if (navigator.onLine) {
     fetchData(fnURL+oldmsg+msg);
-    fetch(fnURL+oldmsg+msg);
     localStorage.setItem('msg',''); // clear saved string
   } else {
     localStorage.setItem('oldmsg',msg);
