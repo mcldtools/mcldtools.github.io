@@ -64,18 +64,15 @@ async function fetchData(url) {
     console.error('Error fetching data:', error);
   }
 }
+const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
 
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     }
   }
-function geoSuccess(position) {Coordinates="Lat"+position.coords.latitude + "Long" + position.coords.longitude;}
-function geoError(){Coordinates="NoCoordinates"}
-
-const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
-function recordUse(){
-  getLocation();
+function geoSuccess(position) {
+  Coordinates="Lat"+position.coords.latitude + "Long" + position.coords.longitude;
   msg="mcldP"+page+Coordinates;
   console.log(msg);
   oldmsg=localStorage.getItem("msg");
@@ -85,16 +82,26 @@ function recordUse(){
   } else {
     localStorage.setItem('oldmsg',msg);
   }
-
 }
-
+function geoError(){
+  Coordinates="None";
+  msg="mcldP"+page+Coordinates;
+  console.log(msg);
+  oldmsg=localStorage.getItem("msg");
+  if (navigator.onLine) {
+    fetchData(fnURL+oldmsg+msg);
+    localStorage.setItem('msg',''); // clear saved string
+  } else {
+    localStorage.setItem('oldmsg',msg);
+  }
+}
 // Functions that generate page contents into the s string
 // First - the main router
 // Main page contents script -- using global p variable
 
 function putPages() {
   console.log(page);
-  recordUse();
+  getLocation();
 	if(page==0) {
 		putToc();
   } else if(page==1){
