@@ -1,4 +1,4 @@
-const version = 'v52';
+const version = 'v53';
 const langlist = ['am','ar','bd','ee','en','es','fr','lg','ny','sw'];
 const maxpage = 38; // 37 is More 38 is Full Report
 lang = localStorage.getItem("lang");
@@ -7,8 +7,23 @@ if(isNaN(page)) {page=0; localStorage.setItem('page','0');}
 if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
 LANG = lang.toUpperCase();
 
-const navbar = `<a id='lang' class=tall onclick='setLang()'>${LANG}</a>
-<a href=intro_${lang}.html><svg height='24' width='24'><title>Info</title>
+// setup the language dropdown
+let selectLang = "<select id='myLang' onChange=setLang();>\n";
+for (let i = 0; i < langlist.length; i++) {
+  l = langlist[i];
+  if (l == lang) {
+    selected = ' SELECTED ';
+  } else {
+    selected = '';
+  }
+  L = l.toUpperCase();
+  selectLang +=
+    "<option value='" + l + "'" + selected + '>' + L + '</option>\n';
+}
+selectLang += '</select>\n';
+
+
+const navbar = selectLang+ `<svg height='24' width='24'><title>Info</title>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
 <circle cx='12' cy='7' r='2' fill='white'></circle>putMo
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
@@ -36,20 +51,49 @@ var s=""; // this string compiles the output for a given main content div
 const changeLang = (languageCode) => {
   document.documentElement.setAttribute("lang", languageCode);
  };
-
+var Coordinates="";
 // functions being debuggged
-// Read in a saved html file and enter the data to local storage
-function read_html(){
+async function fetchData(url) {
+  try {
+    const response = await fetch(url); // Waits for the initial response (headers)
+    const data = await response.json(); // Waits for the response body to be parsed as JSON
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+  } else {
+    Coordinates="Not supported by this browser.";
+  }
+}
+function geoSuccess(position) {Coordinates=position.coords.latitude + "|" + position.coords.longitude;}
+function geoError(){Coordinates="No Coordinates"}
+
+const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
+function recordUse(){
+  let msg="mcld"+localStorage.getItem("page")+'|'+Date.now().toString()+'|'+Coordinates;
+  let oldmsg=localStorage.getItem("msg");
+  if (navigator.onLine) {
+    fetchData(fnURL+oldmsg+msg);
+    fetch(fnURL+oldmsg+msg);
+    localStorage.setItem('msg',''); // clear saved string
+  } else {
+    localStorage.setItem('oldmsg',msg);
+  }
 
 }
 
-
- // Functions that generate page contents into the s string
+// Functions that generate page contents into the s string
 // First - the main router
 // Main page contents script -- using global p variable
 
 function putPages() {
   console.log(page);
+  recordUse();
 	if(page==0) {
 		putToc();
   } else if(page==1){
@@ -100,12 +144,9 @@ function goto(x) {
 }
 
 function setLang() { // increment language setting
-  const olang=lang;
-  let i=langlist.indexOf(lang)+1;
-  if(i==langlist.length) i=0;
-  lang=langlist[i];
-  localStorage.setItem('lang', lang);
-  location.href = window.location.href.replace(olang, lang);
+  lang = document.getElementById("myLang").value;
+  localStorage.setItem("lang",lang);
+  location.href = "/intro_"+lang+".html";
 }
 
 function loadFile(filePath) {
