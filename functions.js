@@ -65,10 +65,14 @@ async function fetchData(url) {
   }
 }
 const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
-
+const options = {
+  enableHighAccuracy:true,
+  timeout: 2000, // two seconds
+  maximumage: 600000, // ten minutes
+};
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options);
     }
   }
 function geoSuccess(position) {
