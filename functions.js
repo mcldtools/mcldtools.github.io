@@ -52,6 +52,8 @@ const changeLang = (languageCode) => {
   document.documentElement.setAttribute("lang", languageCode);
  };
 var Coordinates="";
+var msg="";
+var oldmsg="";
 // functions being debuggged
 async function fetchData(url) {
   try {
@@ -66,17 +68,17 @@ async function fetchData(url) {
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-  } else {
-    Coordinates="0";
+    }
   }
-}
 function geoSuccess(position) {Coordinates="Lat"+position.coords.latitude + "Long" + position.coords.longitude;}
 function geoError(){Coordinates="NoCoordinates"}
 
 const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
 function recordUse(){
-  let msg="mcldP"+page+Coordinates;
-  let oldmsg=localStorage.getItem("msg");
+  getLocation();
+  msg="mcldP"+page+Coordinates;
+  console.log(msg);
+  oldmsg=localStorage.getItem("msg");
   if (navigator.onLine) {
     fetchData(fnURL+oldmsg+msg);
     localStorage.setItem('msg',''); // clear saved string
