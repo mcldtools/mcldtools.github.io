@@ -1,10 +1,10 @@
-const version = 'v57';
+const version = 'v58';
 const langlist = ['am','ar','bd','ee','en','es','fr','lg','ny','sw'];
 const maxpage = 38; // 37 is More 38 is Full Report
-lang = localStorage.getItem("lang");
+var lang = localStorage.getItem("lang");
+if(!lang) lang='en';
 page = parseInt(localStorage.getItem("page"));
 if(isNaN(page)) {page=0; localStorage.setItem('page','0');}
-if (langlist.indexOf(lang)==-1) { setLang(); lang = 'en'; }
 LANG = lang.toUpperCase();
 
 // setup the language dropdown
@@ -23,9 +23,9 @@ for (let i = 0; i < langlist.length; i++) {
 selectLang += '</select>\n';
 
 
-const navbar = selectLang+ `<svg height='24' width='24'><title>Info</title>
+const navbar = selectLang+ `<a href=intro_${lang}.html><svg height='24' width='24'><title>Info</title>
 <circle cx='12' cy='12' r='10' stroke='white' stroke-width='3'></circle>
-<circle cx='12' cy='7' r='2' fill='white'></circle>putMo
+<circle cx='12' cy='7' r='2' fill='white'></circle>
 <line x1='12' y1='20' x2='12' y2='11' stroke='white' stroke-width='3'></line>
 </svg></a>
 <a onclick="prior();"><svg height='24' width='24'><title>Prior</title>
@@ -51,10 +51,21 @@ var s=""; // this string compiles the output for a given main content div
 const changeLang = (languageCode) => {
   document.documentElement.setAttribute("lang", languageCode);
  };
-var Coordinates="";
 var msg="";
 var oldmsg="";
 // functions being debuggged
+function logpage(){
+  msg="mcldP"+page+"C"+localStorage.getItem("country")+"X"+localStorage.getItem("organization");
+  console.log(msg);
+  oldmsg=localStorage.getItem("msg");
+  if (navigator.onLine) {
+    fetch(fnURL+oldmsg+msg);
+    localStorage.setItem('msg',''); // clear saved string
+  } else {
+    localStorage.setItem('oldmsg',msg);
+  }
+}
+
 async function fetchData(url) {
   try {
     const response = await fetch(url); // Waits for the initial response (headers)
@@ -65,11 +76,13 @@ async function fetchData(url) {
   }
 }
 const fnURL="https://logincomingurl-gvlriaxnrq-uc.a.run.app/";
+/* No need to get location if we can log the IP on the server side
 const options = {
   enableHighAccuracy:true,
   timeout: 2000, // two seconds
   maximumage: 600000, // ten minutes
 };
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options);
@@ -101,16 +114,15 @@ function geoError(){
   }
   putPage();
 }
+*/
+
 // Functions that generate page contents into the s string
 // First - the main router
 // Main page contents script -- using global p variable
 
 function putPages() {
   console.log(page);
-  getLocation();
-}
-//Because getLocation is async, putpage actually must be put into it. 
-function putPage(){ 
+  logpage(page);
 	if(page==0) {
 		putToc();
   } else if(page==1){
@@ -183,6 +195,7 @@ function saveform(formid) {
   Array.from(form.elements).forEach((input) => {
     val=input.value;
     if(val=='undefined') val='';
+    if(input.name=='Date' && !val) {val=new Date.toISOString().substring(0,10);}
     val=val.replace(/[^a-zA-Z0-9 -.,]/g, '');
     localStorage.setItem(input.name,val)} );
   location=lang+".html?"+(now+1);
